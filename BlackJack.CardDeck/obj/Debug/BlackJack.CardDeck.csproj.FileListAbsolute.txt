@@ -1,0 +1,4 @@
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.CardDeck\bin\Debug\BlackJack.CardDeck.dll
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.CardDeck\bin\Debug\BlackJack.CardDeck.pdb
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.CardDeck\obj\Debug\BlackJack.CardDeck.dll
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.CardDeck\obj\Debug\BlackJack.CardDeck.pdb

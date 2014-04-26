@@ -19,3 +19,12 @@ G:\BlackJack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.csproj.Gene
 C:\Users\Danny\Desktop\misc\BlackJack\BlackJack.Presentation\bin\Debug\BlackJack.Presentation.exe.config
 C:\Users\Danny\Desktop\misc\BlackJack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.exe
 C:\Users\Danny\Desktop\misc\BlackJack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.pdb
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.Presentation.exe.config
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.Presentation.exe
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.Presentation.pdb
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.csprojResolveAssemblyReference.cache
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.GameTable.resources
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.Properties.Resources.resources
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.csproj.GenerateResource.Cache
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.exe
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.pdb

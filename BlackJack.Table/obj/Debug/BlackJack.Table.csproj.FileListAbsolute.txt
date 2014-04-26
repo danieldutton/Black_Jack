@@ -1,0 +1,7 @@
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Table\bin\Debug\BlackJack.Table.dll
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Table\bin\Debug\BlackJack.Table.pdb
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Table\bin\Debug\BlackJack.CardDeck.dll
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Table\bin\Debug\BlackJack.CardDeck.pdb
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Table\obj\Debug\BlackJack.Table.csprojResolveAssemblyReference.cache
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Table\obj\Debug\BlackJack.Table.dll
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Table\obj\Debug\BlackJack.Table.pdb

@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackJack._UnitTests", "BlackJack._UnitTests\BlackJack._UnitTests.csproj", "{9F4E27CD-B03A-43F0-95FD-B8F871AFAE79}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackJack.UnitTests", "BlackJack._UnitTests\BlackJack.UnitTests.csproj", "{9F4E27CD-B03A-43F0-95FD-B8F871AFAE79}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackJack.Presentation", "BlackJack.Presentation\BlackJack.Presentation.csproj", "{6BB956AF-8088-4CE0-BEEA-022F96B62C46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackJack.Model", "BlackJack.Model\BlackJack.Model.csproj", "{1B8B0E76-1008-4B0E-B082-5CED29B60DFD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{48D290C6-1DC6-4B86-88E0-D8588E287E4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackJack.Table", "BlackJack.Table\BlackJack.Table.csproj", "{01F0BA3A-8920-4ACF-A15C-22F9C9C08EA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackJack.CardDeck", "BlackJack.CardDeck\BlackJack.CardDeck.csproj", "{DD641150-7250-4A16-A236-DFBAC5CBA1A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,12 +25,19 @@ Global
 		{6BB956AF-8088-4CE0-BEEA-022F96B62C46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BB956AF-8088-4CE0-BEEA-022F96B62C46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BB956AF-8088-4CE0-BEEA-022F96B62C46}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1B8B0E76-1008-4B0E-B082-5CED29B60DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B8B0E76-1008-4B0E-B082-5CED29B60DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1B8B0E76-1008-4B0E-B082-5CED29B60DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1B8B0E76-1008-4B0E-B082-5CED29B60DFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01F0BA3A-8920-4ACF-A15C-22F9C9C08EA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01F0BA3A-8920-4ACF-A15C-22F9C9C08EA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01F0BA3A-8920-4ACF-A15C-22F9C9C08EA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01F0BA3A-8920-4ACF-A15C-22F9C9C08EA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD641150-7250-4A16-A236-DFBAC5CBA1A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD641150-7250-4A16-A236-DFBAC5CBA1A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD641150-7250-4A16-A236-DFBAC5CBA1A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD641150-7250-4A16-A236-DFBAC5CBA1A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9F4E27CD-B03A-43F0-95FD-B8F871AFAE79} = {48D290C6-1DC6-4B86-88E0-D8588E287E4B}
 	EndGlobalSection
 EndGlobal
