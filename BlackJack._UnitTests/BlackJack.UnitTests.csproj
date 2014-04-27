@@ -30,17 +30,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardDeck\CardDeckBuilder_Should.cs" />
     <Compile Include="CardDeck\PlayingCard_Should.cs" />
     <Compile Include="Table\CardShoe_Should.cs" />
     <Compile Include="Mother.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\Shuffler_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -53,6 +59,10 @@
     <ProjectReference Include="..\BlackJack.Table\BlackJack.Table.csproj">
       <Project>{01F0BA3A-8920-4ACF-A15C-22F9C9C08EA3}</Project>
       <Name>BlackJack.Table</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BlackJack.Utility\BlackJack.Utility.csproj">
+      <Project>{7C576FB9-A6ED-466C-87B8-540B037E8637}</Project>
+      <Name>BlackJack.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

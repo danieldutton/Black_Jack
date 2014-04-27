@@ -5,3 +5,5 @@ C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Table\bin\Debug\BlackJack.Car
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Table\obj\Debug\BlackJack.Table.csprojResolveAssemblyReference.cache
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Table\obj\Debug\BlackJack.Table.dll
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Table\obj\Debug\BlackJack.Table.pdb
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Table\bin\Debug\BlackJack.Utility.dll
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Table\bin\Debug\BlackJack.Utility.pdb

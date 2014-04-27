@@ -1,6 +1,8 @@
-﻿namespace BlackJack.CardDeck
+﻿using System.Windows.Forms;
+
+namespace BlackJack.CardDeck.Model
 {
-    public sealed class PlayingCard
+    public sealed class PlayingCard : PictureBox
     {
         public Suit Suit { get; private set; }
 
@@ -11,6 +13,12 @@
         {
             Suit = suit;
             CardNumber = cardNumber;
+        }
+        
+        public string GetAssociatedImageName()
+        {
+            return string.Format("{0}_{1}", 
+                Suit, CardNumber);
         }
 
         public override string ToString()

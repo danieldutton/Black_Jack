@@ -32,10 +32,12 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CardShoe.cs" />
     <Compile Include="Dealer.cs" />
+    <Compile Include="Interfaces\ICardShoe.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -43,6 +45,10 @@
     <ProjectReference Include="..\BlackJack.CardDeck\BlackJack.CardDeck.csproj">
       <Project>{DD641150-7250-4A16-A236-DFBAC5CBA1A0}</Project>
       <Name>BlackJack.CardDeck</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BlackJack.Utility\BlackJack.Utility.csproj">
+      <Project>{7C576FB9-A6ED-466C-87B8-540B037E8637}</Project>
+      <Name>BlackJack.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

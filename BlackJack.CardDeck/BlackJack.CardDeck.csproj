@@ -32,12 +32,205 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardNumber.cs" />
-    <Compile Include="PlayingCard.cs" />
+    <Compile Include="CardDeckBuilder.cs" />
+    <Compile Include="Interfaces\IResourceImageMapper.cs" />
+    <Compile Include="Model\CardNumber.cs" />
+    <Compile Include="Interfaces\ICardDeckBuilder.cs" />
+    <Compile Include="Model\PlayingCard.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Suit.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Suit.cs" />
+    <Compile Include="CardImageMapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Blue_Back_Hz.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Blue_Back_Ver.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Red_Back_Hz.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Red_Back_Ver.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Club_Ace.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Club_Eight.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Club_Five.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Club_Four.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Club_Jack.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Club_King.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Club_Nine.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Club_Queen.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Club_Seven.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Club_Six.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Club_Ten.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Club_Three.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Club_Two.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Diamon_Six.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Diamond_Ace.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Diamond_Eight.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Diamond_Five.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Diamond_Four.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Diamond_Jack.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Diamond_King.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Diamond_Nine.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Diamond_Queen.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Diamond_Seven.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Diamond_Ten.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Diamond_Three.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Diamond_Two.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heart_Ace.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heart_Eight.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heart_Five.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heart_Four.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heart_Jack.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heart_King.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heart_Nine.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heart_Queen.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heart_Seven.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heart_Six.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heart_Ten.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heart_Three.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heart_Two.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spade_Ace.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spade_Eight.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spade_Five.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spade_Four.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spade_Jack.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spade_King.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spade_Nine.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spade_Queen.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spade_Seven.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spade_Six.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spade_Ten.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spade_Three.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spade_Two.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BlackJack.Utility\BlackJack.Utility.csproj">
+      <Project>{7C576FB9-A6ED-466C-87B8-540B037E8637}</Project>
+      <Name>BlackJack.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

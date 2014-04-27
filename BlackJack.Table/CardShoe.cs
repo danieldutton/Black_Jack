@@ -1,46 +1,38 @@
-﻿using BlackJack.CardDeck;
-using System;
+﻿using BlackJack.CardDeck.Interfaces;
+using BlackJack.CardDeck.Model;
+using BlackJack.Table.Interfaces;
+using BlackJack.Utility.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BlackJack.Table
 {
-    public class CardShoe
+    public class CardShoe : ICardShoe
     {
-        public event EventHandler<EventArgs> ShoeEmpty;
+        private readonly ICardDeckBuilder _cardDeckBuilder;
+        
+        private readonly IShuffler<PlayingCard> _shuffler;
+        
+        public Queue<PlayingCard> CurrentCardDeck { get; private set; }
 
-        public Queue<PlayingCard> CurrentCardDeck { get; set; }
 
-
-        public Queue<PlayingCard> GetNewCardDeck()
+        public CardShoe(ICardDeckBuilder cardDeckBuilder, IShuffler<PlayingCard> shuffler)
         {
-            List<PlayingCard> cards = Enumerable.Range(0, 4)
-                .SelectMany(s => Enumerable.Range(1, 13)
-                    .Select(c => new PlayingCard((Suit)s, (CardNumber)c)                    
-                    )
-                )
-                .ToList();
-
-            return new Queue<PlayingCard>(cards);
+            _cardDeckBuilder = cardDeckBuilder;
+            _shuffler = shuffler;
         }
 
-        public Queue<PlayingCard> ShuffleCardDeck(Stack<PlayingCard> cards)
+        public void InitNewDeck()
         {
-            IOrderedEnumerable<PlayingCard> result = cards
-                .OrderBy(a => Guid.NewGuid());
-
-            return new Queue<PlayingCard>(result);
+            Queue<PlayingCard> orderedCardDeck = _cardDeckBuilder.GetOrderedCardDeck();
+            CurrentCardDeck = _shuffler.Shuffle(orderedCardDeck);
         }
-
-        public PlayingCard TakeACard()
+        
+        public PlayingCard TakePlayingCard()
         {
+            if (CurrentCardDeck.Count == 0)
+                InitNewDeck();
+
             return CurrentCardDeck.Dequeue();
         }
-
-        protected virtual void OnShoeEmpty()
-        {
-            EventHandler<EventArgs> handler = ShoeEmpty;
-            if (handler != null) handler(this, EventArgs.Empty);
-        }
-    }
+    }   
 }

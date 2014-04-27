@@ -1,127 +1,97 @@
-﻿using BlackJack.CardDeck;
+﻿using BlackJack.CardDeck.Interfaces;
+using BlackJack.CardDeck.Model;
 using BlackJack.Table;
+using BlackJack.Utility.Interfaces;
+using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BlackJack.UnitTests.Table
 {
     [TestFixture]
     public class CardShoe_Should
     {
+        private Mock<ICardDeckBuilder> _fakeCardDeckBuilder;
+
+        private Mock<IShuffler<PlayingCard>> _fakeShuffler;
+
         private CardShoe _sut;
 
-        private IEnumerable<CardNumber> _expectedCardValueOrder;
-
-  
         [SetUp]
         public void Init()
         {
-            _sut = new CardShoe();
-            _expectedCardValueOrder = Mother.ExpectedSuitOrder();
+            _fakeCardDeckBuilder = new Mock<ICardDeckBuilder>();
+            _fakeShuffler = new Mock<IShuffler<PlayingCard>>();
+            _sut = new CardShoe(_fakeCardDeckBuilder.Object, _fakeShuffler.Object);
+        }
+
+        #region InitNewDeck
+
+        [Test]
+        public void InitNewDeck_CallGetOrderedCardDeck_ExactlyOnce()
+        {
+            _sut.InitNewDeck();
+
+            _fakeCardDeckBuilder.Verify(x => x.GetOrderedCardDeck(), Times.Once());
         }
 
         [Test]
-        public void GetNewCardDeck_ReturnACompleteDeckOf_52Cards()
+        public void InitNewDeck_CallShuffle_ExactlyOnce()
         {
-            Queue<PlayingCard> cardDeck = _sut.GetNewCardDeck();
+            _sut.InitNewDeck();
 
-            Assert.AreEqual(52, cardDeck.Count);
+            _fakeShuffler.Verify(x => x.Shuffle(It.IsAny<IEnumerable<PlayingCard>>()), Times.Once());
         }
 
         [Test]
-        public void GetNewCardDeck_FirstSetOf13Cards_AreofSuit_Club()
+        public void InitNewDeck_CallShuffle_WithCorrectData()
         {
-            Queue<PlayingCard> cardDeck = _sut.GetNewCardDeck();
+            var cardQueue = new Queue<PlayingCard>();
+            _fakeCardDeckBuilder.Setup(x => x.GetOrderedCardDeck())
+                .Returns(() => cardQueue);
 
-            IEnumerable<PlayingCard> firstSet = cardDeck.Take(13);
+            _sut.InitNewDeck();
 
-            Assert.IsTrue(firstSet.All(x => x.Suit == Suit.Club));
+            _fakeShuffler.Verify(x => x.Shuffle(It.Is<IEnumerable<PlayingCard>>(y => y.Equals(cardQueue))), Times.Once());
         }
 
         [Test]
-        public void GetNewCardDeck_FirstSetOf13Cards_AreInNumericOrderAscending()
+        public void InitNewDeck_SetCurrentCardDeck()
         {
-            Queue<PlayingCard> cardDeck = _sut.GetNewCardDeck();
+            var cardQueue = new Queue<PlayingCard>();
+            _fakeShuffler.Setup(x => x.Shuffle(It.IsAny<IEnumerable<PlayingCard>>()))
+                .Returns(() => cardQueue);
 
-            IEnumerable<CardNumber> firstSet = cardDeck.Take(13)
-                .Select(x => x.CardNumber);
+            _sut.InitNewDeck();
+            Queue<PlayingCard> actual = _sut.CurrentCardDeck;
 
-            CollectionAssert.AreEqual(_expectedCardValueOrder, firstSet);
+            Assert.AreEqual(cardQueue, actual);
+
         }
 
-        [Test]
-        public void GetNewCardDeck_SecondSetOf13Cards_AreofSuit_Diamond()
-        {
-            Queue<PlayingCard> cardDeck = _sut.GetNewCardDeck();
-
-            IEnumerable<PlayingCard> secondSet = cardDeck.Skip(13)
-                .Take(13);
-
-            Assert.IsTrue(secondSet.All(x => x.Suit == Suit.Diamond));
-        }
+        #endregion
 
         [Test]
-        public void GetNewCardDeck_SecondSetOf13Cards_AreInNumericOrderAscending()
+        public void TakePlayingCard_ReturnTheFirstItemInTheQueue()
         {
-            Queue<PlayingCard> cardDeck = _sut.GetNewCardDeck();
+            _fakeCardDeckBuilder.Setup(x => x.GetOrderedCardDeck())
+                .Returns(() => new Queue<PlayingCard>());
 
-            IEnumerable<CardNumber> secondSet = cardDeck.Skip(13)
-                .Take(13)
-                .Select(x => x.CardNumber);
+            _fakeShuffler.Setup(x => x.Shuffle(It.IsAny<IEnumerable<PlayingCard>>()))
+                .Returns(Mother.GetTestDeckFiveMixedPlayingCards);
 
-            CollectionAssert.AreEqual(_expectedCardValueOrder, secondSet);
-        }
+            PlayingCard card = _sut.TakePlayingCard();
 
-        [Test]
-        public void GetNewCardDeck_ThirdSetOf13Cards_AreofSuit_Heart()
-        {
-            Queue<PlayingCard> cardDeck = _sut.GetNewCardDeck();
-
-            IEnumerable<PlayingCard> thirdSet = cardDeck.Skip(26).Take(13);
-
-            Assert.IsTrue(thirdSet.All(x => x.Suit == Suit.Heart));
-        }
-
-        [Test]
-        public void GetNewCardDeck_ThirdSetOf13Cards_AreInNumericOrderAscending()
-        {
-            Queue<PlayingCard> cardDeck = _sut.GetNewCardDeck();
-
-            IEnumerable<CardNumber> thirdSet = cardDeck.Skip(26)
-                .Take(13)
-                .Select(x => x.CardNumber);
-
-            CollectionAssert.AreEqual(_expectedCardValueOrder, thirdSet);
-        }
-
-        [Test]
-        public void GetNewCardDeck_FourthSetOf13Cards_AreofSuit_Spade()
-        {
-            Queue<PlayingCard> cardDeck = _sut.GetNewCardDeck();
-
-            IEnumerable<PlayingCard> fourthSet = cardDeck.Skip(39).Take(13);
-
-            Assert.IsTrue(fourthSet.All(x => x.Suit == Suit.Spade));
-        }
-
-        [Test]
-        public void GetNewCardDeck_FourthSetOf13Cards_AreInNumericOrderAscending()
-        {
-            Queue<PlayingCard> cardDeck = _sut.GetNewCardDeck();
-
-            IEnumerable<CardNumber> fourthSet = cardDeck.Skip(39)
-                .Take(13)
-                .Select(x => x.CardNumber);
-
-            CollectionAssert.AreEqual(_expectedCardValueOrder, fourthSet);
+            Assert.AreEqual(Suit.Club, card.Suit);
+            Assert.AreEqual(CardNumber.Ace, card.CardNumber);
         }
 
         [TearDown]
         public void TearDown()
         {
+            _fakeCardDeckBuilder = null;
+            _fakeShuffler = null;
             _sut = null;
-            _expectedCardValueOrder = null;
         }
-    }    
+    }
 }

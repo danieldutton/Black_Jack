@@ -1,4 +1,4 @@
-﻿namespace BlackJack.CardDeck
+﻿namespace BlackJack.CardDeck.Model
 {
     public enum CardNumber
     {
