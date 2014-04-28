@@ -11,6 +11,8 @@ namespace BlackJack.Table
         public event EventHandler<CardHandStickArgs> Stick;
        
         public bool HasCurrentTurn { get; set; }
+
+        public int CurrentScore { get; set; }
         
 
         protected virtual void OnHit()

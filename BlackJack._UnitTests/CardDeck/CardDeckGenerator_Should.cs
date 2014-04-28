@@ -8,28 +8,28 @@ using System.Collections.Generic;
 namespace BlackJack.UnitTests.CardDeck
 {
     [TestFixture]
-    public class CardDeckBuiler_Should
+    public class CardDeckGenerator_Should
     {
-        private Mock<ICardSuitBuilder> _fakeSuitBuilder;
+        private Mock<ICardSuitGenerator> _fakeSuitBuilder;
 
         private Mock<ICardImageMapper<PlayingCard>>  _fakeImageMapper;
 
-        private CardDeckBuilder _sut;
+        private CardDeckGenerator _sut;
 
         [SetUp]
         public void Init()
         {
-            _fakeSuitBuilder = new Mock<ICardSuitBuilder>();
+            _fakeSuitBuilder = new Mock<ICardSuitGenerator>();
             _fakeImageMapper = new Mock<ICardImageMapper<PlayingCard>>();
-            _sut = new CardDeckBuilder(_fakeSuitBuilder.Object, _fakeImageMapper.Object);
+            _sut = new CardDeckGenerator(_fakeSuitBuilder.Object, _fakeImageMapper.Object);
         }
 
         [Test]
-        public void GetCardDeck_CallOrderedCardDeck_ExactlyOnce()
+        public void GetCardDeck_CallGenerateCardDeck_ExactlyOnce()
         {
             _sut.GetCardDeck();
 
-            _fakeSuitBuilder.Verify(x => x.GetOrderedCardDeck(), Times.Once());
+            _fakeSuitBuilder.Verify(x => x.GenerateCardDeck(), Times.Once());
         }
 
         [Test]
@@ -43,13 +43,13 @@ namespace BlackJack.UnitTests.CardDeck
         [Test]
         public void GetCardDeck_CallMapCardImages_WithCorrectData()
         {
-            var fakeDeck = new Queue<PlayingCard>();
+            var stubDeck = new Queue<PlayingCard>();
 
-            _fakeSuitBuilder.Setup(x => x.GetOrderedCardDeck()).Returns(() => fakeDeck);
+            _fakeSuitBuilder.Setup(x => x.GenerateCardDeck()).Returns(() => stubDeck);
 
             _sut.GetCardDeck();
 
-            _fakeImageMapper.Verify(x => x.MapCardImages(It.Is<IEnumerable<PlayingCard>>(y => Equals(y, fakeDeck))));
+            _fakeImageMapper.Verify(x => x.MapCardImages(It.Is<IEnumerable<PlayingCard>>(y => Equals(y, stubDeck))));
         }
 
         [TearDown]

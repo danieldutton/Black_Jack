@@ -1,5 +1,4 @@
 ﻿using BlackJack.CardDeck;
-using BlackJack.CardDeck.Interfaces;
 using BlackJack.CardDeck.Model;
 using BlackJack.Table.Interfaces;
 using BlackJack.Utility.Interfaces;
@@ -9,26 +8,25 @@ namespace BlackJack.Table
 {
     public class CardShoe : ICardShoe
     {
-        private readonly ICardSuitBuilder _cardSuitBuilder;
+        private readonly CardDeckGenerator _cardDeckGenerator;
         
         private readonly IShuffler<PlayingCard> _cardShuffler;
         
         public Queue<PlayingCard> CurrentDeckInPlay { get; private set; }
 
 
-        public CardShoe(ICardSuitBuilder cardSuitBuilder, IShuffler<PlayingCard> cardShuffler)
+        public CardShoe(CardDeckGenerator cardDeckGenerator, IShuffler<PlayingCard> cardShuffler)
         {
-            _cardSuitBuilder = cardSuitBuilder;
+            _cardDeckGenerator = cardDeckGenerator;
             _cardShuffler = cardShuffler;
             PlaceNewDeck();
         }
 
         public void PlaceNewDeck()
         {
-            IEnumerable<PlayingCard> orderedCardDeck = _cardSuitBuilder.GetOrderedCardDeck();
-            var mapper = new CardImageMapper();
-            var result = mapper.MapCardImages(orderedCardDeck);
-            CurrentDeckInPlay = _cardShuffler.Shuffle(result);
+            Queue<PlayingCard> orderedCardDeck = _cardDeckGenerator.GetCardDeck();
+
+            CurrentDeckInPlay = _cardShuffler.Shuffle(orderedCardDeck);
         }
         
         public PlayingCard ReleasePlayingCard()

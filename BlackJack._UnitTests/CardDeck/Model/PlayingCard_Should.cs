@@ -11,7 +11,7 @@ namespace BlackJack.UnitTests.CardDeck.Model
         {
             var playingCard = new PlayingCard(Suit.Club, CardNumber.Ace);
 
-            const string expected = "Club_Ace.gif";
+            const string expected = "Club_Ace";
             string actual = playingCard.GetAssociatedImageName();
 
             Assert.AreEqual(expected, actual);

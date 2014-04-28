@@ -26,47 +26,48 @@ namespace BlackJack.Presentation
 
         private void StartingDeal_Click(object sender, EventArgs e)
         {
-            List<PlayingCard> startCards = _dealer.DealStartingCards();
+            //List<PlayingCard> startCards = _dealer.DealStartingCards();
 
-            List<PlayingCard> dealersCards = startCards.Take(2).ToList();
-            dealersCards.ForEach(x =>
-            {
-                int i = 0;
-                x.Location= new Point(_x, _y);
-                _panelDealersHand.Controls.Add(dealersCards[i]);
-                i += 1;
-                _x += 50;
-            });
+            //List<PlayingCard> dealersCards = startCards.Take(2).ToList();
+            //dealersCards.ForEach(x =>
+            //{
+            //    int i = 0;
+            //    x.Location= new Point(_x, _y);
+            //    _panelDealersHand.Controls.Add(dealersCards[i]);
+            //    i += 1;
+            //    _x += 50;
+            //});
 
-            _x = 0;
+            //_x = 0;
 
-            List<PlayingCard> playersCards = startCards.Skip(2).Take(2).ToList();
-            dealersCards.ForEach(x =>
-            {
-                int i = 0;
-                x.Location = new Point(_x, _y);
-                _panelPlayersHand.Controls.Add(playersCards[i]);
-                i += 1;
-                _x += 50;
-            });
+            //List<PlayingCard> playersCards = startCards.Skip(2).Take(2).ToList();
+            //dealersCards.ForEach(x =>
+            //{
+            //    int i = 0;
+            //    x.Location = new Point(_x, _y);
+            //    _panelPlayersHand.Controls.Add(playersCards[i]);
+            //    i += 1;
+            //    _x += 50;
+            //});
 
         }
 
         private void PlayerHits_Click(object sender, EventArgs e)
         {
-            PlayingCard result = _dealer.InitialDeal(); //two cards each
+            PlayingCard result = _dealer.InitialDeal(); 
 
             result.Location = new Point(_x, _y);
             result.BringToFront();
             _total += (int)result.CardNumber;
             _panelPlayersHand.Controls.Add(result);
-            _x += 50;
+            _x += 40;
             if (_total > 21) MessageBox.Show("Bust");
         }
 
         private void PlayerSticks_Click(object sender, EventArgs e)
         {
             //get dealers score
+            
 
             //get players score
 

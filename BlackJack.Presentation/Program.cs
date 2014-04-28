@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using BlackJack.CardDeck;
 using BlackJack.CardDeck.Model;
 using BlackJack.Table;
+using BlackJack.Table.Interfaces;
 using BlackJack.Utility;
 
 namespace BlackJack.Presentation
@@ -17,7 +18,10 @@ namespace BlackJack.Presentation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Dealer dealer = new Dealer(new CardShoe(new CardSuitBuilder(), new GuidShuffler<PlayingCard>()));
+            
+            CardDeckGenerator cdg = new CardDeckGenerator(new CardSuitGenerator(), new CardImageMapper(new ResourceHandler()));
+            ICardShoe cardShoe = new CardShoe(cdg, new GuidShuffler<PlayingCard>());
+            Dealer dealer = new Dealer(cardShoe);
             Application.Run(new GameTable(dealer));
         }
     }

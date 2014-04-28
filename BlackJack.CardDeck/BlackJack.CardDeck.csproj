@@ -36,11 +36,12 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardSuitBuilder.cs" />
-    <Compile Include="CardDeckBuilder.cs" />
+    <Compile Include="CardSuitGenerator.cs" />
+    <Compile Include="CardDeckGenerator.cs" />
     <Compile Include="Interfaces\ICardImageMapper.cs" />
+    <Compile Include="Interfaces\IResourceHandler.cs" />
     <Compile Include="Model\CardNumber.cs" />
-    <Compile Include="Interfaces\ICardSuitBuilder.cs" />
+    <Compile Include="Interfaces\ICardSuitGenerator.cs" />
     <Compile Include="Model\PlayingCard.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -52,11 +53,13 @@
     </Compile>
     <Compile Include="Model\Suit.cs" />
     <Compile Include="CardImageMapper.cs" />
+    <Compile Include="ResourceHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -111,7 +114,7 @@
     <None Include="Resources\Club_Two.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Diamon_Six.gif" />
+    <None Include="Resources\Diamond_Six.gif" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Diamond_Ace.gif" />
@@ -226,12 +229,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Spade_Two.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BlackJack.Utility\BlackJack.Utility.csproj">
-      <Project>{7C576FB9-A6ED-466C-87B8-540B037E8637}</Project>
-      <Name>BlackJack.Utility</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,5 +1,4 @@
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Utility\bin\Debug\BlackJack.Utility.dll
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Utility\bin\Debug\BlackJack.Utility.pdb
-C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Utility\obj\Debug\BlackJack.Utility.csprojResolveAssemblyReference.cache
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Utility\obj\Debug\BlackJack.Utility.dll
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Utility\obj\Debug\BlackJack.Utility.pdb

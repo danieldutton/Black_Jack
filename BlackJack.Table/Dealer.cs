@@ -15,7 +15,9 @@ namespace BlackJack.Table
 
         public event EventHandler<CardHandStickArgs> Stick;
 
-        public IEnumerable<PlayingCard> CurrentHand { get; set; } 
+        public IEnumerable<PlayingCard> CurrentHand { get; set; }
+
+        public int CurrentScore { get; set; }
 
         public Dealer(ICardShoe cardShoe)
         {

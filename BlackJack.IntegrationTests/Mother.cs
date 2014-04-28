@@ -1,8 +1,7 @@
-﻿using BlackJack.CardDeck;
+﻿using BlackJack.CardDeck.Model;
 using System.Collections.Generic;
-using BlackJack.CardDeck.Model;
 
-namespace BlackJack.UnitTests
+namespace BlackJack.IntegrationTests
 {
     public static class Mother
     {
@@ -39,18 +38,6 @@ namespace BlackJack.UnitTests
             testDeck.Enqueue(new PlayingCard(Suit.Diamond, CardNumber.King));
 
             return testDeck;
-        }
-
-        public static Queue<PlayingCard> GetIdenticalCards(int cardCount)
-        {
-            var cardDeck = new Queue<PlayingCard>();
-
-            for (int i = 0; i < cardCount; i++)
-            {
-                cardDeck.Enqueue(new PlayingCard(Suit.Club, CardNumber.Ace));
-            }
-
-            return cardDeck;
         } 
     }
 }

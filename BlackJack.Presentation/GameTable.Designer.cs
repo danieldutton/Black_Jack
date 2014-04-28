@@ -49,14 +49,14 @@
             // 
             this._panelPlayersHand.Location = new System.Drawing.Point(12, 160);
             this._panelPlayersHand.Name = "_panelPlayersHand";
-            this._panelPlayersHand.Size = new System.Drawing.Size(390, 100);
+            this._panelPlayersHand.Size = new System.Drawing.Size(467, 100);
             this._panelPlayersHand.TabIndex = 1;
             // 
             // _panelDealersHand
             // 
             this._panelDealersHand.Location = new System.Drawing.Point(13, 13);
             this._panelDealersHand.Name = "_panelDealersHand";
-            this._panelDealersHand.Size = new System.Drawing.Size(389, 100);
+            this._panelDealersHand.Size = new System.Drawing.Size(466, 100);
             this._panelDealersHand.TabIndex = 2;
             // 
             // _btnStartGame
@@ -84,7 +84,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(414, 303);
+            this.ClientSize = new System.Drawing.Size(491, 303);
             this.Controls.Add(this._btnStick);
             this.Controls.Add(this._btnStartGame);
             this.Controls.Add(this._panelDealersHand);
