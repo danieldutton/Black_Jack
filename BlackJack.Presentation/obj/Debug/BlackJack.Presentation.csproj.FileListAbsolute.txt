@@ -27,3 +27,9 @@ C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\obj\Debug\BlackJ
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.csproj.GenerateResource.Cache
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.exe
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.pdb
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.CardDeck.dll
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.Table.dll
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.Utility.dll
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.CardDeck.pdb
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.Table.pdb
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.Utility.pdb

@@ -9,19 +9,19 @@ using System.Linq;
 namespace BlackJack.UnitTests.CardDeck
 {
     [TestFixture]
-    public class CardDeckBuilder_Should
+    public class CardSuitBuilder_Should
     {
-        private Mock<IResourceImageMapper<PlayingCard>>  _fakeImageMapper; 
+        private Mock<ICardImageMapper<PlayingCard>>  _fakeImageMapper; 
 
-        private CardDeckBuilder _sut;
+        private CardSuitBuilder _sut;
 
         private IEnumerable<CardNumber> _expectedCardValueOrder;
 
         [SetUp]
         public void Init()
         {
-            _fakeImageMapper = new Mock<IResourceImageMapper<PlayingCard>>();
-            _sut = new CardDeckBuilder();
+            _fakeImageMapper = new Mock<ICardImageMapper<PlayingCard>>();
+            _sut = new CardSuitBuilder();
             _expectedCardValueOrder = Mother.ExpectedSuitOrder();
         }
 
@@ -31,15 +31,15 @@ namespace BlackJack.UnitTests.CardDeck
             _fakeImageMapper.Setup(x => x.MapCardImages(It.IsAny<List<PlayingCard>>()))
                 .Returns(() => new List<PlayingCard>());
 
-            Queue<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
+            IEnumerable<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
 
-            Assert.AreEqual(52, cardDeck.Count);
+            Assert.AreEqual(52, cardDeck.Count());
         }
 
         [Test]
         public void GetOrderedCardDeck_FirstSetOf13Cards_AreofSuit_Club()
         {
-            Queue<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
+            IEnumerable<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
 
             IEnumerable<PlayingCard> firstSet = cardDeck.Take(13);
 
@@ -49,7 +49,7 @@ namespace BlackJack.UnitTests.CardDeck
         [Test]
         public void GetOrderedCardDeck_FirstSetOf13Clubs_AreInNumericOrderAscending()
         {
-            Queue<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
+            IEnumerable<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
 
             IEnumerable<CardNumber> firstSet = cardDeck.Take(13)
                 .Select(x => x.CardNumber);
@@ -60,7 +60,7 @@ namespace BlackJack.UnitTests.CardDeck
         [Test]
         public void GetOrderedCardDeck_SecondSetOf13Cards_AreofSuit_Diamond()
         {
-            Queue<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
+            IEnumerable<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
 
             IEnumerable<PlayingCard> secondSet = cardDeck.Skip(13)
                 .Take(13);
@@ -71,7 +71,7 @@ namespace BlackJack.UnitTests.CardDeck
         [Test]
         public void GetOrderedCardDeck_SecondSetOf13Diamonds_AreInNumericOrderAscending()
         {
-            Queue<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
+            IEnumerable<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
 
             IEnumerable<CardNumber> secondSet = cardDeck.Skip(13)
                 .Take(13)
@@ -83,7 +83,7 @@ namespace BlackJack.UnitTests.CardDeck
         [Test]
         public void GetOrderedCardDeck_ThirdSetOf13Cards_AreofSuit_Heart()
         {
-            Queue<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
+            IEnumerable<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
 
             IEnumerable<PlayingCard> thirdSet = cardDeck.Skip(26).Take(13);
 
@@ -93,7 +93,7 @@ namespace BlackJack.UnitTests.CardDeck
         [Test]
         public void GetOrderedCardDeck_ThirdSetOf13Hearts_AreInNumericOrderAscending()
         {
-            Queue<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
+            IEnumerable<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
 
             IEnumerable<CardNumber> thirdSet = cardDeck.Skip(26)
                 .Take(13)
@@ -105,7 +105,7 @@ namespace BlackJack.UnitTests.CardDeck
         [Test]
         public void GetOrderedCardDeck_FourthSetOf13Cards_AreofSuit_Spade()
         {
-            Queue<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
+            IEnumerable<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
 
             IEnumerable<PlayingCard> fourthSet = cardDeck.Skip(39).Take(13);
 
@@ -115,7 +115,7 @@ namespace BlackJack.UnitTests.CardDeck
         [Test]
         public void GetOrderedCardDeck_FourthSetOf13Spades_AreInNumericOrderAscending()
         {
-            Queue<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
+            IEnumerable<PlayingCard> cardDeck = _sut.GetOrderedCardDeck();
 
             IEnumerable<CardNumber> fourthSet = cardDeck.Skip(39)
                 .Take(13)

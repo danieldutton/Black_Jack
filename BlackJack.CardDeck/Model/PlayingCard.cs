@@ -2,7 +2,7 @@
 
 namespace BlackJack.CardDeck.Model
 {
-    public sealed class PlayingCard : PictureBox
+    public class PlayingCard : PictureBox
     {
         public Suit Suit { get; private set; }
 
@@ -13,6 +13,13 @@ namespace BlackJack.CardDeck.Model
         {
             Suit = suit;
             CardNumber = cardNumber;
+            InitCardSize();
+        }
+
+        private void InitCardSize()
+        {
+            Width = 71;
+            Height = 96;
         }
         
         public string GetAssociatedImageName()

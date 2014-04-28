@@ -1,15 +1,14 @@
-﻿using BlackJack.CardDeck;
+﻿using BlackJack.CardDeck.Model;
 using System.Collections.Generic;
-using BlackJack.CardDeck.Model;
 
 namespace BlackJack.Table.Interfaces
 {
     public interface ICardShoe
     {
-        Queue<PlayingCard> CurrentCardDeck { get; }
+        Queue<PlayingCard> CurrentDeckInPlay { get; }
 
-        void InitNewDeck();
+        void PlaceNewDeck();
 
-        PlayingCard TakePlayingCard();
+        PlayingCard ReleasePlayingCard();
     }
 }

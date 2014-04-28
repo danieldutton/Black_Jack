@@ -1,8 +1,7 @@
-﻿using BlackJack.CardDeck;
-using BlackJack.CardDeck.Model;
+﻿using BlackJack.CardDeck.Model;
 using NUnit.Framework;
 
-namespace BlackJack.UnitTests.CardDeck
+namespace BlackJack.UnitTests.CardDeck.Model
 {
     [TestFixture]
     public class PlayingCard_Should

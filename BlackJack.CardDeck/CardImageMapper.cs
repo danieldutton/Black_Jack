@@ -5,13 +5,15 @@ using System.Drawing;
 
 namespace BlackJack.CardDeck
 {
-    public class CardImageMapper : IResourceImageMapper<PlayingCard>
+    public class CardImageMapper : ICardImageMapper<PlayingCard>
     {
-        public List<PlayingCard> MapCardImages(List<PlayingCard> cards)
+        public IEnumerable<PlayingCard> MapCardImages(IEnumerable<PlayingCard> cards)
         {
             foreach (var playingCard in cards)
             {
-                object o = Properties.Resources.ResourceManager.GetObject(playingCard.GetAssociatedImageName());
+                object o = Properties.Resources
+                    .ResourceManager
+                    .GetObject(playingCard.GetAssociatedImageName());
 
                 if (o != null)
                     playingCard.Image = o as Image;

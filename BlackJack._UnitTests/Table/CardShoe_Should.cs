@@ -11,7 +11,7 @@ namespace BlackJack.UnitTests.Table
     [TestFixture]
     public class CardShoe_Should
     {
-        private Mock<ICardDeckBuilder> _fakeCardDeckBuilder;
+        private Mock<ICardSuitBuilder> _fakeCardDeckBuilder;
 
         private Mock<IShuffler<PlayingCard>> _fakeShuffler;
 
@@ -20,17 +20,17 @@ namespace BlackJack.UnitTests.Table
         [SetUp]
         public void Init()
         {
-            _fakeCardDeckBuilder = new Mock<ICardDeckBuilder>();
+            _fakeCardDeckBuilder = new Mock<ICardSuitBuilder>();
             _fakeShuffler = new Mock<IShuffler<PlayingCard>>();
             _sut = new CardShoe(_fakeCardDeckBuilder.Object, _fakeShuffler.Object);
         }
 
-        #region InitNewDeck
+        #region PlaceNewDeck
 
         [Test]
         public void InitNewDeck_CallGetOrderedCardDeck_ExactlyOnce()
         {
-            _sut.InitNewDeck();
+            _sut.PlaceNewDeck();
 
             _fakeCardDeckBuilder.Verify(x => x.GetOrderedCardDeck(), Times.Once());
         }
@@ -38,7 +38,7 @@ namespace BlackJack.UnitTests.Table
         [Test]
         public void InitNewDeck_CallShuffle_ExactlyOnce()
         {
-            _sut.InitNewDeck();
+            _sut.PlaceNewDeck();
 
             _fakeShuffler.Verify(x => x.Shuffle(It.IsAny<IEnumerable<PlayingCard>>()), Times.Once());
         }
@@ -50,7 +50,7 @@ namespace BlackJack.UnitTests.Table
             _fakeCardDeckBuilder.Setup(x => x.GetOrderedCardDeck())
                 .Returns(() => cardQueue);
 
-            _sut.InitNewDeck();
+            _sut.PlaceNewDeck();
 
             _fakeShuffler.Verify(x => x.Shuffle(It.Is<IEnumerable<PlayingCard>>(y => y.Equals(cardQueue))), Times.Once());
         }
@@ -62,8 +62,8 @@ namespace BlackJack.UnitTests.Table
             _fakeShuffler.Setup(x => x.Shuffle(It.IsAny<IEnumerable<PlayingCard>>()))
                 .Returns(() => cardQueue);
 
-            _sut.InitNewDeck();
-            Queue<PlayingCard> actual = _sut.CurrentCardDeck;
+            _sut.PlaceNewDeck();
+            Queue<PlayingCard> actual = _sut.CurrentDeckInPlay;
 
             Assert.AreEqual(cardQueue, actual);
 
@@ -80,7 +80,7 @@ namespace BlackJack.UnitTests.Table
             _fakeShuffler.Setup(x => x.Shuffle(It.IsAny<IEnumerable<PlayingCard>>()))
                 .Returns(Mother.GetTestDeckFiveMixedPlayingCards);
 
-            PlayingCard card = _sut.TakePlayingCard();
+            PlayingCard card = _sut.ReleasePlayingCard();
 
             Assert.AreEqual(Suit.Club, card.Suit);
             Assert.AreEqual(CardNumber.Ace, card.CardNumber);

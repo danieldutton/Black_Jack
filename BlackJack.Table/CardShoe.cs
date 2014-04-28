@@ -1,4 +1,5 @@
-﻿using BlackJack.CardDeck.Interfaces;
+﻿using BlackJack.CardDeck;
+using BlackJack.CardDeck.Interfaces;
 using BlackJack.CardDeck.Model;
 using BlackJack.Table.Interfaces;
 using BlackJack.Utility.Interfaces;
@@ -8,31 +9,36 @@ namespace BlackJack.Table
 {
     public class CardShoe : ICardShoe
     {
-        private readonly ICardDeckBuilder _cardDeckBuilder;
+        private readonly ICardSuitBuilder _cardSuitBuilder;
         
-        private readonly IShuffler<PlayingCard> _shuffler;
+        private readonly IShuffler<PlayingCard> _cardShuffler;
         
-        public Queue<PlayingCard> CurrentCardDeck { get; private set; }
+        public Queue<PlayingCard> CurrentDeckInPlay { get; private set; }
 
 
-        public CardShoe(ICardDeckBuilder cardDeckBuilder, IShuffler<PlayingCard> shuffler)
+        public CardShoe(ICardSuitBuilder cardSuitBuilder, IShuffler<PlayingCard> cardShuffler)
         {
-            _cardDeckBuilder = cardDeckBuilder;
-            _shuffler = shuffler;
+            _cardSuitBuilder = cardSuitBuilder;
+            _cardShuffler = cardShuffler;
+            PlaceNewDeck();
         }
 
-        public void InitNewDeck()
+        public void PlaceNewDeck()
         {
-            Queue<PlayingCard> orderedCardDeck = _cardDeckBuilder.GetOrderedCardDeck();
-            CurrentCardDeck = _shuffler.Shuffle(orderedCardDeck);
+            IEnumerable<PlayingCard> orderedCardDeck = _cardSuitBuilder.GetOrderedCardDeck();
+            var mapper = new CardImageMapper();
+            var result = mapper.MapCardImages(orderedCardDeck);
+            CurrentDeckInPlay = _cardShuffler.Shuffle(result);
         }
         
-        public PlayingCard TakePlayingCard()
+        public PlayingCard ReleasePlayingCard()
         {
-            if (CurrentCardDeck.Count == 0)
-                InitNewDeck();
+            if (CurrentDeckInPlay.Count == 0)
+                PlaceNewDeck();
 
-            return CurrentCardDeck.Dequeue();
+            var card = CurrentDeckInPlay.Dequeue();
+
+            return card;
         }
     }   
 }

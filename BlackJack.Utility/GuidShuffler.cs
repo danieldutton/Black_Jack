@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace BlackJack.Utility
 {
-    public class Shuffler<T> : IShuffler<T>
+    public class GuidShuffler<T> : IShuffler<T>
     {
         public Queue<T> Shuffle(IEnumerable<T> itemsToShuffle)
         {

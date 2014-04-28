@@ -1,22 +1,27 @@
 ﻿using BlackJack.CardDeck.Interfaces;
 using BlackJack.CardDeck.Model;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BlackJack.CardDeck
 {
-    public class CardDeckBuilder : ICardDeckBuilder
+    public class CardDeckBuilder
     {
-        public Queue<PlayingCard> GetOrderedCardDeck()
-        {
-            List<PlayingCard> cards = Enumerable.Range(0, 4)
-                .SelectMany(s => Enumerable.Range(1, 13)
-                    .Select(c => new PlayingCard((Suit)s, (CardNumber)c)
-                    )
-                )
-                .ToList();
+        private readonly ICardSuitBuilder _cardSuitBuilder;
+        
+        private readonly ICardImageMapper<PlayingCard> _cardImageMapper;
 
-            return new Queue<PlayingCard>(cards);
+        public CardDeckBuilder(ICardSuitBuilder cardSuitBuilder, ICardImageMapper<PlayingCard> cardImageMapper)
+        {
+            _cardSuitBuilder = cardSuitBuilder;
+            _cardImageMapper = cardImageMapper;
+        }
+
+        public Queue<PlayingCard> GetCardDeck()
+        {
+            IEnumerable<PlayingCard> plainDeck = _cardSuitBuilder.GetOrderedCardDeck();
+            IEnumerable<PlayingCard> imageDeck = _cardImageMapper.MapCardImages(plainDeck);
+
+            return new Queue<PlayingCard>(imageDeck);
         } 
     }
 }

@@ -35,9 +35,12 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlackJackTable.cs" />
     <Compile Include="CardShoe.cs" />
     <Compile Include="Dealer.cs" />
+    <Compile Include="EventArg\CardHandStickArgs.cs" />
     <Compile Include="Interfaces\ICardShoe.cs" />
+    <Compile Include="Interfaces\IBlackJackPlayer.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -51,6 +54,7 @@
       <Name>BlackJack.Utility</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
