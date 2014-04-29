@@ -35,12 +35,10 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlackJackTable.cs" />
     <Compile Include="CardShoe.cs" />
     <Compile Include="Dealer.cs" />
-    <Compile Include="EventArg\CardHandStickArgs.cs" />
     <Compile Include="Interfaces\ICardShoe.cs" />
-    <Compile Include="Interfaces\IBlackJackPlayer.cs" />
+    <Compile Include="Interfaces\ICardPlayer.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

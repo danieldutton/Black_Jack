@@ -1,6 +1,5 @@
-﻿using BlackJack.CardDeck;
+﻿using BlackJack.CardDeck.Model;
 using System.Collections.Generic;
-using BlackJack.CardDeck.Model;
 
 namespace BlackJack.UnitTests
 {

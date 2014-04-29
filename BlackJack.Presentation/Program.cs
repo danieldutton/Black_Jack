@@ -21,8 +21,9 @@ namespace BlackJack.Presentation
             
             CardDeckGenerator cdg = new CardDeckGenerator(new CardSuitGenerator(), new CardImageMapper(new ResourceHandler()));
             ICardShoe cardShoe = new CardShoe(cdg, new GuidShuffler<PlayingCard>());
-            Dealer dealer = new Dealer(cardShoe);
-            Application.Run(new GameTable(dealer));
+            Dealer dealer = new Dealer();
+            Player player = new Player();
+            Application.Run(new GameTable(dealer, player, cardShoe));
         }
     }
 }

@@ -7,8 +7,10 @@ namespace BlackJack.Table.Interfaces
     {
         Queue<PlayingCard> CurrentDeckInPlay { get; }
 
-        void PlaceNewDeck();
+        List<PlayingCard> ReleaseStartingHands();
 
-        PlayingCard ReleasePlayingCard();
+        void InitialiseNewCardDeck();
+
+        PlayingCard GetNextPlayingCard();
     }
 }

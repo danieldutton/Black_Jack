@@ -16,7 +16,7 @@ namespace BlackJack.CardDeck
             _cardImageMapper = cardImageMapper;
         }
 
-        public Queue<PlayingCard> GetCardDeck()
+        public virtual Queue<PlayingCard> GetCardDeck()
         {
             IEnumerable<PlayingCard> plainCardDeck = _cardSuitGenerator.GenerateCardDeck();
             IEnumerable<PlayingCard> cardDeckWithImages = _cardImageMapper.MapCardImages(plainCardDeck);

@@ -19,20 +19,33 @@ namespace BlackJack.Table
         {
             _cardDeckGenerator = cardDeckGenerator;
             _cardShuffler = cardShuffler;
-            PlaceNewDeck();
+            InitialiseNewCardDeck();
         }
 
-        public void PlaceNewDeck()
+        public void InitialiseNewCardDeck()
         {
             Queue<PlayingCard> orderedCardDeck = _cardDeckGenerator.GetCardDeck();
 
             CurrentDeckInPlay = _cardShuffler.Shuffle(orderedCardDeck);
         }
+
+        public List<PlayingCard> ReleaseStartingHands()
+        {
+            const int startingCardCount = 4;
+
+            var startCards = new List<PlayingCard>();
+
+            for (int i = 0; i < startingCardCount; i++)
+            {
+                startCards.Add(GetNextPlayingCard());
+            }
+            return startCards;
+        }
         
-        public PlayingCard ReleasePlayingCard()
+        public PlayingCard GetNextPlayingCard()
         {
             if (CurrentDeckInPlay.Count == 0)
-                PlaceNewDeck();
+                InitialiseNewCardDeck();
 
             var card = CurrentDeckInPlay.Dequeue();
 

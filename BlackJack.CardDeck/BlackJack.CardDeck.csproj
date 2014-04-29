@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="CardSuitGenerator.cs" />
     <Compile Include="CardDeckGenerator.cs" />
+    <Compile Include="CardPointScorer.cs" />
     <Compile Include="Interfaces\ICardImageMapper.cs" />
     <Compile Include="Interfaces\IResourceHandler.cs" />
     <Compile Include="Model\CardNumber.cs" />
