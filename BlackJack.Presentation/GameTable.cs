@@ -44,7 +44,7 @@ namespace BlackJack.Presentation
 
         private void PlayerHits_Click(object sender, EventArgs e)
         {
-            _dealer.Hit(cardMatPlayer);
+            _dealer.Hit(cardMatPlayer, _player);
         }
 
         private void PlayerSticks_Click(object sender, EventArgs e)
@@ -54,7 +54,7 @@ namespace BlackJack.Presentation
 
         private void ExitApplication_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Application.Restart();
         }
     }
 }

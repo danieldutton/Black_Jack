@@ -111,7 +111,7 @@ namespace BlackJack.Table
             }
         }
 
-        public void Hit(Panel panel)
+        public void Hit(Panel panel, IBlackJackPlayer player)
         {
             //test if player is bust
 
@@ -122,9 +122,9 @@ namespace BlackJack.Table
             _cardXPos += 40;
 
             int cardValue = CardPointScorer.GetPlayingCardValue(playingCard);
-            CurrentScore += cardValue;
+            player.CurrentScore += cardValue;
 
-            CurrentHand.Add(playingCard);
+            player.CurrentHand.Add(playingCard);
         }
 
         public PlayingCard GetPlayingCard()
@@ -144,26 +144,35 @@ namespace BlackJack.Table
             int dealersScore = CurrentScore;
             int playersScore = e.Player.CurrentScore;
 
-            //if both player an dealer bust then
-            if (e.Player.IsBust(playersScore) && IsBust(dealersScore))
-            {
-                //_lblStatus.Text = "Push";
-            }
+            if (PlayerAndDealerBust(e))
+                MessageBox.Show("Push" + " Dealer:" + dealersScore + "Player:" + playersScore);
 
-                //if just dealer bust then
             else if (IsBust(dealersScore))
+                MessageBox.Show("Dealer Bust, You win:" + "Player:" + playersScore);
+
+            else if (e.Player.IsBust(playersScore))
+                MessageBox.Show("Player Bust, Dealer wins:" + dealersScore);
+            
+            else if (ScoreTied(e))
+                MessageBox.Show("Game Tied- Dealer:" + dealersScore + " Player:" + playersScore);
+            else
             {
-                //_lblStatus.Text = "Dealer Bust";
+                //compare the final scores
+                string text = playersScore > dealersScore ? "Player Wins:" + playersScore : "DealerWins:" + dealersScore;
+                MessageBox.Show(text);   
             }
 
-                //if just player bust then
-            else if (e.Player.IsBust(playersScore))
-            {
-                //_lblStatus.Text = "Player Bust";
-            }
-            RevealFinalHand(e.CardMatDealer);
-            //compare the two
-            //_lblWinner.Text = playersScore > dealersScore ? "Player Wins" : "DealerWins";
+            RevealFinalHand(e.CardMatDealer);            
+        }
+
+        private bool PlayerAndDealerBust(PlayerSticksEventArg e)
+        {
+            return e.Player.IsBust(e.Player.CurrentScore) && IsBust(CurrentScore);
+        }
+
+        private bool ScoreTied(PlayerSticksEventArg e)
+        {
+            return e.Player.CurrentScore == CurrentScore;
         }
 
         protected virtual void OnStick(PlayerSticksEventArg e)
