@@ -29,20 +29,18 @@
         private void InitializeComponent()
         {
             this._btnHit = new System.Windows.Forms.Button();
-            this._panelGameMatPlayer = new System.Windows.Forms.Panel();
-            this._panelGameMatDealer = new System.Windows.Forms.Panel();
+            this.cardMatPlayer = new System.Windows.Forms.Panel();
+            this.cardMatDealer = new System.Windows.Forms.Panel();
             this._btnStartGame = new System.Windows.Forms.Button();
             this._btnStick = new System.Windows.Forms.Button();
-            this._lblDealerScore = new System.Windows.Forms.Label();
-            this._lblPlayerScore = new System.Windows.Forms.Label();
-            this._lblWinner = new System.Windows.Forms.Label();
-            this._lblStatus = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.panelButtons = new System.Windows.Forms.Panel();
+            this.panelButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // _btnHit
             // 
-            this._btnHit.Location = new System.Drawing.Point(12, 268);
+            this._btnHit.Location = new System.Drawing.Point(4, 4);
             this._btnHit.Name = "_btnHit";
             this._btnHit.Size = new System.Drawing.Size(75, 23);
             this._btnHit.TabIndex = 0;
@@ -50,25 +48,25 @@
             this._btnHit.UseVisualStyleBackColor = true;
             this._btnHit.Click += new System.EventHandler(this.PlayerHits_Click);
             // 
-            // _panelGameMatPlayer
+            // cardMatPlayer
             // 
-            this._panelGameMatPlayer.Location = new System.Drawing.Point(12, 160);
-            this._panelGameMatPlayer.Name = "_panelGameMatPlayer";
-            this._panelGameMatPlayer.Size = new System.Drawing.Size(467, 100);
-            this._panelGameMatPlayer.TabIndex = 1;
-            this._panelGameMatPlayer.Tag = "PLayer";
+            this.cardMatPlayer.Location = new System.Drawing.Point(5, 132);
+            this.cardMatPlayer.Name = "cardMatPlayer";
+            this.cardMatPlayer.Size = new System.Drawing.Size(467, 100);
+            this.cardMatPlayer.TabIndex = 1;
+            this.cardMatPlayer.Tag = "PLayer";
             // 
-            // _panelGameMatDealer
+            // cardMatDealer
             // 
-            this._panelGameMatDealer.Location = new System.Drawing.Point(13, 13);
-            this._panelGameMatDealer.Name = "_panelGameMatDealer";
-            this._panelGameMatDealer.Size = new System.Drawing.Size(466, 100);
-            this._panelGameMatDealer.TabIndex = 2;
-            this._panelGameMatDealer.Tag = "Dealer";
+            this.cardMatDealer.Location = new System.Drawing.Point(6, 3);
+            this.cardMatDealer.Name = "cardMatDealer";
+            this.cardMatDealer.Size = new System.Drawing.Size(466, 100);
+            this.cardMatDealer.TabIndex = 2;
+            this.cardMatDealer.Tag = "Dealer";
             // 
             // _btnStartGame
             // 
-            this._btnStartGame.Location = new System.Drawing.Point(327, 268);
+            this._btnStartGame.Location = new System.Drawing.Point(313, 4);
             this._btnStartGame.Name = "_btnStartGame";
             this._btnStartGame.Size = new System.Drawing.Size(75, 23);
             this._btnStartGame.TabIndex = 3;
@@ -78,7 +76,7 @@
             // 
             // _btnStick
             // 
-            this._btnStick.Location = new System.Drawing.Point(94, 268);
+            this._btnStick.Location = new System.Drawing.Point(80, 4);
             this._btnStick.Name = "_btnStick";
             this._btnStick.Size = new System.Drawing.Size(75, 23);
             this._btnStick.TabIndex = 4;
@@ -86,49 +84,9 @@
             this._btnStick.UseVisualStyleBackColor = true;
             this._btnStick.Click += new System.EventHandler(this.PlayerSticks_Click);
             // 
-            // _lblDealerScore
-            // 
-            this._lblDealerScore.AutoSize = true;
-            this._lblDealerScore.ForeColor = System.Drawing.Color.White;
-            this._lblDealerScore.Location = new System.Drawing.Point(13, 120);
-            this._lblDealerScore.Name = "_lblDealerScore";
-            this._lblDealerScore.Size = new System.Drawing.Size(35, 13);
-            this._lblDealerScore.TabIndex = 5;
-            this._lblDealerScore.Text = "label1";
-            // 
-            // _lblPlayerScore
-            // 
-            this._lblPlayerScore.AutoSize = true;
-            this._lblPlayerScore.ForeColor = System.Drawing.Color.White;
-            this._lblPlayerScore.Location = new System.Drawing.Point(13, 144);
-            this._lblPlayerScore.Name = "_lblPlayerScore";
-            this._lblPlayerScore.Size = new System.Drawing.Size(35, 13);
-            this._lblPlayerScore.TabIndex = 5;
-            this._lblPlayerScore.Text = "label1";
-            // 
-            // _lblWinner
-            // 
-            this._lblWinner.AutoSize = true;
-            this._lblWinner.ForeColor = System.Drawing.Color.White;
-            this._lblWinner.Location = new System.Drawing.Point(197, 120);
-            this._lblWinner.Name = "_lblWinner";
-            this._lblWinner.Size = new System.Drawing.Size(35, 13);
-            this._lblWinner.TabIndex = 6;
-            this._lblWinner.Text = "label1";
-            // 
-            // _lblStatus
-            // 
-            this._lblStatus.AutoSize = true;
-            this._lblStatus.ForeColor = System.Drawing.Color.White;
-            this._lblStatus.Location = new System.Drawing.Point(327, 120);
-            this._lblStatus.Name = "_lblStatus";
-            this._lblStatus.Size = new System.Drawing.Size(35, 13);
-            this._lblStatus.TabIndex = 7;
-            this._lblStatus.Text = "label1";
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(418, 268);
+            this.button1.Location = new System.Drawing.Point(389, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -136,40 +94,42 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.ExitApplication_Click);
             // 
+            // panelButtons
+            // 
+            this.panelButtons.BackColor = System.Drawing.Color.SlateGray;
+            this.panelButtons.Controls.Add(this.button1);
+            this.panelButtons.Controls.Add(this._btnStartGame);
+            this.panelButtons.Controls.Add(this._btnStick);
+            this.panelButtons.Controls.Add(this._btnHit);
+            this.panelButtons.Location = new System.Drawing.Point(5, 241);
+            this.panelButtons.Name = "panelButtons";
+            this.panelButtons.Size = new System.Drawing.Size(467, 31);
+            this.panelButtons.TabIndex = 9;
+            // 
             // GameTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(491, 303);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this._lblStatus);
-            this.Controls.Add(this._lblWinner);
-            this.Controls.Add(this._lblPlayerScore);
-            this.Controls.Add(this._lblDealerScore);
-            this.Controls.Add(this._btnStick);
-            this.Controls.Add(this._btnStartGame);
-            this.Controls.Add(this._panelGameMatDealer);
-            this.Controls.Add(this._panelGameMatPlayer);
-            this.Controls.Add(this._btnHit);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(477, 277);
+            this.Controls.Add(this.panelButtons);
+            this.Controls.Add(this.cardMatDealer);
+            this.Controls.Add(this.cardMatPlayer);
             this.Name = "GameTable";
             this.Text = "Game";
+            this.panelButtons.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button _btnHit;
-        private System.Windows.Forms.Panel _panelGameMatPlayer;
-        private System.Windows.Forms.Panel _panelGameMatDealer;
+        private System.Windows.Forms.Panel cardMatPlayer;
+        private System.Windows.Forms.Panel cardMatDealer;
         private System.Windows.Forms.Button _btnStartGame;
         private System.Windows.Forms.Button _btnStick;
-        private System.Windows.Forms.Label _lblDealerScore;
-        private System.Windows.Forms.Label _lblPlayerScore;
-        private System.Windows.Forms.Label _lblWinner;
-        private System.Windows.Forms.Label _lblStatus;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panelButtons;
     }
 }

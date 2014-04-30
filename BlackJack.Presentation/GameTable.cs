@@ -1,5 +1,6 @@
 ﻿using BlackJack.CardDeck.Model;
 using BlackJack.Table;
+using BlackJack.Table.EventArgs;
 using BlackJack.Table.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -33,21 +34,22 @@ namespace BlackJack.Presentation
             List<PlayingCard> dealersCards = startingHand.Take(2).ToList();
             List<PlayingCard> playersCards = startingHand.Skip(2).Take(2).ToList();
 
-            _dealer.DealStartingHand_Dealer(dealersCards, _panelGameMatDealer);
-            _dealer.DealStartingHand_Player(playersCards, _panelGameMatPlayer, _player);
+            _dealer.DealStartingHand_Dealer(dealersCards, cardMatDealer);
+            _dealer.DealStartingHand_Player(playersCards, cardMatPlayer, _player);
 
-            _dealer.CompleteGameHand();
+            _dealer.PlayGame();
+
+            _btnStartGame.Enabled = false;
         }
 
         private void PlayerHits_Click(object sender, EventArgs e)
         {
-            PlayingCard newCard = _dealer.GetPlayingCard();            
-            _player.Hit(newCard, _panelGameMatPlayer);
+            _dealer.Hit(cardMatPlayer);
         }
 
         private void PlayerSticks_Click(object sender, EventArgs e)
         {           
-            _player.OnSticks(new PlayerSticksEventArg(_player, _panelGameMatPlayer, _panelGameMatDealer));
+            _player.OnStick(new PlayerSticksEventArg(_player, cardMatPlayer, cardMatDealer));
         }
 
         private void ExitApplication_Click(object sender, EventArgs e)

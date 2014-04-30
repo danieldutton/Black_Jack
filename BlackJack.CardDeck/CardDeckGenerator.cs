@@ -10,6 +10,9 @@ namespace BlackJack.CardDeck
         
         private readonly ICardImageMapper<PlayingCard> _cardImageMapper;
 
+        public CardDeckGenerator(){           
+        }
+
         public CardDeckGenerator(ICardSuitGenerator cardSuitGenerator, ICardImageMapper<PlayingCard> cardImageMapper)
         {
             _cardSuitGenerator = cardSuitGenerator;

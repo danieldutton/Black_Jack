@@ -31,11 +31,11 @@ namespace BlackJack.Table
 
         public List<PlayingCard> ReleaseStartingHands()
         {
-            const int startingCardCount = 4;
+            const int cardCount = 4;
 
             var startCards = new List<PlayingCard>();
 
-            for (int i = 0; i < startingCardCount; i++)
+            for (int i = 0; i < cardCount; i++)
             {
                 startCards.Add(GetNextPlayingCard());
             }

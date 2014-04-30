@@ -26,35 +26,31 @@ namespace BlackJack.UnitTests.Table
         }
 
         [Test]
-        public void InitNewDeck_CallGetOrderedCardDeck_ExactlyOnce()
+        public void InitialiseNewCardDeck_CallGetOrderedCardDeck_ExactlyOnce_FromConstructor()
         {
-            _sut.InitialiseNewCardDeck();
-
             _fakeCardDeckGenerator.Verify(x => x.GetCardDeck(), Times.Once());
         }
 
         [Test]
-        public void InitNewDeck_CallShuffle_ExactlyOnce()
+        public void InitialiseNewCardDeck_CallShuffle_ExactlyOnce()
         {
-            _sut.InitialiseNewCardDeck();
-
             _fakeShuffler.Verify(x => x.Shuffle(It.IsAny<IEnumerable<PlayingCard>>()), Times.Once());
         }
 
         [Test]
-        public void InitNewDeck_CallShuffle_WithCorrectData()
+        public void InitialiseNewCardDeck_CallShuffle_WithCorrectData()
         {
-            var cardQueue = new Queue<PlayingCard>();
+            var cardDeckStub = new Queue<PlayingCard>();
             _fakeCardDeckGenerator.Setup(x => x.GetCardDeck())
-                .Returns(() => cardQueue);
+                .Returns(() => cardDeckStub);
 
             _sut.InitialiseNewCardDeck();
 
-            _fakeShuffler.Verify(x => x.Shuffle(It.Is<IEnumerable<PlayingCard>>(y => y.Equals(cardQueue))), Times.Once());
+            _fakeShuffler.Verify(x => x.Shuffle(It.Is<IEnumerable<PlayingCard>>(y => y.Equals(cardDeckStub))));
         }
 
         [Test]
-        public void InitNewDeck_SetCurrentCardDeck()
+        public void InitialiseNewCardDeck_SetCurrentCardDeck()
         {
             var cardQueue = new Queue<PlayingCard>();
             _fakeShuffler.Setup(x => x.Shuffle(It.IsAny<IEnumerable<PlayingCard>>()))
@@ -80,6 +76,12 @@ namespace BlackJack.UnitTests.Table
 
             Assert.AreEqual(Suit.Club, card.Suit);
             Assert.AreEqual(CardNumber.Ace, card.CardNumber);
+        }
+
+        [Test]
+        public void ReleaseStartingHands_Foo()
+        {
+            
         }
 
         [TearDown]

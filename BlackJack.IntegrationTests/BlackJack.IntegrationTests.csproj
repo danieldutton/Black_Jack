@@ -53,6 +53,14 @@
       <Project>{DD641150-7250-4A16-A236-DFBAC5CBA1A0}</Project>
       <Name>BlackJack.CardDeck</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BlackJack.Table\BlackJack.Table.csproj">
+      <Project>{01F0BA3A-8920-4ACF-A15C-22F9C9C08EA3}</Project>
+      <Name>BlackJack.Table</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BlackJack.Utility\BlackJack.Utility.csproj">
+      <Project>{7C576FB9-A6ED-466C-87B8-540B037E8637}</Project>
+      <Name>BlackJack.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

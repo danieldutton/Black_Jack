@@ -1,22 +1,36 @@
-﻿using System.Collections.Generic;
+﻿using BlackJack.CardDeck;
+using BlackJack.CardDeck.Model;
+using BlackJack.Table.EventArgs;
+using BlackJack.Table.Interfaces;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using BlackJack.CardDeck;
-using BlackJack.CardDeck.Model;
-using BlackJack.Table.Interfaces;
 
 namespace BlackJack.Table
 {
-    public class Dealer : ICardPlayer
+    //This class is a bit of a mess - refactor
+    public class Dealer : IBlackJackPlayer
     {
-        private const int StickThreshold = 19;
-        private const int MaxCards = 21;
+        #region Instance Vars
+
+        public event EventHandler<PlayerSticksEventArg> Stick;
+
+        private const int StickThreshold = 15;
+        
+        private const int WinningScore = 21;
+        
         private int _cardXPos;
         
         private readonly ICardShoe _cardShoe;
 
         public List<PlayingCard> CurrentHand { get; set; }
+        
         public int CurrentScore { get; set; }
+
+        #endregion
+
+        #region Constructor(s)
 
         public Dealer(ICardShoe cardShoe)
         {
@@ -24,9 +38,13 @@ namespace BlackJack.Table
             CurrentHand = new List<PlayingCard>();
         }
 
+        #endregion
+
+        #region Method(s)
+
         public void RegisterNewPlayer(Player player)
         {
-            player.Sticks += Determine_Winner;
+            player.Stick += Determine_Winner;
         }
 
         public void DealStartingHand_Dealer(IEnumerable<PlayingCard> cards, Panel panel)
@@ -41,15 +59,12 @@ namespace BlackJack.Table
 
                 int cardValue = CardPointScorer.GetPlayingCardValue(playingCard);
                 CurrentScore += cardValue;
-
-                //_lblDealerScore.Text = _dealer.CurrentScore.ToString();
             }
             _cardXPos = 0;
         }
 
         public void DealStartingHand_Player(IEnumerable<PlayingCard> cards, Panel panel, ICardPlayer cardPlayer)
         {
-            //DRY principle - matches code pattern above
             foreach (PlayingCard playingCard in cards)
             {
                 playingCard.Location = new Point(_cardXPos, 0);
@@ -60,17 +75,15 @@ namespace BlackJack.Table
 
                 int cardValue = CardPointScorer.GetPlayingCardValue(playingCard);
                 cardPlayer.CurrentScore += cardValue;
-
-                //_lblPlayerScore.Text = _player.CurrentScore.ToString();
             }
-            _cardXPos = 0;
+            _cardXPos = 80;
         }
 
-        public void CompleteGameHand()
+        public void PlayGame()
         {
             if (CurrentScore < StickThreshold)
             {
-                while (CurrentScore < MaxCards)
+                while (CurrentScore < WinningScore && CurrentScore < StickThreshold)
                 {
                     PlayingCard card = _cardShoe.GetNextPlayingCard();
 
@@ -79,7 +92,7 @@ namespace BlackJack.Table
 
                     CurrentHand.Add(card);
 
-                    if (CurrentScore >= StickThreshold && CurrentScore <= MaxCards)
+                    if (CurrentScore >= StickThreshold && CurrentScore <= WinningScore)
                     {
                         break;
                     }
@@ -89,13 +102,29 @@ namespace BlackJack.Table
 
         public void RevealFinalHand(Panel panel)
         {
+            _cardXPos = 0;
             foreach (PlayingCard playingCard in CurrentHand)
-            {
-                _cardXPos = 80;
+            {                
                 playingCard.Location = new Point(_cardXPos, 0);
                 panel.Controls.Add(playingCard);
                 _cardXPos += 40;
             }
+        }
+
+        public void Hit(Panel panel)
+        {
+            //test if player is bust
+
+            var playingCard = GetPlayingCard();
+
+            playingCard.Location = new Point(_cardXPos, 0);
+            panel.Controls.Add(playingCard);
+            _cardXPos += 40;
+
+            int cardValue = CardPointScorer.GetPlayingCardValue(playingCard);
+            CurrentScore += cardValue;
+
+            CurrentHand.Add(playingCard);
         }
 
         public PlayingCard GetPlayingCard()
@@ -104,7 +133,7 @@ namespace BlackJack.Table
 
             return playingCard;
         }
-
+        
         public bool IsBust(int score)
         {
             return score > 21;
@@ -132,9 +161,17 @@ namespace BlackJack.Table
             {
                 //_lblStatus.Text = "Player Bust";
             }
-            RevealFinalHand(e.GameMatDealer);
+            RevealFinalHand(e.CardMatDealer);
             //compare the two
             //_lblWinner.Text = playersScore > dealersScore ? "Player Wins" : "DealerWins";
         }
+
+        protected virtual void OnStick(PlayerSticksEventArg e)
+        {
+            EventHandler<PlayerSticksEventArg> handler = Stick;
+            if (handler != null) handler(this, e);
+        }
+
+        #endregion
     }
 }
