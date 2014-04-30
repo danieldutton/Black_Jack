@@ -47,7 +47,7 @@ namespace BlackJack.Table
             if (CurrentDeckInPlay.Count == 0)
                 InitialiseNewCardDeck();
 
-            var card = CurrentDeckInPlay.Dequeue();
+            PlayingCard card = CurrentDeckInPlay.Dequeue();
 
             return card;
         }

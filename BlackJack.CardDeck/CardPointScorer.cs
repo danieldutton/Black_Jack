@@ -2,9 +2,9 @@
 
 namespace BlackJack.CardDeck
 {
-    public class CardPointScorer
+    public static class CardPointScorer
     {
-        public int GetPlayingCardValue(PlayingCard playingCard)
+        public static int GetPlayingCardValue(PlayingCard playingCard)
         {
             switch (playingCard.CardNumber)
             {

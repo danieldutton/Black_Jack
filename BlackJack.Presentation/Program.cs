@@ -19,10 +19,12 @@ namespace BlackJack.Presentation
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-            CardDeckGenerator cdg = new CardDeckGenerator(new CardSuitGenerator(), new CardImageMapper(new ResourceHandler()));
+            var cdg = new CardDeckGenerator(new CardSuitGenerator(), new CardImageMapper(new ResourceHandler()));
             ICardShoe cardShoe = new CardShoe(cdg, new GuidShuffler<PlayingCard>());
-            Dealer dealer = new Dealer();
-            Player player = new Player();
+            var player = new Player();
+            var dealer = new Dealer(cardShoe);
+            dealer.RegisterNewPlayer(player);
+                       
             Application.Run(new GameTable(dealer, player, cardShoe));
         }
     }

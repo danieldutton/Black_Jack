@@ -1,15 +1,1 @@
-C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack._UnitTests\bin\Debug\BlackJack.UnitTests.dll
-C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack._UnitTests\bin\Debug\BlackJack.UnitTests.pdb
-C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack._UnitTests\bin\Debug\BlackJack.CardDeck.dll
-C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack._UnitTests\bin\Debug\Moq.dll
-C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack._UnitTests\bin\Debug\nunit.framework.dll
-C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack._UnitTests\bin\Debug\BlackJack.CardDeck.pdb
-C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack._UnitTests\bin\Debug\Moq.xml
-C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack._UnitTests\bin\Debug\nunit.framework.xml
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack._UnitTests\obj\Debug\BlackJack.UnitTests.csprojResolveAssemblyReference.cache
-C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack._UnitTests\obj\Debug\BlackJack.UnitTests.dll
-C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack._UnitTests\obj\Debug\BlackJack.UnitTests.pdb
-C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack._UnitTests\bin\Debug\BlackJack.Table.dll
-C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack._UnitTests\bin\Debug\BlackJack.Utility.dll
-C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack._UnitTests\bin\Debug\BlackJack.Table.pdb
-C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack._UnitTests\bin\Debug\BlackJack.Utility.pdb
