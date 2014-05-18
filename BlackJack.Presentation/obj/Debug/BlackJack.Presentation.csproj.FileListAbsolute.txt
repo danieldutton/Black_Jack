@@ -23,13 +23,15 @@ C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJ
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.Presentation.exe
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.Presentation.pdb
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.CardDeck.dll
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.Players.dll
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.Table.dll
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.Utility.dll
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.CardDeck.pdb
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.Players.pdb
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.Table.pdb
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\bin\Debug\BlackJack.Utility.pdb
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.csprojResolveAssemblyReference.cache
-C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.GameTable.resources
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.BlackJackTable.resources
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.csproj.GenerateResource.Cache
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.exe
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.Presentation\obj\Debug\BlackJack.Presentation.pdb

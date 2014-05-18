@@ -22,7 +22,7 @@ namespace BlackJack.CardDeck.Model
             Height = 96;
         }
         
-        public string GetAssociatedImageName()
+        public string GetResourceImageName()
         {
             return string.Format("{0}_{1}", 
                 Suit, CardNumber);

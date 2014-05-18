@@ -1,5 +1,7 @@
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.CardDeck\bin\Debug\BlackJack.CardDeck.dll
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.CardDeck\bin\Debug\BlackJack.CardDeck.pdb
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.CardDeck\bin\Debug\BlackJack.Utility.dll
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.CardDeck\bin\Debug\BlackJack.Utility.pdb
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.CardDeck\obj\Debug\BlackJack.CardDeck.csprojResolveAssemblyReference.cache
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.CardDeck\obj\Debug\BlackJack.CardDeck.Properties.Resources.resources
 C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.CardDeck\obj\Debug\BlackJack.CardDeck.csproj.GenerateResource.Cache

@@ -1,6 +1,8 @@
 ﻿using BlackJack.CardDeck;
 using BlackJack.CardDeck.Interfaces;
 using BlackJack.CardDeck.Model;
+using BlackJack.Utility;
+using BlackJack.Utility.Interfaces;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -129,7 +131,7 @@ namespace BlackJack.IntegrationTests.CardDeck
         #region Images Club
 
         [Test]
-        public void GetCardDeck_AceOfClubs_ImageMappedCorrect() //this is not running
+        public void GetCardDeck_AceOfClubs_ImageMappedCorrect()
         {
             PlayingCard card = _sut.GetCardDeck().ElementAt(0);
 

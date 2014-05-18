@@ -1,6 +1,7 @@
 ﻿using BlackJack.CardDeck;
 using BlackJack.CardDeck.Interfaces;
 using BlackJack.CardDeck.Model;
+using BlackJack.Utility.Interfaces;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;

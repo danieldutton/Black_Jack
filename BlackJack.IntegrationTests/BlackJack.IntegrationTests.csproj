@@ -43,6 +43,7 @@
     <Compile Include="Mother.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Table\CardShoe_Should.cs" />
+    <Compile Include="Table\Dealer_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

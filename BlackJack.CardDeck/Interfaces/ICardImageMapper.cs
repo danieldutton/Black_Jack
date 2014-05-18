@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace BlackJack.CardDeck.Interfaces
 {
-    public interface ICardImageMapper<T> where T : PictureBox
+    public interface ICardImageMapper<T> where T : Control
     {
         IEnumerable<T> MapCardImages(IEnumerable<T> cards);
     }

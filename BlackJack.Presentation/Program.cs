@@ -1,6 +1,7 @@
 ﻿using BlackJack.CardDeck;
 using BlackJack.CardDeck.Interfaces;
 using BlackJack.CardDeck.Model;
+using BlackJack.Players;
 using BlackJack.Table;
 using BlackJack.Table.Interfaces;
 using BlackJack.Utility;
@@ -12,9 +13,6 @@ namespace BlackJack.Presentation
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
@@ -36,14 +34,17 @@ namespace BlackJack.Presentation
             ICardShoe cardShoe = new CardShoe(cardDeckGenerator, guidShuffler);
             cardShoe.InitialiseNewCardDeck();
             
+            //scoring strategy used
+            IPointsScorer pointsScorer = new PointsScorer();
+
             //Game Players
             var player = new Player();
-            var dealer = new Dealer(cardShoe);
+            var dealer = new Dealer(cardShoe, pointsScorer);
             
             dealer.RegisterNewPlayer(player);
                
             //Launch Form
-            Application.Run(new GameTable(dealer, player, cardShoe));
+            Application.Run(new BlackJackTable(dealer, player, cardShoe));
         }
     }
 }

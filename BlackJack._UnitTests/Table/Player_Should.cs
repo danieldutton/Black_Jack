@@ -1,4 +1,5 @@
-﻿using BlackJack.Table;
+﻿using BlackJack.Players;
+using BlackJack.Table;
 using NUnit.Framework;
 
 namespace BlackJack.UnitTests.Table

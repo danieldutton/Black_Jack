@@ -34,15 +34,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IResourceHandler.cs" />
     <Compile Include="Interfaces\IShuffler.cs" />
     <Compile Include="GuidShuffler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BlackJack.CardDeck\BlackJack.CardDeck.csproj">
-      <Project>{DD641150-7250-4A16-A236-DFBAC5CBA1A0}</Project>
-      <Name>BlackJack.CardDeck</Name>
-    </ProjectReference>
+    <Compile Include="ResourceHandler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
