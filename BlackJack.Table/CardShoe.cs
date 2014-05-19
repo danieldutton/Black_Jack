@@ -29,9 +29,9 @@ namespace BlackJack.Table
             CurrentDeckInPlay = _cardShuffler.Shuffle(orderedCardDeck);
         }
 
-        public List<PlayingCard> ReleaseStartingHands()
+        public List<PlayingCard> GetStartingHand()
         {
-            const int cardCount = 4;
+            const int cardCount = 2;
 
             var startCards = new List<PlayingCard>();
 

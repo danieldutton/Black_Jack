@@ -1,10 +1,11 @@
 ﻿using BlackJack.CardDeck.Model;
 using BlackJack.Players;
-using BlackJack.Players.EventArg;
+using BlackJack.Players.Interfaces;
+using BlackJack.Table;
 using BlackJack.Table.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace BlackJack.Presentation
@@ -16,56 +17,126 @@ namespace BlackJack.Presentation
         private readonly Player _player;
 
         private readonly ICardShoe _cardShoe;
+        
+        private readonly ICardScorer _cardScorer;
+
+        private int _cardXPos;
 
 
-        internal BlackJackTable(Dealer dealer, Player player, ICardShoe cardShoe)
+        internal BlackJackTable(Dealer dealer, Player player, 
+            ICardShoe cardShoe, ICardScorer cardScorer)
         {
             _dealer = dealer;
             _player = player;
             _cardShoe = cardShoe;
+            _cardScorer = cardScorer;
 
             InitializeComponent();
-            RegisterForGameOverEvent();
         }
 
-        private void RegisterForGameOverEvent()
+        private void StartGame_Click(object sender, EventArgs e)
         {
-            _dealer.GameOver += OnGameOver;
+            List<PlayingCard> dealersStartingHand = _cardShoe.GetStartingHand();
+            List<PlayingCard> playersStartingHand = _cardShoe.GetStartingHand();
+
+            DisplayHand(dealersStartingHand, _panelDealersCards);
+            DisplayHand(playersStartingHand, _panelPlayersCards);
+
+            UpdateScore(_dealer, dealersStartingHand);
+            UpdateScore(_player, playersStartingHand);
+
+            _dealer.FinishPlay(_cardShoe, _cardScorer);
         }
-        
-        private void DealCards_Click(object sender, EventArgs e)
+
+        private void DisplayHand(IEnumerable<PlayingCard> playingCards, Panel cardPanel)
         {
-            List<PlayingCard> startingHand = _cardShoe.ReleaseStartingHands();
+            foreach (PlayingCard playingCard in playingCards)
+            {
+                playingCard.Location = new Point(_cardXPos, 0);
 
-            List<PlayingCard> dealersCards = startingHand.Take(2).ToList();
-            List<PlayingCard> playersCards = startingHand.Skip(2).Take(2).ToList();
+                cardPanel.Controls.Add(playingCard);
+                cardPanel.Controls.SetChildIndex(playingCard, 0);
+                _cardXPos += 40;                
+            }
+            _cardXPos = 0;
+        }
 
-            _dealer.DealStartingHand_Dealer(dealersCards, cardMatDealer);
-            _dealer.DealStartingHand_Player(playersCards, cardMatPlayer, _player);
-
-            _dealer.CompleteBlackJackHand_Dealer();
+        private void UpdateScore(ICardPlayer player, IEnumerable<PlayingCard> playingCards)
+        {
+            foreach (var playingCard in playingCards)
+            {
+                int cardValue = _cardScorer.GetPlayingCardValue(playingCard);
+               
+                player.CurrentScore += cardValue;
+            }            
         }
 
         private void PlayerHits_Click(object sender, EventArgs e)
         {
-            _player.OnHit(new PlayerTakesMoveArgs(_player, cardMatPlayer, cardMatDealer));
+            DealNewCard_Player();
+        }
+
+        private void DealNewCard_Player()
+        {
+            PlayingCard playingCard = _cardShoe.GetNextPlayingCard();
+            var cardList = new List<PlayingCard>{playingCard};
+            
+            DisplayHand(cardList, _panelPlayersCards);            
+            UpdateScore(_player, cardList);
+            Determine_Winner();
         }
 
         private void PlayerSticks_Click(object sender, EventArgs e)
         {           
-            _player.OnStick(new PlayerTakesMoveArgs(_player, cardMatPlayer, cardMatDealer));
+            Determine_Winner();
+        }
+        
+        //can this be moved into point scorer
+        private void Determine_Winner()
+        {
+            int dealersScore = _dealer.CurrentScore;
+            int playersScore = _player.CurrentScore;
+
+            if (PlayerAndDealerAreBust())
+                DisplayGameResults(dealersScore, playersScore, "Both Bust!");
+
+            else if (_dealer.IsBust(dealersScore))
+                DisplayGameResults(dealersScore, playersScore, "Dealer Bust! Player Wins."); //check if player wins
+
+            else if (_player.IsBust(playersScore))
+                DisplayGameResults(dealersScore, playersScore, "Player Bust! Dealer Wins.");
+
+            else if (PlayerAndDealerAreDrawn())
+                DisplayGameResults(dealersScore, playersScore, "Dealer and Player draw!");
+            else
+            {
+                //compare the final scores
+                string text = playersScore > dealersScore ? "Player Wins:" + playersScore : "DealerWins:" + dealersScore;
+                DisplayGameResults(dealersScore, playersScore, text);
+            }
+
+            DisplayHand(_dealer.CurrentHand, _panelDealersCards);
+            DisplayHand(_player.CurrentHand, _panelPlayersCards);
+            
+            _dealer.DisposeOfCurrentHand();
+            _player.DisposeOfCurrentHand();
         }
 
-        private void OnGameOver(object sender, GameOverEventArgs e)
+        private void DisplayGameResults(int dealerScore, int playerScore, string statusMessage)
         {
-            DisplayGameResults(e);                                   
+            _lblDealersScore.Text = dealerScore.ToString();
+            _lblPlayersScore.Text = playerScore.ToString();
+            _lblStatus.Text = statusMessage;
         }
 
-        private void DisplayGameResults(GameOverEventArgs e)
+        private bool PlayerAndDealerAreBust()
         {
-            _lblDealersScore.Text = e.DealersScore.ToString();
-            _lblPlayersScore.Text = e.PlayersScore.ToString();
-            _lblStatus.Text = e.StatusMessage;    
+            return _player.IsBust(_player.CurrentScore) && _dealer.IsBust(_dealer.CurrentScore);
+        }
+
+        private bool PlayerAndDealerAreDrawn()
+        {
+            return _player.CurrentScore == _dealer.CurrentScore;
         }
 
         private void ExitApplication_Click(object sender, EventArgs e)

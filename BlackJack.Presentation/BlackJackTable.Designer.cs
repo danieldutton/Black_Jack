@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this._btnHit = new System.Windows.Forms.Button();
-            this.cardMatPlayer = new System.Windows.Forms.Panel();
-            this.cardMatDealer = new System.Windows.Forms.Panel();
+            this._panelPlayersCards = new System.Windows.Forms.Panel();
+            this._panelDealersCards = new System.Windows.Forms.Panel();
             this._btnStartGame = new System.Windows.Forms.Button();
             this._btnStick = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -53,21 +53,21 @@
             this._btnHit.UseVisualStyleBackColor = true;
             this._btnHit.Click += new System.EventHandler(this.PlayerHits_Click);
             // 
-            // cardMatPlayer
+            // _panelPlayersCards
             // 
-            this.cardMatPlayer.Location = new System.Drawing.Point(5, 132);
-            this.cardMatPlayer.Name = "cardMatPlayer";
-            this.cardMatPlayer.Size = new System.Drawing.Size(467, 100);
-            this.cardMatPlayer.TabIndex = 1;
-            this.cardMatPlayer.Tag = "PLayer";
+            this._panelPlayersCards.Location = new System.Drawing.Point(5, 132);
+            this._panelPlayersCards.Name = "_panelPlayersCards";
+            this._panelPlayersCards.Size = new System.Drawing.Size(467, 100);
+            this._panelPlayersCards.TabIndex = 1;
+            this._panelPlayersCards.Tag = "PLayer";
             // 
-            // cardMatDealer
+            // _panelDealersCards
             // 
-            this.cardMatDealer.Location = new System.Drawing.Point(6, 3);
-            this.cardMatDealer.Name = "cardMatDealer";
-            this.cardMatDealer.Size = new System.Drawing.Size(466, 100);
-            this.cardMatDealer.TabIndex = 2;
-            this.cardMatDealer.Tag = "Dealer";
+            this._panelDealersCards.Location = new System.Drawing.Point(6, 3);
+            this._panelDealersCards.Name = "_panelDealersCards";
+            this._panelDealersCards.Size = new System.Drawing.Size(466, 100);
+            this._panelDealersCards.TabIndex = 2;
+            this._panelDealersCards.Tag = "Dealer";
             // 
             // _btnStartGame
             // 
@@ -75,9 +75,9 @@
             this._btnStartGame.Name = "_btnStartGame";
             this._btnStartGame.Size = new System.Drawing.Size(75, 23);
             this._btnStartGame.TabIndex = 3;
-            this._btnStartGame.Text = "Deal";
+            this._btnStartGame.Text = "Start";
             this._btnStartGame.UseVisualStyleBackColor = true;
-            this._btnStartGame.Click += new System.EventHandler(this.DealCards_Click);
+            this._btnStartGame.Click += new System.EventHandler(this.StartGame_Click);
             // 
             // _btnStick
             // 
@@ -173,8 +173,8 @@
             this.Controls.Add(this._lblDealersScore);
             this.Controls.Add(this._lblStatus);
             this.Controls.Add(this.panelButtons);
-            this.Controls.Add(this.cardMatDealer);
-            this.Controls.Add(this.cardMatPlayer);
+            this.Controls.Add(this._panelDealersCards);
+            this.Controls.Add(this._panelPlayersCards);
             this.Name = "BlackJackTable";
             this.Text = "Game";
             this.panelButtons.ResumeLayout(false);
@@ -186,8 +186,8 @@
         #endregion
 
         private System.Windows.Forms.Button _btnHit;
-        private System.Windows.Forms.Panel cardMatPlayer;
-        private System.Windows.Forms.Panel cardMatDealer;
+        private System.Windows.Forms.Panel _panelPlayersCards;
+        private System.Windows.Forms.Panel _panelDealersCards;
         private System.Windows.Forms.Button _btnStartGame;
         private System.Windows.Forms.Button _btnStick;
         private System.Windows.Forms.Button button1;

@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using BlackJack.CardDeck.Model;
+﻿using BlackJack.CardDeck.Model;
+using System.Collections.Generic;
 
 namespace BlackJack.Players.Interfaces
 {

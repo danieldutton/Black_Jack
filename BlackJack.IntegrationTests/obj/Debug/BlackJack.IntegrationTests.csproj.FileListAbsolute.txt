@@ -1,0 +1,13 @@
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.IntegrationTests\bin\Debug\BlackJack.IntegrationTests.dll
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.IntegrationTests\bin\Debug\BlackJack.IntegrationTests.pdb
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.IntegrationTests\bin\Debug\BlackJack.CardDeck.dll
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.IntegrationTests\bin\Debug\BlackJack.Table.dll
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.IntegrationTests\bin\Debug\BlackJack.Utility.dll
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.IntegrationTests\bin\Debug\nunit.framework.dll
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.IntegrationTests\bin\Debug\BlackJack.CardDeck.pdb
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.IntegrationTests\bin\Debug\BlackJack.Table.pdb
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.IntegrationTests\bin\Debug\BlackJack.Utility.pdb
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.IntegrationTests\bin\Debug\nunit.framework.xml
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.IntegrationTests\obj\Debug\BlackJack.IntegrationTests.csprojResolveAssemblyReference.cache
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.IntegrationTests\obj\Debug\BlackJack.IntegrationTests.dll
+C:\Users\Dan\Documents\GitHub\Black_Jack\BlackJack.IntegrationTests\obj\Debug\BlackJack.IntegrationTests.pdb

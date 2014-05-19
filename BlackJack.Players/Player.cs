@@ -1,17 +1,11 @@
 ﻿using BlackJack.CardDeck.Model;
-using BlackJack.Players.EventArg;
 using BlackJack.Players.Interfaces;
-using System;
 using System.Collections.Generic;
 
 namespace BlackJack.Players
 {
     public class Player : ICardPlayer
     {
-        public event EventHandler<PlayerTakesMoveArgs> Stick;
-
-        public EventHandler<PlayerTakesMoveArgs> Hit;
-
         public int CurrentScore { get; set; }
 
         public List<PlayingCard> CurrentHand { get; set; }
@@ -31,18 +25,6 @@ namespace BlackJack.Players
         {
             CurrentScore = 0;
             CurrentHand.Clear();
-        }
-
-        public virtual void OnStick(PlayerTakesMoveArgs e)
-        {
-            EventHandler<PlayerTakesMoveArgs> handler = Stick;
-            if (handler != null) handler(this, e);
-        }
-
-        public virtual void OnHit(PlayerTakesMoveArgs e)
-        {
-            EventHandler<PlayerTakesMoveArgs> handler = Hit;
-            if (handler != null) handler(this, e);
         }
     }
 }

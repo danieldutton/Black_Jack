@@ -41,9 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutomatedHand.cs" />
     <Compile Include="Dealer.cs" />
-    <Compile Include="EventArg\GameOverEventArgs.cs" />
-    <Compile Include="EventArg\PlayerTakesMoveArgs.cs" />
     <Compile Include="Interfaces\ICardPlayer.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

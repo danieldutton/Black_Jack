@@ -35,16 +35,14 @@ namespace BlackJack.Presentation
             cardShoe.InitialiseNewCardDeck();
             
             //scoring strategy used
-            IPointsScorer pointsScorer = new PointsScorer();
+            ICardScorer cardScorer = new BlackJackScorer();
 
             //Game Players
             var player = new Player();
-            var dealer = new Dealer(cardShoe, pointsScorer);
-            
-            dealer.RegisterNewPlayer(player);
-               
+            var dealer = new Dealer();
+             
             //Launch Form
-            Application.Run(new BlackJackTable(dealer, player, cardShoe));
+            Application.Run(new BlackJackTable(dealer, player, cardShoe, cardScorer));
         }
     }
 }

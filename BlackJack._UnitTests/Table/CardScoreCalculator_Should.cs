@@ -7,12 +7,12 @@ namespace BlackJack.UnitTests.Table
     [TestFixture]
     public class CardScoreCalculator_Should
     {
-        private PointsScorer _sut;
+        private BlackJackScorer _sut;
 
         [SetUp]
         public void Init()
         {
-            _sut = new PointsScorer();
+            _sut = new BlackJackScorer();
         }
 
         [Test]

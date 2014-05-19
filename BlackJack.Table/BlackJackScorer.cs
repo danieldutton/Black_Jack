@@ -3,8 +3,17 @@ using BlackJack.Table.Interfaces;
 
 namespace BlackJack.Table
 {
-    public class PointsScorer : IPointsScorer
+    public class BlackJackScorer : ICardScorer
     {
+        private const int _stickThreshold = 15;
+
+        public int StickThreshold{get { return _stickThreshold; }}
+
+        private const int _winningScore = 21;
+
+        public int WinningScore { get { return _winningScore; } }
+
+
         public int GetPlayingCardValue(PlayingCard playingCard)
         {
             switch (playingCard.CardNumber)
