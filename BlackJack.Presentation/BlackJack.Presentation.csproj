@@ -44,6 +44,9 @@
     <Compile Include="BlackJackTable.Designer.cs">
       <DependentUpon>BlackJackTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\CardMat.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

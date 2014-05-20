@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dealer.cs" />
+    <Compile Include="Interfaces\IAutomatedCardPlayer.cs" />
     <Compile Include="Interfaces\ICardPlayer.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

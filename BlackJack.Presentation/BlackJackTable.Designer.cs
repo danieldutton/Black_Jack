@@ -29,11 +29,8 @@
         private void InitializeComponent()
         {
             this._btnHit = new System.Windows.Forms.Button();
-            this._panelPlayersCards = new System.Windows.Forms.Panel();
-            this._panelDealersCards = new System.Windows.Forms.Panel();
             this._btnStartGame = new System.Windows.Forms.Button();
             this._btnStick = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panelButtons = new System.Windows.Forms.Panel();
             this._lblStatus = new System.Windows.Forms.Label();
             this._lblDealersScore = new System.Windows.Forms.Label();
@@ -53,25 +50,9 @@
             this._btnHit.UseVisualStyleBackColor = true;
             this._btnHit.Click += new System.EventHandler(this.PlayerHits_Click);
             // 
-            // _panelPlayersCards
-            // 
-            this._panelPlayersCards.Location = new System.Drawing.Point(5, 132);
-            this._panelPlayersCards.Name = "_panelPlayersCards";
-            this._panelPlayersCards.Size = new System.Drawing.Size(467, 100);
-            this._panelPlayersCards.TabIndex = 1;
-            this._panelPlayersCards.Tag = "PLayer";
-            // 
-            // _panelDealersCards
-            // 
-            this._panelDealersCards.Location = new System.Drawing.Point(6, 3);
-            this._panelDealersCards.Name = "_panelDealersCards";
-            this._panelDealersCards.Size = new System.Drawing.Size(466, 100);
-            this._panelDealersCards.TabIndex = 2;
-            this._panelDealersCards.Tag = "Dealer";
-            // 
             // _btnStartGame
             // 
-            this._btnStartGame.Location = new System.Drawing.Point(313, 4);
+            this._btnStartGame.Location = new System.Drawing.Point(389, 4);
             this._btnStartGame.Name = "_btnStartGame";
             this._btnStartGame.Size = new System.Drawing.Size(75, 23);
             this._btnStartGame.TabIndex = 3;
@@ -89,20 +70,9 @@
             this._btnStick.UseVisualStyleBackColor = true;
             this._btnStick.Click += new System.EventHandler(this.PlayerSticks_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(389, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Restart";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.ExitApplication_Click);
-            // 
             // panelButtons
             // 
             this.panelButtons.BackColor = System.Drawing.Color.SlateGray;
-            this.panelButtons.Controls.Add(this.button1);
             this.panelButtons.Controls.Add(this._btnStartGame);
             this.panelButtons.Controls.Add(this._btnStick);
             this.panelButtons.Controls.Add(this._btnHit);
@@ -173,8 +143,6 @@
             this.Controls.Add(this._lblDealersScore);
             this.Controls.Add(this._lblStatus);
             this.Controls.Add(this.panelButtons);
-            this.Controls.Add(this._panelDealersCards);
-            this.Controls.Add(this._panelPlayersCards);
             this.Name = "BlackJackTable";
             this.Text = "Game";
             this.panelButtons.ResumeLayout(false);
@@ -186,11 +154,8 @@
         #endregion
 
         private System.Windows.Forms.Button _btnHit;
-        private System.Windows.Forms.Panel _panelPlayersCards;
-        private System.Windows.Forms.Panel _panelDealersCards;
         private System.Windows.Forms.Button _btnStartGame;
         private System.Windows.Forms.Button _btnStick;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panelButtons;
         private System.Windows.Forms.Label _lblStatus;
         private System.Windows.Forms.Label _lblDealersScore;

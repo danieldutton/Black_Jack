@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BlackJack.Players
 {
-    public class Dealer : ICardPlayer
+    public class Dealer : IAutomatedCardPlayer
     {
         public List<PlayingCard> CurrentHand { get; set; }
 

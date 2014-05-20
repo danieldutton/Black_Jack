@@ -20,7 +20,7 @@ namespace BlackJack.Players
         {
             return score > 21;
         }
-
+        //push these methods up into abstract class
         public void DisposeOfCurrentHand()
         {
             CurrentScore = 0;
