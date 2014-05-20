@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using BlackJack.CardDeck;
+﻿using BlackJack.CardDeck;
 using BlackJack.CardDeck.Model;
 using BlackJack.Table;
 using BlackJack.Table.Interfaces;
 using BlackJack.Utility;
 using BlackJack.Utility.Interfaces;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace BlackJack.IntegrationTests.Table
 {

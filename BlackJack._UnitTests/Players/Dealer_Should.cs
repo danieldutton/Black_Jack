@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace BlackJack.UnitTests.Table
+namespace BlackJack.UnitTests.Players
 {
     [TestFixture]
     public class Dealer_Should

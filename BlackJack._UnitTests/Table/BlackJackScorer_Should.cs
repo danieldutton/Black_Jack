@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace BlackJack.UnitTests.Table
 {
     [TestFixture]
-    public class CardScoreCalculator_Should
+    public class BlackJackScorer_Should
     {
         private BlackJackScorer _sut;
 
