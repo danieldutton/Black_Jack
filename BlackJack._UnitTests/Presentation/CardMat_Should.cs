@@ -23,7 +23,7 @@ namespace BlackJack.UnitTests.Presentation
 
             sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Ace));
             
-            Assert.AreEqual(40, sut.CardXPosition);
+            Assert.AreEqual(40, sut.LastCardPositionX);
         }
 
         [Test]
@@ -34,7 +34,7 @@ namespace BlackJack.UnitTests.Presentation
             sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Ace));
             sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Two));
 
-            Assert.AreEqual(80, sut.CardXPosition);
+            Assert.AreEqual(80, sut.LastCardPositionX);
         }
 
         [Test]
@@ -46,7 +46,7 @@ namespace BlackJack.UnitTests.Presentation
             sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Two));
             sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Three));
 
-            Assert.AreEqual(120, sut.CardXPosition);
+            Assert.AreEqual(120, sut.LastCardPositionX);
         }
 
         [Test]
@@ -59,7 +59,7 @@ namespace BlackJack.UnitTests.Presentation
             sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Three));
             sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Four));
 
-            Assert.AreEqual(160, sut.CardXPosition);
+            Assert.AreEqual(160, sut.LastCardPositionX);
         }
 
         [Test]
@@ -73,13 +73,13 @@ namespace BlackJack.UnitTests.Presentation
             sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Four));
             sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Five));
 
-            Assert.AreEqual(200, sut.CardXPosition);
+            Assert.AreEqual(200, sut.LastCardPositionX);
         }
 
         [Test]
         public void Reset_ClearAllCardMatControls()
         {
-            var sut = new CardMat { CardXPosition = 40 };
+            var sut = new CardMat { LastCardPositionX = 40 };
             sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Ace));
 
             sut.Reset();
@@ -90,11 +90,11 @@ namespace BlackJack.UnitTests.Presentation
         [Test]
         public void Reset_DefaultProperty_CardXPosition_ToZero()
         {
-            var sut = new CardMat {CardXPosition = 40};
+            var sut = new CardMat {LastCardPositionX = 40};
 
             sut.Reset();
 
-            Assert.AreEqual(0, sut.CardXPosition);
+            Assert.AreEqual(0, sut.LastCardPositionX);
         }
 
         [Test]

@@ -7,38 +7,35 @@ namespace BlackJack.Presentation.Components
 {
     public sealed class CardMat : Panel
     {
-        public int CardXPosition { get; set; }
+        public int LastCardPositionX { get; set; }
 
-        public CardMat(){            
-        }
-
-        public CardMat(Point location)
-        {
-            Location = location;
-            InitProperties();
-        }
-
-        private void InitProperties()
+        public CardMat()
         {
             Width = 493;
             Height = 130;
+        }
+
+        public CardMat(Point location)
+            :this()
+        {
+            Location = location;
         }
 
         public void AddPlayingCard(PlayingCard playingCard)
         {
             if(playingCard == null) throw new ArgumentNullException("playingCard");
             
-            playingCard.Location = new Point(CardXPosition, 0);
+            playingCard.Location = new Point(LastCardPositionX, 0);
             
             Controls.Add(playingCard);
             Controls.SetChildIndex(playingCard, 0);
             
-            CardXPosition += 40;
+            LastCardPositionX += 40;
         }
 
         public void Reset()
         {
-            CardXPosition = 0;
+            LastCardPositionX = 0;
             Controls.Clear();
         }
 

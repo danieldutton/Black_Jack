@@ -11,6 +11,8 @@ namespace BlackJack.Presentation
 {
     internal partial class BlackJackTable : Form
     {
+        #region Instance vars
+
         private readonly IAutomatedCardPlayer _dealer;
 
         private readonly ICardPlayer _player;
@@ -23,6 +25,9 @@ namespace BlackJack.Presentation
 
         private CardMat _playerCardMat;
 
+        #endregion
+
+        #region Constructor
 
         internal BlackJackTable(IAutomatedCardPlayer dealer, ICardPlayer player, 
             ICardShoe cardShoe, ICardScorer cardScorer)
@@ -33,14 +38,16 @@ namespace BlackJack.Presentation
             _cardScorer = cardScorer;
 
             InitializeComponent();
-            PlaceCardMats();
+            InitCardMats();
             DisablePlayButtons();
         }
 
-        private void PlaceCardMats()
+        #endregion
+
+        private void InitCardMats()
         {
-            _dealerCardMat = new CardMat(new Point(6, 3));
-            _playerCardMat = new CardMat(new Point(5, 132));
+            _dealerCardMat = new CardMat(location:new Point(6, 3));
+            _playerCardMat = new CardMat(location:new Point(5, 132));
 
             Controls.Add(_dealerCardMat);
             Controls.Add(_playerCardMat);
@@ -51,20 +58,12 @@ namespace BlackJack.Presentation
             _btnHit.Enabled = false;
             _btnStick.Enabled = false;
         }
-
-        private void EnablePlayButtons()
-        {
-            _btnHit.Enabled = true;
-            _btnStick.Enabled = true;        
-        }
-
-        private void StartGame_Click(object sender, EventArgs e)
+        
+        private void StartNewGame_Click(object sender, EventArgs e)
         {
             ResetGame();
-            ClearGameResults();
+            ClearGameLabels();
             EnablePlayButtons();
-
-            //_btnStartGame.Enabled = false;
 
             List<PlayingCard> dealersStartingHand = _cardShoe.GetStartingHand();
             List<PlayingCard> playersStartingHand = _cardShoe.GetStartingHand();
@@ -72,8 +71,8 @@ namespace BlackJack.Presentation
             DisplayCardHand(dealersStartingHand, _dealerCardMat);
             DisplayCardHand(playersStartingHand, _playerCardMat);
 
-            UpdatePlayerPointsScore(_dealer, dealersStartingHand);
-            UpdatePlayerPointsScore(_player, playersStartingHand);
+            UpdatePlayerScores(_dealer, dealersStartingHand);
+            UpdatePlayerScores(_player, playersStartingHand);
 
             _dealer.FinishPlay(_cardShoe, _cardScorer);
         }
@@ -83,10 +82,21 @@ namespace BlackJack.Presentation
             _dealer.DisposeOfCurrentHand();
             _player.DisposeOfCurrentHand();
             
-            _cardShoe.InitialiseNewCardDeck();
-            
             _dealerCardMat.Reset();
             _playerCardMat.Reset();
+        }
+
+        private void ClearGameLabels()
+        {
+            _lblDealersScore.Text = string.Empty;
+            _lblPlayersScore.Text = string.Empty;
+            _lblStatus.Text = string.Empty;
+        }
+
+        private void EnablePlayButtons()
+        {
+            _btnHit.Enabled = true;
+            _btnStick.Enabled = true;
         }
 
         private void DisplayCardHand(IEnumerable<PlayingCard> playingCards, CardMat cardMat)
@@ -97,7 +107,7 @@ namespace BlackJack.Presentation
             }            
         }
 
-        private void UpdatePlayerPointsScore(ICardPlayer player, IEnumerable<PlayingCard> playingCards)
+        private void UpdatePlayerScores(ICardPlayer player, IEnumerable<PlayingCard> playingCards)
         {           
             foreach (var playingCard in playingCards)
             {
@@ -111,7 +121,7 @@ namespace BlackJack.Presentation
         {
             DealNewCard_Player();
             DisplayCardHand(_player.CurrentHand, _playerCardMat);
-            UpdatePlayerPointsScore(_player, _player.CurrentHand);
+            UpdatePlayerScores(_player, _player.CurrentHand);
 
             if(_player.IsBust(_player.CurrentScore))
                 Determine_Winner();
@@ -133,8 +143,6 @@ namespace BlackJack.Presentation
 
             _dealer.DisposeOfCurrentHand();
             _player.DisposeOfCurrentHand();
-
-            _btnStartGame.Enabled = true;
 
             DisablePlayButtons();
         }
@@ -167,13 +175,6 @@ namespace BlackJack.Presentation
             _lblDealersScore.Text = dealerScore.ToString();
             _lblPlayersScore.Text = playerScore.ToString();
             _lblStatus.Text = statusMessage;
-        }
-
-        private void ClearGameResults()
-        {
-            _lblDealersScore.Text = string.Empty;
-            _lblPlayersScore.Text = string.Empty;
-            _lblStatus.Text = string.Empty;   
         }
 
         private bool PlayerAndDealerAreBust()

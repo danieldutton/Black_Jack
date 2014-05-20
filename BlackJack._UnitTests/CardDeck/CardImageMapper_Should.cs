@@ -27,7 +27,7 @@ namespace BlackJack.UnitTests.CardDeck
         [Test]
         public void MapCardImages_CallGetResourceManager_GetObject_Exactly52Times()
         {
-            Queue<PlayingCard> deck52Cards = Mother.GetIdenticalCards(52);
+            Queue<PlayingCard> deck52Cards = Mother.GetIdenticalCardDeckAceOfClubs(52);
             
             _fakeResourceHandler.Setup(x => x.GetResourceManager()
                 .GetObject(It.IsAny<string>()))
@@ -41,7 +41,7 @@ namespace BlackJack.UnitTests.CardDeck
         [Test]
         public void MapCardImages_CallGetResourceManager_GetObject_WithCorrectData()
         {
-            Queue<PlayingCard> deck52Cards = Mother.GetIdenticalCards(52);
+            Queue<PlayingCard> deck52Cards = Mother.GetIdenticalCardDeckAceOfClubs(52);
             
             _fakeResourceHandler.Setup(x => x.GetResourceManager()
                 .GetObject("Club_Ace"))
@@ -55,7 +55,7 @@ namespace BlackJack.UnitTests.CardDeck
         [Test]
         public void MapCardImages_SetPlayingCardTagAndImageProperty_IfResourceReturnedIsNotNull()
         {
-            Queue<PlayingCard> deck1Card = Mother.GetIdenticalCards(1);
+            Queue<PlayingCard> deck1Card = Mother.GetIdenticalCardDeckAceOfClubs(1);
 
             _fakeResourceHandler.Setup(x => x.GetResourceManager()
                 .GetObject(It.IsAny<string>()))
@@ -70,7 +70,7 @@ namespace BlackJack.UnitTests.CardDeck
         [Test]
         public void MapCardImages_NeverSetPlayingCardTagAndImageProperty_IfResourceReturnedIsNull()
         {
-            Queue<PlayingCard> deck1Card = Mother.GetIdenticalCards(1);
+            Queue<PlayingCard> deck1Card = Mother.GetIdenticalCardDeckAceOfClubs(1);
 
             _fakeResourceHandler.Setup(x => x.GetResourceManager()
                 .GetObject(It.IsAny<string>()))

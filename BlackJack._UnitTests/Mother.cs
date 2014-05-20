@@ -1,4 +1,6 @@
-﻿using BlackJack.CardDeck.Model;
+﻿using BlackJack.CardDeck;
+using BlackJack.CardDeck.Model;
+using BlackJack.Utility;
 using System.Collections.Generic;
 
 namespace BlackJack.UnitTests
@@ -40,7 +42,7 @@ namespace BlackJack.UnitTests
             return testDeck;
         }
 
-        public static Queue<PlayingCard> GetIdenticalCards(int cardCount)
+        public static Queue<PlayingCard> GetIdenticalCardDeckAceOfClubs(int cardCount)
         {
             var cardDeck = new Queue<PlayingCard>();
 
@@ -50,6 +52,17 @@ namespace BlackJack.UnitTests
             }
 
             return cardDeck;
+        }
+
+        public static Queue<PlayingCard> GetUnshuffledCardDeck()
+        {
+            var cardSuitGenerator = new CardSuitGenerator();
+            var cardImageMapper = new CardImageMapper(new ResourceHandler());
+            var cardDeckGenerator = new CardDeckGenerator(cardSuitGenerator, cardImageMapper);
+
+            var orderedCardDeck = cardDeckGenerator.GetCardDeck();
+
+            return orderedCardDeck;
         } 
     }
 }
