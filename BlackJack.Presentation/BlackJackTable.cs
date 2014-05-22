@@ -39,7 +39,8 @@ namespace BlackJack.Presentation
 
             InitializeComponent();
             InitCardMats();
-            DisablePlayButtons();
+            DisplayCardMats();
+            DisableHitAndStickButtons();
         }
 
         #endregion
@@ -47,13 +48,16 @@ namespace BlackJack.Presentation
         private void InitCardMats()
         {
             _dealerCardMat = new CardMat(location:new Point(5, 80));
-            _playerCardMat = new CardMat(location:new Point(5, 190));
-
-            Controls.Add(_dealerCardMat);
-            Controls.Add(_playerCardMat);
+            _playerCardMat = new CardMat(location:new Point(5, 190));            
         }
 
-        private void DisablePlayButtons()
+        private void DisplayCardMats()
+        {
+            Controls.Add(_dealerCardMat);
+            Controls.Add(_playerCardMat);   
+        }
+
+        private void DisableHitAndStickButtons()
         {
             _btnHit.Enabled = false;
             _btnStick.Enabled = false;
@@ -61,40 +65,30 @@ namespace BlackJack.Presentation
         
         private void StartNewGame_Click(object sender, EventArgs e)
         {
-            ResetGame();
-            ClearGameLabels();
+            ClearPriorGame();
+            ClearPriorResultLabels();
             EnablePlayButtons();
-
-            List<PlayingCard> dealersStartingHand = _cardShoe.GetStartingHand();
-            List<PlayingCard> playersStartingHand = _cardShoe.GetStartingHand();
-
-            AddCardsToMat(dealersStartingHand, _dealerCardMat);
-            AddCardsToMat(playersStartingHand, _playerCardMat);
-
-            _dealer.CurrentHand = dealersStartingHand;
-            _player.CurrentHand = playersStartingHand;
-
-            ScoreCurrentlyHeldCards(_dealer, dealersStartingHand);
-            ScoreCurrentlyHeldCards(_player, playersStartingHand);
+            DealStartingHands();
 
             _dealer.FinishPlay(_cardShoe, _cardScorer);
         }
 
-        private void ResetGame()
+        private void ClearPriorGame()
         {
             _dealer.DisposeOfCurrentHand();
             _player.DisposeOfCurrentHand();
-            
+
             _dealerCardMat.Clear();
             _playerCardMat.Clear();
         }
 
-        private void ClearGameLabels()
+        private void ClearPriorResultLabels()
         {
-            const string DefaultText = "0";
+            const string defaultText = "0";
 
-            _lblDealersScore.Text = DefaultText;
-            _lblPlayersScore.Text = DefaultText;
+            _lblDealersScore.Text = defaultText;
+            _lblPlayersScore.Text = defaultText;
+            
             _lblStatus.Text = "--";
         }
 
@@ -104,37 +98,43 @@ namespace BlackJack.Presentation
             _btnStick.Enabled = true;
         }
 
+        private void DealStartingHands()
+        {
+            List<PlayingCard> dealersStartingHand = _cardShoe.GetStartingHand();
+            List<PlayingCard> playersStartingHand = _cardShoe.GetStartingHand();
+
+            _dealer.CurrentHand = dealersStartingHand;
+            _player.CurrentHand = playersStartingHand;
+
+            ScorePlayersCurrentHand(_dealer);
+
+            AddCardsToMat(_dealer.CurrentHand, _dealerCardMat);
+            AddCardsToMat(_player.CurrentHand, _playerCardMat);   
+        }
+
         private void AddCardsToMat(IEnumerable<PlayingCard> playingCards, CardMat cardMat)
         {               
             foreach (PlayingCard playingCard in playingCards)
-            {
                 cardMat.AddPlayingCard(playingCard);              
-            }
+            
             cardMat.LastCardPositionX = 0;
         }
 
-        private void ScoreCurrentlyHeldCards(ICardPlayer player, IEnumerable<PlayingCard> playingCards)
+        private void ScorePlayersCurrentHand(ICardPlayer player)
         {
-            //basically the players hand is updated after the intial deal but after that
-            //the initial deal cards vanish and it just counts the last cards dealt on a hit
-
-            int cardValue = _cardScorer.GetCardHandValue(playingCards);
-               
-            player.CurrentScore = cardValue;
-           
+            player.CurrentScore = _cardScorer.GetCardHandValue(player.CurrentHand);        
         }
 
         private void PlayerHits_Click(object sender, EventArgs e)
         {
-            DealNewCard_Player();
+            DealNewCard_Player();            
             
-            AddCardsToMat(_player.CurrentHand, _playerCardMat);
-            
-            ScoreCurrentlyHeldCards(_player, _player.CurrentHand);
+            AddCardsToMat(_player.CurrentHand, _playerCardMat);           
+            ScorePlayersCurrentHand(_player);
 
             if (_cardScorer.IsBust(_player.CurrentScore))
             {
-                AddCardsToMat(_dealer.CurrentHand, _dealerCardMat);
+                ScorePlayersCurrentHand(_dealer);
                 Determine_Winner();
             }                
         }
@@ -147,13 +147,13 @@ namespace BlackJack.Presentation
         }
 
         private void PlayerSticks_Click(object sender, EventArgs e)
-        {           
+        {     
+            ScorePlayersCurrentHand(_player);
             Determine_Winner();
 
             AddCardsToMat(_dealer.CurrentHand, _dealerCardMat);
-            AddCardsToMat(_player.CurrentHand, _playerCardMat);
 
-            DisablePlayButtons();
+            DisableHitAndStickButtons();            
         }
 
         private void Determine_Winner()
@@ -162,27 +162,29 @@ namespace BlackJack.Presentation
             int playersScore = _player.CurrentScore;
             
             if (_cardScorer.BothPlayersAreBust(playersScore, dealersScore))
-                DisplayGameResults(dealersScore, playersScore, "Both Players Bust!");
+                DisplayGameResults(dealersScore, playersScore, "Both Bust");
 
             else if (_cardScorer.IsBust(dealersScore))
-                DisplayGameResults(dealersScore, playersScore, "Dealer Bust! Player Wins.");
+                DisplayGameResults(dealersScore, playersScore, "Player Wins");
 
             else if (_cardScorer.IsBust(playersScore))
-                DisplayGameResults(dealersScore, playersScore, "Player Bust! Dealer Wins.");
+                DisplayGameResults(dealersScore, playersScore, "Dealer Wins");
 
-            else if (_cardScorer.BothPlayersAreDrawn(playersScore, dealersScore))
-                DisplayGameResults(dealersScore, playersScore, "Dealer and Player draw!");
+            else if (_cardScorer.PlayersAreDrawn(playersScore, dealersScore))
+                DisplayGameResults(dealersScore, playersScore, "Push");
             else
             {
-                string text = playersScore > dealersScore ? "Player Wins:" + playersScore : "DealerWins:" + dealersScore;
+                string text = playersScore > dealersScore ? "Player Wins: " : "DealerWins: ";
                 DisplayGameResults(dealersScore, playersScore, text);
-            }  
+            } 
+            DisableHitAndStickButtons();
         }
 
         private void DisplayGameResults(int dealerScore, int playerScore, string statusMessage)
         {
             _lblDealersScore.Text = dealerScore.ToString();
             _lblPlayersScore.Text = playerScore.ToString();
+            
             _lblStatus.Text = statusMessage;
         }        
     }

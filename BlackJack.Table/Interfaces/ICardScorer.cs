@@ -19,6 +19,6 @@ namespace BlackJack.Table.Interfaces
 
         bool BothPlayersAreBust(int playersScore, int dealersScore);
 
-        bool BothPlayersAreDrawn(int playersScore, int dealersScore);
+        bool PlayersAreDrawn(int playersScore, int dealersScore);
     }
 }

@@ -24,7 +24,7 @@ namespace BlackJack.Players
         }
         
         public void FinishPlay(ICardShoe cardShoe, ICardScorer cardScorer)
-        {
+        {            
             int stickThreshold = cardScorer.StickThreshold;
             int winningScore = cardScorer.WinningScore;
 
@@ -33,11 +33,11 @@ namespace BlackJack.Players
                 while (CurrentScore < winningScore && CurrentScore < stickThreshold)
                 {
                     PlayingCard card = cardShoe.TakeSinglePlayingCard();
-
-                    int score = cardScorer.GetCardValue(card);
-                    CurrentScore += score;
-
                     CurrentHand.Add(card);
+                    int score = cardScorer.GetCardHandValue(CurrentHand);
+                    CurrentScore = score;
+
+                    
 
                     if (CurrentScore >= stickThreshold && CurrentScore <= winningScore)
                     {
