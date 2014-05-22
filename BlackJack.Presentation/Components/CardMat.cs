@@ -12,7 +12,7 @@ namespace BlackJack.Presentation.Components
         public CardMat()
         {
             Width = 493;
-            Height = 130;
+            Height = 110;
         }
 
         public CardMat(Point location)

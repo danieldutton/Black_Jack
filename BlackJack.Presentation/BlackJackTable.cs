@@ -46,8 +46,8 @@ namespace BlackJack.Presentation
 
         private void InitCardMats()
         {
-            _dealerCardMat = new CardMat(location:new Point(6, 3));
-            _playerCardMat = new CardMat(location:new Point(5, 132));
+            _dealerCardMat = new CardMat(location:new Point(5, 80));
+            _playerCardMat = new CardMat(location:new Point(5, 190));
 
             Controls.Add(_dealerCardMat);
             Controls.Add(_playerCardMat);
@@ -91,9 +91,11 @@ namespace BlackJack.Presentation
 
         private void ClearGameLabels()
         {
-            _lblDealersScore.Text = string.Empty;
-            _lblPlayersScore.Text = string.Empty;
-            _lblStatus.Text = string.Empty;
+            const string DefaultText = "0";
+
+            _lblDealersScore.Text = DefaultText;
+            _lblPlayersScore.Text = DefaultText;
+            _lblStatus.Text = "--";
         }
 
         private void EnablePlayButtons()
