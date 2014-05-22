@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace BlackJack.Players
 {
     public class Dealer : IAutomatedCardPlayer
-    {
+    {//dry principle duplicate code
         public List<PlayingCard> CurrentHand { get; set; }
 
         public int CurrentScore { get; set; }
@@ -17,17 +17,12 @@ namespace BlackJack.Players
             CurrentHand = new List<PlayingCard>();
         }
 
-        public bool IsBust(int score)
-        {
-            return score > 21;
-        }
-
         public void DisposeOfCurrentHand()
         {
             CurrentScore = 0;
             CurrentHand.Clear();
         }
-
+        
         public void FinishPlay(ICardShoe cardShoe, ICardScorer cardScorer)
         {
             int stickThreshold = cardScorer.StickThreshold;
@@ -37,9 +32,9 @@ namespace BlackJack.Players
             {
                 while (CurrentScore < winningScore && CurrentScore < stickThreshold)
                 {
-                    PlayingCard card = cardShoe.GetNextPlayingCard();
+                    PlayingCard card = cardShoe.TakeSinglePlayingCard();
 
-                    int score = cardScorer.GetPlayingCardValue(card);
+                    int score = cardScorer.GetCardValue(card);
                     CurrentScore += score;
 
                     CurrentHand.Add(card);

@@ -8,20 +8,20 @@ using System.Collections.Generic;
 namespace BlackJack.UnitTests.CardDeck
 {
     [TestFixture]
-    public class CardDeckGenerator_Should
+    public class CardDeckBuilder_Should
     {
-        private Mock<ICardSuitGenerator> _fakeSuitBuilder;
+        private Mock<ICardDeckGenerator> _fakeSuitBuilder;
 
         private Mock<ICardImageMapper<PlayingCard>>  _fakeImageMapper;
 
-        private CardDeckGenerator _sut;
+        private CardDeckBuilder _sut;
 
         [SetUp]
         public void Init()
         {
-            _fakeSuitBuilder = new Mock<ICardSuitGenerator>();
+            _fakeSuitBuilder = new Mock<ICardDeckGenerator>();
             _fakeImageMapper = new Mock<ICardImageMapper<PlayingCard>>();
-            _sut = new CardDeckGenerator(_fakeSuitBuilder.Object, _fakeImageMapper.Object);
+            _sut = new CardDeckBuilder(_fakeSuitBuilder.Object, _fakeImageMapper.Object);
         }
 
         [Test]
@@ -29,7 +29,7 @@ namespace BlackJack.UnitTests.CardDeck
         {
             _sut.GetCardDeck();
 
-            _fakeSuitBuilder.Verify(x => x.GenerateCardDeck(), Times.Once());
+            _fakeSuitBuilder.Verify(x => x.GetPlainCardDeck(), Times.Once());
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace BlackJack.UnitTests.CardDeck
         {
             var stubDeck = new Queue<PlayingCard>();
 
-            _fakeSuitBuilder.Setup(x => x.GenerateCardDeck()).Returns(() => stubDeck);
+            _fakeSuitBuilder.Setup(x => x.GetPlainCardDeck()).Returns(() => stubDeck);
 
             _sut.GetCardDeck();
 

@@ -33,7 +33,7 @@ namespace BlackJack.Presentation.Components
             LastCardPositionX += 40;
         }
 
-        public void Reset()
+        public void Clear()
         {
             LastCardPositionX = 0;
             Controls.Clear();

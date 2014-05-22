@@ -1,4 +1,4 @@
-﻿using BlackJack.CardDeck;
+﻿using BlackJack.CardDeck.Interfaces;
 using BlackJack.CardDeck.Model;
 using BlackJack.Table.Interfaces;
 using BlackJack.Utility.Interfaces;
@@ -8,23 +8,23 @@ namespace BlackJack.Table
 {
     public class CardShoe : ICardShoe
     {
-        private readonly CardDeckGenerator _cardDeckGenerator;
+        private readonly ICardDeckBuilder _cardDeckBuilder;
         
         private readonly IShuffler<PlayingCard> _cardShuffler;
         
-        public Queue<PlayingCard> CurrentDeckInPlay { get; private set; }
+        public Queue<PlayingCard> CurrentDeckInPlay { get;  set; }
 
 
-        public CardShoe(CardDeckGenerator cardDeckGenerator, IShuffler<PlayingCard> cardShuffler)
+        public CardShoe(ICardDeckBuilder cardDeckBuilder, IShuffler<PlayingCard> cardShuffler)
         {
-            _cardDeckGenerator = cardDeckGenerator;
+            _cardDeckBuilder = cardDeckBuilder;
             _cardShuffler = cardShuffler;
             InitialiseNewCardDeck();
         }
 
-        public void InitialiseNewCardDeck()
+        private void InitialiseNewCardDeck()
         {
-            Queue<PlayingCard> orderedCardDeck = _cardDeckGenerator.GetCardDeck();
+            Queue<PlayingCard> orderedCardDeck = _cardDeckBuilder.GetCardDeck();
 
             CurrentDeckInPlay = _cardShuffler.Shuffle(orderedCardDeck);
         }
@@ -37,12 +37,12 @@ namespace BlackJack.Table
 
             for (int i = 0; i < cardCount; i++)
             {
-                startCards.Add(GetNextPlayingCard());
+                startCards.Add(TakeSinglePlayingCard());
             }
             return startCards;
         }
         
-        public PlayingCard GetNextPlayingCard()
+        public PlayingCard TakeSinglePlayingCard()
         {
             if (CurrentDeckInPlay.Count == 0)
                 InitialiseNewCardDeck();

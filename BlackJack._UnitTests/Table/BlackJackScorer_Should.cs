@@ -15,125 +15,541 @@ namespace BlackJack.UnitTests.Table
             _sut = new BlackJackScorer();
         }
 
-        [Test]
-        public void GetPlayingCardValue_Return10_IfPlayingCardIsAJackOf_Clubs()
-        {
-            var jackOfClubs = new PlayingCard(Suit.Club, CardNumber.Jack);
+        #region Club
 
-            int cardValue = _sut.GetPlayingCardValue(jackOfClubs);
+        [Test]
+        public void GetPlayingCardValue_Return2_IfCardClubAce()
+        {
+            var card = new PlayingCard(Suit.Club, CardNumber.Ace);
+
+            int cardValue = _sut.GetCardValue(card);
 
             Assert.AreEqual(10, cardValue);
         }
 
         [Test]
-        public void GetPlayingCardValue_Return10_IfPlayingCardIsAJackOf_Diamonds()
+        public void GetPlayingCardValue_Return2_IfCardClub2()
         {
-            var jackOfDiamonds = new PlayingCard(Suit.Diamond, CardNumber.Jack);
+            var card = new PlayingCard(Suit.Club, CardNumber.Two);
 
-            int cardValue = _sut.GetPlayingCardValue(jackOfDiamonds);
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(2, cardValue);    
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return3_IfCardClub3()
+        {
+            var card = new PlayingCard(Suit.Club, CardNumber.Three);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(3, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return4_IfCardClub4()
+        {
+            var card = new PlayingCard(Suit.Club, CardNumber.Four);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(4, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return5_IfCardClub5()
+        {
+            var card = new PlayingCard(Suit.Club, CardNumber.Five);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(5, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return6_IfCardClub6()
+        {
+            var card = new PlayingCard(Suit.Club, CardNumber.Six);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(6, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return7_IfCardClub7()
+        {
+            var card = new PlayingCard(Suit.Club, CardNumber.Seven);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(7, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return8_IfCardClub8()
+        {
+            var card = new PlayingCard(Suit.Club, CardNumber.Eight);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(8, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return9_IfCardClub9()
+        {
+            var card = new PlayingCard(Suit.Club, CardNumber.Nine);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(9, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return10_IfCardClub10()
+        {
+            var card = new PlayingCard(Suit.Club, CardNumber.Ten);
+
+            int cardValue = _sut.GetCardValue(card);
 
             Assert.AreEqual(10, cardValue);
         }
 
         [Test]
-        public void GetPlayingCardValue_Return10_IfPlayingCardIsAJackOf_Hearts()
+        public void GetPlayingCardValue_Return10_IfCardClubJack()
         {
-            var jackOfHearts = new PlayingCard(Suit.Heart, CardNumber.Jack);
+            var card = new PlayingCard(Suit.Club, CardNumber.Jack);
 
-            int cardValue = _sut.GetPlayingCardValue(jackOfHearts);
+            int cardValue = _sut.GetCardValue(card);
 
             Assert.AreEqual(10, cardValue);
         }
 
         [Test]
-        public void GetPlayingCardValue_Return10_IfPlayingCardIsAJackOf_Spades()
+        public void GetPlayingCardValue_Return10_IfCardClubQueen()
         {
-            var jackOfSpades = new PlayingCard(Suit.Spade, CardNumber.Jack);
+            var card = new PlayingCard(Suit.Club, CardNumber.Queen);
 
-            int cardValue = _sut.GetPlayingCardValue(jackOfSpades);
+            int cardValue = _sut.GetCardValue(card);
 
             Assert.AreEqual(10, cardValue);
         }
 
         [Test]
-        public void GetPlayingCardValue_Return10_IfPlayingCardIsAQueenOf_Clubs()
+        public void GetPlayingCardValue_Return10_IfCardClubKing()
         {
-            var queenOfClubs = new PlayingCard(Suit.Club, CardNumber.Queen);
+            var card = new PlayingCard(Suit.Club, CardNumber.King);
 
-            int cardValue = _sut.GetPlayingCardValue(queenOfClubs);
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(10, cardValue);
+        }
+
+        #endregion
+
+        #region Diamond
+
+        [Test]
+        public void GetPlayingCardValue_Return2_IfCardDiamondAce()
+        {
+            var card = new PlayingCard(Suit.Diamond, CardNumber.Ace);
+
+            int cardValue = _sut.GetCardValue(card);
 
             Assert.AreEqual(10, cardValue);
         }
 
         [Test]
-        public void GetPlayingCardValue_Return10_IfPlayingCardIsAQueenOf_Diamonds()
+        public void GetPlayingCardValue_Return2_IfCardDiamond2()
         {
-            var queenOfDiamonds = new PlayingCard(Suit.Diamond, CardNumber.Queen);
+            var card = new PlayingCard(Suit.Diamond, CardNumber.Two);
 
-            int cardValue = _sut.GetPlayingCardValue(queenOfDiamonds);
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(2, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return3_IfCardDiamond3()
+        {
+            var card = new PlayingCard(Suit.Diamond, CardNumber.Three);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(3, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return4_IfCardDiamond4()
+        {
+            var card = new PlayingCard(Suit.Diamond, CardNumber.Four);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(4, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return5_IfCardDiamond5()
+        {
+            var card = new PlayingCard(Suit.Diamond, CardNumber.Five);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(5, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return6_IfCardDiamond6()
+        {
+            var card = new PlayingCard(Suit.Diamond, CardNumber.Six);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(6, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return7_IfCardDiamond7()
+        {
+            var card = new PlayingCard(Suit.Diamond, CardNumber.Seven);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(7, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return8_IfCardDiamond8()
+        {
+            var card = new PlayingCard(Suit.Diamond, CardNumber.Eight);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(8, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return9_IfCardDiamond9()
+        {
+            var card = new PlayingCard(Suit.Diamond, CardNumber.Nine);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(9, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return10_IfCardDiamond10()
+        {
+            var card = new PlayingCard(Suit.Diamond, CardNumber.Ten);
+
+            int cardValue = _sut.GetCardValue(card);
 
             Assert.AreEqual(10, cardValue);
         }
 
         [Test]
-        public void GetPlayingCardValue_Return10_IfPlayingCardIsAQueenOf_Hearts()
+        public void GetPlayingCardValue_Return10_IfCardDiamondJack()
         {
-            var queenOfHearts = new PlayingCard(Suit.Heart, CardNumber.Queen);
+            var card = new PlayingCard(Suit.Diamond, CardNumber.Jack);
 
-            int cardValue = _sut.GetPlayingCardValue(queenOfHearts);
+            int cardValue = _sut.GetCardValue(card);
 
             Assert.AreEqual(10, cardValue);
         }
 
         [Test]
-        public void GetPlayingCardValue_Return10_IfPlayingCardIsAQueenOf_Spades()
+        public void GetPlayingCardValue_Return10_IfCardDiamondQueen()
         {
-            var queenOfSpades = new PlayingCard(Suit.Spade, CardNumber.Queen);
+            var card = new PlayingCard(Suit.Diamond, CardNumber.Queen);
 
-            int cardValue = _sut.GetPlayingCardValue(queenOfSpades);
+            int cardValue = _sut.GetCardValue(card);
 
             Assert.AreEqual(10, cardValue);
         }
 
         [Test]
-        public void GetPlayingCardValue_Return10_IfPlayingCardIsAKingOf_Clubs()
+        public void GetPlayingCardValue_Return10_IfCardDiamondKing()
         {
-            var kingOfClubs = new PlayingCard(Suit.Club, CardNumber.King);
+            var card = new PlayingCard(Suit.Diamond, CardNumber.King);
 
-            int cardValue = _sut.GetPlayingCardValue(kingOfClubs);
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(10, cardValue);
+        }
+
+        #endregion
+
+        #region Heart
+
+        [Test]
+        public void GetPlayingCardValue_Return2_IfCardHeartAce()
+        {
+            var card = new PlayingCard(Suit.Heart, CardNumber.Ace);
+
+            int cardValue = _sut.GetCardValue(card);
 
             Assert.AreEqual(10, cardValue);
         }
 
         [Test]
-        public void GetPlayingCardValue_Return10_IfPlayingCardIsAKingOf_Diamonds()
+        public void GetPlayingCardValue_Return2_IfCardHeart2()
         {
-            var kingOfDiamonds = new PlayingCard(Suit.Diamond, CardNumber.King);
+            var card = new PlayingCard(Suit.Heart, CardNumber.Two);
 
-            int cardValue = _sut.GetPlayingCardValue(kingOfDiamonds);
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(2, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return3_IfCardHeart3()
+        {
+            var card = new PlayingCard(Suit.Heart, CardNumber.Three);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(3, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return4_IfCardHeart4()
+        {
+            var card = new PlayingCard(Suit.Heart, CardNumber.Four);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(4, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return5_IfCardHeart5()
+        {
+            var card = new PlayingCard(Suit.Heart, CardNumber.Five);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(5, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return6_IfCardHeart6()
+        {
+            var card = new PlayingCard(Suit.Heart, CardNumber.Six);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(6, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return7_IfCardHeart7()
+        {
+            var card = new PlayingCard(Suit.Heart, CardNumber.Seven);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(7, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return8_IfCardHeart8()
+        {
+            var card = new PlayingCard(Suit.Heart, CardNumber.Eight);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(8, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return9_IfCardHeart9()
+        {
+            var card = new PlayingCard(Suit.Heart, CardNumber.Nine);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(9, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return10_IfCardHeart10()
+        {
+            var card = new PlayingCard(Suit.Heart, CardNumber.Ten);
+
+            int cardValue = _sut.GetCardValue(card);
 
             Assert.AreEqual(10, cardValue);
         }
 
         [Test]
-        public void GetPlayingCardValue_Return10_IfPlayingCardIsAKingOf_Hearts()
+        public void GetPlayingCardValue_Return10_IfCardHeartJack()
         {
-            var kingOfHearts = new PlayingCard(Suit.Heart, CardNumber.King);
+            var card = new PlayingCard(Suit.Heart, CardNumber.Jack);
 
-            int cardValue = _sut.GetPlayingCardValue(kingOfHearts);
+            int cardValue = _sut.GetCardValue(card);
 
             Assert.AreEqual(10, cardValue);
         }
 
         [Test]
-        public void GetPlayingCardValue_Return10_IfPlayingCardIsAKingOf_Spades()
+        public void GetPlayingCardValue_Return10_IfCardHeartQueen()
         {
-            var kingOfSpades = new PlayingCard(Suit.Spade, CardNumber.King);
+            var card = new PlayingCard(Suit.Club, CardNumber.Jack);
 
-            int cardValue = _sut.GetPlayingCardValue(kingOfSpades);
+            int cardValue = _sut.GetCardValue(card);
 
             Assert.AreEqual(10, cardValue);
         }
+
+        [Test]
+        public void GetPlayingCardValue_Return10_IfCardHeartKing()
+        {
+            var card = new PlayingCard(Suit.Club, CardNumber.Jack);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(10, cardValue);
+        }
+
+        #endregion
+
+        #region Spade
+
+        [Test]
+        public void GetPlayingCardValue_Return2_IfCardSpadeAce()
+        {
+            var card = new PlayingCard(Suit.Spade, CardNumber.Ace);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(10, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return2_IfCardSpade2()
+        {
+            var card = new PlayingCard(Suit.Spade, CardNumber.Two);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(2, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return3_IfCardSpade3()
+        {
+            var card = new PlayingCard(Suit.Spade, CardNumber.Three);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(3, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return4_IfCardSpade4()
+        {
+            var card = new PlayingCard(Suit.Spade, CardNumber.Four);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(4, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return5_IfCardSpade5()
+        {
+            var card = new PlayingCard(Suit.Spade, CardNumber.Five);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(5, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return6_IfCardSpade6()
+        {
+            var card = new PlayingCard(Suit.Spade, CardNumber.Six);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(6, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return7_IfCardSpade7()
+        {
+            var card = new PlayingCard(Suit.Spade, CardNumber.Seven);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(7, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return8_IfCardSpade8()
+        {
+            var card = new PlayingCard(Suit.Spade, CardNumber.Eight);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(8, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return9_IfCardSpade9()
+        {
+            var card = new PlayingCard(Suit.Spade, CardNumber.Nine);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(9, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return10_IfCardSpade10()
+        {
+            var card = new PlayingCard(Suit.Spade, CardNumber.Ten);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(10, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return10_IfCardSpadeJack()
+        {
+            var card = new PlayingCard(Suit.Spade, CardNumber.Jack);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(10, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return10_IfCardSpadeQueen()
+        {
+            var card = new PlayingCard(Suit.Spade, CardNumber.Queen);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(10, cardValue);
+        }
+
+        [Test]
+        public void GetPlayingCardValue_Return10_IfCardSpadeKing()
+        {
+            var card = new PlayingCard(Suit.Spade, CardNumber.King);
+
+            int cardValue = _sut.GetCardValue(card);
+
+            Assert.AreEqual(10, cardValue);
+        }
+
+        #endregion
 
         [TearDown]
         public void TearDown()

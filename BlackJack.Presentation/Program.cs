@@ -22,18 +22,17 @@ namespace BlackJack.Presentation
             //ResourceHandler
             IResourceHandler resourceHandler = new ResourceHandler();
 
-            //CardDeckGenerator
-            ICardSuitGenerator cardSuitGenerator = new CardSuitGenerator();
+            //CardDeckBuilder
+            ICardDeckGenerator cardDeckGenerator = new PlainCardDeckGenerator();
             ICardImageMapper<PlayingCard> cardImageMapper = new CardImageMapper(resourceHandler);
-            var cardDeckGenerator = new CardDeckGenerator(cardSuitGenerator, cardImageMapper);
+            ICardDeckBuilder cardDeckBuilder = new CardDeckBuilder(cardDeckGenerator, cardImageMapper);
 
             //Shuffle Strategy
             IShuffler<PlayingCard> guidShuffler = new GuidShuffler<PlayingCard>();
 
             //Card Shoe
-            ICardShoe cardShoe = new CardShoe(cardDeckGenerator, guidShuffler);
-            cardShoe.InitialiseNewCardDeck();
-            
+            ICardShoe cardShoe = new CardShoe(cardDeckBuilder, guidShuffler);
+
             //scoring strategy used
             ICardScorer cardScorer = new BlackJackScorer();
 

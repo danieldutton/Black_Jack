@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace BlackJack.CardDeck
 {
-    public class CardSuitGenerator : ICardSuitGenerator
+    public class PlainCardDeckGenerator : ICardDeckGenerator 
     {
-        public IEnumerable<PlayingCard> GenerateCardDeck()
+        public IEnumerable<PlayingCard> GetPlainCardDeck()
         {
             List<PlayingCard> cards = Enumerable.Range(0, 4)
                 .SelectMany(s => Enumerable.Range(1, 13)

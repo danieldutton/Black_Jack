@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace BlackJack.CardDeck.Interfaces
 {
-    public interface ICardSuitGenerator
+    public interface ICardDeckBuilder
     {
-        IEnumerable<PlayingCard> GenerateCardDeck();
+        Queue<PlayingCard> GetCardDeck();
     }
 }

@@ -4,24 +4,22 @@ using System.Collections.Generic;
 
 namespace BlackJack.CardDeck
 {
-    public class CardDeckGenerator
+    public class CardDeckBuilder : ICardDeckBuilder
     {
-        private readonly ICardSuitGenerator _cardSuitGenerator;
+        private readonly ICardDeckGenerator _cardDeckGenerator;
         
         private readonly ICardImageMapper<PlayingCard> _cardImageMapper;
 
-        public CardDeckGenerator(){           
-        }
 
-        public CardDeckGenerator(ICardSuitGenerator cardSuitGenerator, ICardImageMapper<PlayingCard> cardImageMapper)
+        public CardDeckBuilder(ICardDeckGenerator cardDeckGenerator, ICardImageMapper<PlayingCard> cardImageMapper)
         {
-            _cardSuitGenerator = cardSuitGenerator;
+            _cardDeckGenerator = cardDeckGenerator;
             _cardImageMapper = cardImageMapper;
         }
 
-        public virtual Queue<PlayingCard> GetCardDeck()
+        public Queue<PlayingCard> GetCardDeck()
         {
-            IEnumerable<PlayingCard> plainCardDeck = _cardSuitGenerator.GenerateCardDeck();
+            IEnumerable<PlayingCard> plainCardDeck = _cardDeckGenerator.GetPlainCardDeck();
             IEnumerable<PlayingCard> cardDeckWithImages = _cardImageMapper.MapCardImages(plainCardDeck);
 
             return new Queue<PlayingCard>(cardDeckWithImages);

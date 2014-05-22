@@ -5,6 +5,6 @@ namespace BlackJack.CardDeck.Interfaces
 {
     public interface ICardImageMapper<T> where T : Control
     {
-        IEnumerable<T> MapCardImages(IEnumerable<T> cards);
+        IEnumerable<T> MapCardImages(IEnumerable<T> plainCards);
     }
 }

@@ -82,7 +82,7 @@ namespace BlackJack.UnitTests.Presentation
             var sut = new CardMat { LastCardPositionX = 40 };
             sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Ace));
 
-            sut.Reset();
+            sut.Clear();
 
             Assert.AreEqual(0, sut.Controls.Count);
         }
@@ -92,7 +92,7 @@ namespace BlackJack.UnitTests.Presentation
         {
             var sut = new CardMat {LastCardPositionX = 40};
 
-            sut.Reset();
+            sut.Clear();
 
             Assert.AreEqual(0, sut.LastCardPositionX);
         }

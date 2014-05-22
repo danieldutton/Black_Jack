@@ -16,9 +16,9 @@ namespace BlackJack.CardDeck
             _resourceHandler = resourceHandler;
         }
 
-        public IEnumerable<PlayingCard> MapCardImages(IEnumerable<PlayingCard> cards)
+        public IEnumerable<PlayingCard> MapCardImages(IEnumerable<PlayingCard> plainCards)
         {
-            var mapCardImages = cards.ToList();
+            var mapCardImages = plainCards.ToList();
             
             foreach (var playingCard in mapCardImages)
             {

@@ -56,9 +56,9 @@ namespace BlackJack.UnitTests
 
         public static Queue<PlayingCard> GetUnshuffledCardDeck()
         {
-            var cardSuitGenerator = new CardSuitGenerator();
+            var cardSuitGenerator = new PlainCardDeckGenerator();
             var cardImageMapper = new CardImageMapper(new ResourceHandler());
-            var cardDeckGenerator = new CardDeckGenerator(cardSuitGenerator, cardImageMapper);
+            var cardDeckGenerator = new CardDeckBuilder(cardSuitGenerator, cardImageMapper);
 
             var orderedCardDeck = cardDeckGenerator.GetCardDeck();
 

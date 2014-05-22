@@ -41,7 +41,7 @@ namespace BlackJack.UnitTests.Utility
             CollectionAssert.AreNotEqual(shuffledCardDeck, orderedCardDeck);   
         }
 
-        [Test] //Probability wise this test is not deterministic
+        [Test] //Probability wise this test is not deterministic but odds on unlikely to ever fail
         public void Shuffle_TwoDecksShuffled_NotEqual()
         {
             Queue<PlayingCard> orderedCardDeck = Mother.GetUnshuffledCardDeck();

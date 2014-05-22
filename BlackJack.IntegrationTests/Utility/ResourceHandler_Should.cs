@@ -12,9 +12,9 @@ namespace BlackJack.IntegrationTests.Utility
         {
             var sut = new ResourceHandler();
 
-            ResourceManager result = sut.GetResourceManager();
+            ResourceManager resourceManager = sut.GetResourceManager();
             
-            Assert.IsInstanceOf<ResourceManager>(result); 
+            Assert.IsInstanceOf<ResourceManager>(resourceManager); 
         }
 
         [Test]
@@ -22,9 +22,9 @@ namespace BlackJack.IntegrationTests.Utility
         {
             var sut = new ResourceHandler();
             
-            ResourceManager result = sut.GetResourceManager();
+            ResourceManager resourceManager = sut.GetResourceManager();
             
-            Assert.AreEqual("BlackJack.CardDeck.Properties.Resources", result.BaseName);
+            Assert.AreEqual("BlackJack.CardDeck.Properties.Resources", resourceManager.BaseName);
         }
     }
 }

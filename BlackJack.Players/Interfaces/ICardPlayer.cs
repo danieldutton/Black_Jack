@@ -11,6 +11,5 @@ namespace BlackJack.Players.Interfaces
 
         void DisposeOfCurrentHand();
 
-        bool IsBust(int score);
     }
 }

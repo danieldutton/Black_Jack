@@ -1,4 +1,5 @@
 ﻿using BlackJack.CardDeck.Model;
+using System.Collections.Generic;
 
 namespace BlackJack.Table.Interfaces
 {
@@ -8,6 +9,16 @@ namespace BlackJack.Table.Interfaces
 
         int WinningScore { get; }
 
-        int GetPlayingCardValue(PlayingCard playingCard);
+        bool IsBlackJack(IEnumerable<PlayingCard> playingCards);
+
+        int GetCardValue(PlayingCard playingCard);
+
+        int GetCardHandValue(IEnumerable<PlayingCard> playingCards);
+
+        bool IsBust(int score);
+
+        bool BothPlayersAreBust(int playersScore, int dealersScore);
+
+        bool BothPlayersAreDrawn(int playersScore, int dealersScore);
     }
 }

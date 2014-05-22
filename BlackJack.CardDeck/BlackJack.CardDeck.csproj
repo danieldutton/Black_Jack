@@ -36,11 +36,12 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardSuitGenerator.cs" />
-    <Compile Include="CardDeckGenerator.cs" />
+    <Compile Include="PlainCardDeckGenerator.cs" />
+    <Compile Include="CardDeckBuilder.cs" />
+    <Compile Include="Interfaces\ICardDeckBuilder.cs" />
     <Compile Include="Interfaces\ICardImageMapper.cs" />
     <Compile Include="Model\CardNumber.cs" />
-    <Compile Include="Interfaces\ICardSuitGenerator.cs" />
+    <Compile Include="Interfaces\ICardDeckGenerator.cs" />
     <Compile Include="Model\PlayingCard.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -9,8 +9,6 @@ namespace BlackJack.Table.Interfaces
 
         List<PlayingCard> GetStartingHand();
 
-        void InitialiseNewCardDeck();
-
-        PlayingCard GetNextPlayingCard();
+        PlayingCard TakeSinglePlayingCard();
     }
 }

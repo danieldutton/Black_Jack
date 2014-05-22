@@ -43,8 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CardDeck\CardImageMapper_Should.cs" />
-    <Compile Include="CardDeck\CardSuitGenerator_Should.cs" />
-    <Compile Include="CardDeck\CardDeckGenerator_Should.cs" />
+    <Compile Include="CardDeck\PlainCardDeckGenerator_Should.cs" />
+    <Compile Include="CardDeck\CardDeckBuilder_Should.cs" />
     <Compile Include="Presentation\CardMat_Should.cs" />
     <Compile Include="Table\BlackJackScorer_Should.cs" />
     <Compile Include="CardDeck\Model\PlayingCard_Should.cs" />
