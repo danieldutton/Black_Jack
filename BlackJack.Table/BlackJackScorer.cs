@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace BlackJack.Table
 {
-    public class BlackJackScorer : ICardScorer
+    public class BlackJackScorer : IBlackJackScorer
     {
         private const int _stickThreshold = 15;
 
@@ -20,7 +20,6 @@ namespace BlackJack.Table
         {
             get { return _winningScore; }
         }
-
 
         public bool IsBlackJack(IEnumerable<PlayingCard> playingCards)
         {
@@ -49,19 +48,6 @@ namespace BlackJack.Table
             if (score == 21) return true;
 
             return false;
-        }
-
-        public int GetCardValue(PlayingCard playingCard)
-        {
-            switch (playingCard.CardNumber)
-            {
-                case CardNumber.Jack:
-                case CardNumber.Queen:
-                case CardNumber.King:
-                    return 10;
-                default:
-                    return (int) playingCard.CardNumber;
-            }
         }
 
         public int GetCardHandValue(IEnumerable<PlayingCard> playingCards)

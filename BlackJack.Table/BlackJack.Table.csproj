@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="BlackJackScorer.cs" />
     <Compile Include="CardShoe.cs" />
+    <Compile Include="Interfaces\IBlackJackScorer.cs" />
     <Compile Include="Interfaces\ICardScorer.cs" />
     <Compile Include="Interfaces\ICardShoe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -34,10 +34,9 @@ namespace BlackJack.Players
                 {
                     PlayingCard card = cardShoe.TakeSinglePlayingCard();
                     CurrentHand.Add(card);
+                    
                     int score = cardScorer.GetCardHandValue(CurrentHand);
                     CurrentScore = score;
-
-                    
 
                     if (CurrentScore >= stickThreshold && CurrentScore <= winningScore)
                     {

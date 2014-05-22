@@ -164,7 +164,7 @@
             this.MaximumSize = new System.Drawing.Size(428, 372);
             this.MinimumSize = new System.Drawing.Size(428, 372);
             this.Name = "BlackJackTable";
-            this.Text = "Game";
+            this.Text = "Dans BlackJack";
             this.panelButtons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
