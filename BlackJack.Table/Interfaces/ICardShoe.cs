@@ -5,10 +5,14 @@ namespace BlackJack.Table.Interfaces
 {
     public interface ICardShoe
     {
-        Queue<PlayingCard> CurrentDeckInPlay { get; }
+        Queue<PlayingCard> CardDeck { get; set; }
+
+        void MountNewCardDeck();
+
+        void ShuffleCardDeck();
 
         List<PlayingCard> GetStartingHand();
 
-        PlayingCard TakeSinglePlayingCard();
+        PlayingCard GetPlayingCard();
     }
 }

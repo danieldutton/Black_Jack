@@ -21,6 +21,7 @@ namespace BlackJack.UnitTests.CardDeck
         {
             _fakeSuitBuilder = new Mock<ICardDeckGenerator>();
             _fakeImageMapper = new Mock<ICardImageMapper<PlayingCard>>();
+            
             _sut = new CardDeckBuilder(_fakeSuitBuilder.Object, _fakeImageMapper.Object);
         }
 
@@ -45,7 +46,8 @@ namespace BlackJack.UnitTests.CardDeck
         {
             var stubDeck = new Queue<PlayingCard>();
 
-            _fakeSuitBuilder.Setup(x => x.GetPlainCardDeck()).Returns(() => stubDeck);
+            _fakeSuitBuilder.Setup(x => x.GetPlainCardDeck())
+                .Returns(() => stubDeck);
 
             _sut.GetCardDeck();
 

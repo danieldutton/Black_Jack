@@ -17,7 +17,7 @@ namespace BlackJack.Presentation
 
         private readonly ICardShoe _cardShoe;
         
-        private readonly ICardScorer _cardScorer;
+        private readonly IBlackJackScorer _cardScorer;
 
         private CardMat _dealersCardMat;
 
@@ -25,7 +25,7 @@ namespace BlackJack.Presentation
 
 
         internal BlackJackTable(IAutomatedCardPlayer dealer, ICardPlayer player, 
-            ICardShoe cardShoe, ICardScorer cardScorer)
+            ICardShoe cardShoe, IBlackJackScorer cardScorer)
         {
             _dealer = dealer;
             _player = player;
@@ -54,7 +54,7 @@ namespace BlackJack.Presentation
         
         private void StartNewGame_Click(object sender, EventArgs e)
         {
-            ResetToNewGame();
+            RemoveCardsInPlay();
             ResetGameScoreLabels();
             EnableHitAndStickButtons();
             DealStartingHands();
@@ -62,7 +62,7 @@ namespace BlackJack.Presentation
             _dealer.FinishPlay(_cardShoe, _cardScorer);            
         }
 
-        private void ResetToNewGame()
+        private void RemoveCardsInPlay()
         {
             _dealer.DisposeOfCurrentHand();
             _player.DisposeOfCurrentHand();
@@ -123,7 +123,7 @@ namespace BlackJack.Presentation
 
         private void DealNewCard_Player()
         {
-            PlayingCard playingCard = _cardShoe.TakeSinglePlayingCard();
+            PlayingCard playingCard = _cardShoe.GetPlayingCard();
             
             _player.CurrentHand.Add(playingCard);
             AddCardsToMat(_player.CurrentHand, _playersCardMat);
@@ -143,7 +143,7 @@ namespace BlackJack.Presentation
 
             AddCardsToMat(_dealer.CurrentHand, _dealersCardMat);
             
-            if (_cardScorer.BothPlayersAreBust(playersScore, dealersScore))
+            if (_cardScorer.BothPlayersBust(playersScore, dealersScore))
                 DisplayGameResults(dealersScore, playersScore, "Both Bust");
 
             else if (_cardScorer.IsBust(dealersScore))
@@ -152,7 +152,7 @@ namespace BlackJack.Presentation
             else if (_cardScorer.IsBust(playersScore))
                 DisplayGameResults(dealersScore, playersScore, "Dealer Wins");
 
-            else if (_cardScorer.PlayersAreDrawn(playersScore, dealersScore))
+            else if (_cardScorer.PlayersDrawn(playersScore, dealersScore))
                 DisplayGameResults(dealersScore, playersScore, "Push");
             else
             {

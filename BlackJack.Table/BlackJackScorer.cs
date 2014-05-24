@@ -7,18 +7,16 @@ namespace BlackJack.Table
 {
     public class BlackJackScorer : IBlackJackScorer
     {
-        private const int _stickThreshold = 15;
+        public int StickThreshold { get; private set; }
 
-        public int StickThreshold
+        private const int BlackJackScore = 21;
+
+        public int BlackJack{ get { return BlackJackScore; }}
+
+
+        public BlackJackScorer(int stickThreshold)
         {
-            get { return _stickThreshold; }
-        }
-
-        private const int _winningScore = 21;
-
-        public int WinningScore
-        {
-            get { return _winningScore; }
+            StickThreshold = stickThreshold;
         }
 
         public bool IsBlackJack(IEnumerable<PlayingCard> playingCards)
@@ -36,6 +34,7 @@ namespace BlackJack.Table
                         case CardNumber.Jack:
                         case CardNumber.Queen:
                         case CardNumber.King:
+                        case CardNumber.Ten:
                             score = 10;
                             break;
                         case CardNumber.Ace:
@@ -90,15 +89,15 @@ namespace BlackJack.Table
 
         public bool IsBust(int score)
         {
-            return score > WinningScore;
+            return score > BlackJackScore;
         }
 
-        public bool BothPlayersAreBust(int playersScore, int dealersScore)
+        public bool BothPlayersBust(int playersScore, int dealersScore)
         {
             return IsBust(playersScore) && IsBust(dealersScore);
         }
 
-        public bool PlayersAreDrawn(int playersScore, int dealersScore)
+        public bool PlayersDrawn(int playersScore, int dealersScore)
         {
             return playersScore == dealersScore;
         }

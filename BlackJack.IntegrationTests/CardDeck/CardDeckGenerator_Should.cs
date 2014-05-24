@@ -28,7 +28,9 @@ namespace BlackJack.IntegrationTests.CardDeck
             _cardDeckGenerator = new PlainCardDeckGenerator();
             _resourceHandler = new ResourceHandler();
             _cardImageMapper = new CardImageMapper(_resourceHandler);
+           
             _sut = new CardDeckBuilder(_cardDeckGenerator, _cardImageMapper);
+            
             _expectedCardValueOrder = Mother.ExpectedSuitOrder();
         }
 

@@ -22,17 +22,18 @@ namespace BlackJack.Players
             CurrentScore = 0;
             CurrentHand.Clear();
         }
-        
-        public void FinishPlay(ICardShoe cardShoe, ICardScorer cardScorer)
+
+
+        public void FinishPlay(ICardShoe cardShoe, IBlackJackScorer cardScorer)
         {            
             int stickThreshold = cardScorer.StickThreshold;
-            int winningScore = cardScorer.WinningScore;
-
+            int winningScore = cardScorer.BlackJack;
+            //dealer is not sticking when he should but only after the player hits one or more cards
             if (CurrentScore < stickThreshold)
             {
                 while (CurrentScore < winningScore && CurrentScore < stickThreshold)
                 {
-                    PlayingCard card = cardShoe.TakeSinglePlayingCard();
+                    PlayingCard card = cardShoe.GetPlayingCard();
                     CurrentHand.Add(card);
                     
                     int score = cardScorer.GetCardHandValue(CurrentHand);

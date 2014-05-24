@@ -1,6 +1,7 @@
 ﻿using BlackJack.CardDeck.Interfaces;
 using BlackJack.CardDeck.Model;
 using BlackJack.Table;
+using BlackJack.Table.Interfaces;
 using BlackJack.Utility.Interfaces;
 using Moq;
 using NUnit.Framework;
@@ -15,48 +16,122 @@ namespace BlackJack.UnitTests.Table
 
         private Mock<IShuffler<PlayingCard>> _fakeShuffler;
 
-        private CardShoe _sut;
+        private ICardShoe _sut;
+
 
         [SetUp]
         public void Init()
         {
             _fakeCardDeckGenerator = new Mock<ICardDeckBuilder>();
             _fakeShuffler = new Mock<IShuffler<PlayingCard>>();
+            
             _sut = new CardShoe(_fakeCardDeckGenerator.Object, _fakeShuffler.Object);
         }
 
         [Test]
-        public void Constructor_CallGetOrderedCardDeck_ExactlyOnce()
+        public void MountNewCardDeck_CallGetCardDeck_ExactlyOnce()
         {
-            _fakeCardDeckGenerator.Verify(x => x.GetCardDeck(), Times.Once());
+            _fakeCardDeckGenerator.Verify(x => x.GetCardDeck(), Times.Once);
         }
 
         [Test]
-        public void Constructor_CallShuffle_ExactlyOnce()
+        public void MountNewCardDeck_InitialiseCardDeckProperty_WithReturnedCardDeck()
         {
-            _fakeShuffler.Verify(x => x.Shuffle(It.IsAny<IEnumerable<PlayingCard>>()), Times.Once());
+            Queue<PlayingCard> stubDeck = Mother.GetTestDeckFiveMixedPlayingCards();
+            
+            _fakeCardDeckGenerator.Setup(x => x.GetCardDeck())
+                .Returns(()=> stubDeck);
+            
+            _sut.MountNewCardDeck();
+
+            Queue<PlayingCard> actual = _sut.CardDeck;
+
+            CollectionAssert.AreEqual(stubDeck, actual);
+        }
+
+        [Test]
+        public void ShuffleCardDeck_CallShuffle_ExactlyOnce()
+        {
+            _sut.ShuffleCardDeck();
+
+            _fakeShuffler.Verify(x => x.Shuffle(It.IsAny<IEnumerable<PlayingCard>>()), 
+                Times.Once());
         }
 
         [Test]
         public void GetStartingHand_ReturnTwoPlayingCards()
         {
-            _fakeCardDeckGenerator.Setup(x => x.GetCardDeck())
-                .Returns(() => new Queue<PlayingCard>());
+            Queue<PlayingCard> stubDeck = Mother.GetTestDeckFiveMixedPlayingCards();
 
-            _fakeShuffler.Setup(x => x.Shuffle(It.IsAny<IEnumerable<PlayingCard>>()))
-                .Returns(Mother.GetTestDeckFiveMixedPlayingCards);
+            _sut.CardDeck = stubDeck;
+            
+            List<PlayingCard> startHand = _sut.GetStartingHand();
 
-            PlayingCard card = _sut.TakeSinglePlayingCard();
-
-            Assert.AreEqual(Suit.Club, card.Suit);
-            Assert.AreEqual(CardNumber.Ace, card.CardNumber);
+            Assert.AreEqual(2, startHand.Count);
         }
 
         [Test]
-        public void TakeSinglePlayingCard_ReturnOnePlayingCard()
+        public void GetStartingHand_ReturnTheCorrectTwoPlayingCards()
         {
-            
+            Queue<PlayingCard> stubDeck = Mother.GetTestDeckFiveMixedPlayingCards();
+
+            _sut.CardDeck = stubDeck;
+
+            List<PlayingCard> startHand = _sut.GetStartingHand();
+
+            Assert.AreEqual(Suit.Club, startHand[0].Suit);
+            Assert.AreEqual(CardNumber.Ace, startHand[0].CardNumber);
+
+            Assert.AreEqual(Suit.Heart, startHand[1].Suit);
+            Assert.AreEqual(CardNumber.Seven, startHand[1].CardNumber);
         }
+
+        [Test]
+        public void GetPlayingCard_MountNewCardDeck_IfNoCardsLeft()
+        {
+            _fakeCardDeckGenerator.Setup(x => x.GetCardDeck()).Returns(Mother.GetTestDeckFiveMixedPlayingCards);
+
+            var emptyDeck = new Queue<PlayingCard>();
+            _sut.CardDeck = emptyDeck;
+
+             _sut.GetPlayingCard();
+
+            var replacedDeck = _sut.CardDeck;
+
+            Assert.AreEqual(4, replacedDeck.Count);
+
+        }
+
+        [Test]
+        public void GetPlayingCard_MountNewShuffledCardDeck_IfNoCardsLeft()
+        {
+            _fakeCardDeckGenerator.Setup(x => x.GetCardDeck()).Returns(Mother.GetTestDeckFiveMixedPlayingCards);
+            _fakeShuffler.Setup(x => x.Shuffle(It.IsAny<IEnumerable<PlayingCard>>()))
+                .Returns(Mother.GetTestDeckFiveMixedPlayingCards);
+
+            var emptyDeck = new Queue<PlayingCard>();
+            _sut.CardDeck = emptyDeck;
+
+            _sut.GetPlayingCard();
+
+            var replacedDeck = _sut.CardDeck;
+
+            CollectionAssert.AreEqual(replacedDeck, Mother.GetTestDeckFiveMixedPlayingCards());
+        }
+
+        [Test]
+        public void GetPlayingCard_ReturnOneSinglePlayingCard()
+        {
+            Queue<PlayingCard> stubDeck = Mother.GetTestDeckFiveMixedPlayingCards();
+
+            _sut.CardDeck = stubDeck;
+
+            PlayingCard result = _sut.GetPlayingCard();
+
+            Assert.AreEqual(Suit.Club, result.Suit);
+            Assert.AreEqual(CardNumber.Ace, result.CardNumber);
+        }
+
 
         [TearDown]
         public void TearDown()

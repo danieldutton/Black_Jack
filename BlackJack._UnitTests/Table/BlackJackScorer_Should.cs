@@ -11,7 +11,7 @@ namespace BlackJack.UnitTests.Table
         [SetUp]
         public void Init()
         {
-            _sut = new BlackJackScorer();
+            _sut = new BlackJackScorer(stickThreshold:15);
         }
 
         [TearDown]

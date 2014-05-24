@@ -1,4 +1,6 @@
-﻿using BlackJack.Utility.Interfaces;
+﻿using BlackJack.Utility.Exceptions;
+using BlackJack.Utility.Interfaces;
+using System;
 using System.Reflection;
 using System.Resources;
 
@@ -8,8 +10,18 @@ namespace BlackJack.Utility
     {
         public ResourceManager GetResourceManager()
         {
-            Assembly localisationAssembly = Assembly.Load("BlackJack.CardDeck");
-            var resourceManager = new ResourceManager("BlackJack.CardDeck.Properties.Resources", localisationAssembly);
+            ResourceManager resourceManager;
+
+            try
+            {
+                Assembly localisationAssembly = Assembly.Load("BlackJack.CardDeck");
+                
+                resourceManager = new ResourceManager("BlackJack.CardDeck.Properties.Resources", localisationAssembly);
+            }
+            catch (Exception e)
+            {
+                throw new ResourceHandleException("Failed to load resources", e);
+            }
             
             return resourceManager;
         }

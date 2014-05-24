@@ -39,7 +39,7 @@ namespace BlackJack.IntegrationTests.Table
         [Test]
         public void Constructor_InitialiseProperty_CurrentDeckInPlay_With52PlayingCards()
         {
-            Queue<PlayingCard> cardsInPlay = _sut.CurrentDeckInPlay;
+            Queue<PlayingCard> cardsInPlay = _sut.CardDeck;
 
             Assert.AreEqual(52, cardsInPlay.Count);
         }
@@ -48,7 +48,7 @@ namespace BlackJack.IntegrationTests.Table
         public void Constructor_InitialiseProperty_CurrentDeckInPlay_With52ShuffledCards()
         {
             Queue<PlayingCard> orderedDeck = _cardDeckBuilder.GetCardDeck();
-            Queue<PlayingCard> shuffledDeck = _sut.CurrentDeckInPlay;
+            Queue<PlayingCard> shuffledDeck = _sut.CardDeck;
 
             CollectionAssert.AreNotEqual(orderedDeck, shuffledDeck);
             CollectionAssert.AreEquivalent(orderedDeck, shuffledDeck);    
@@ -67,13 +67,13 @@ namespace BlackJack.IntegrationTests.Table
         {
             _sut.GetStartingHand();
 
-            Assert.AreEqual(50, _sut.CurrentDeckInPlay.Count);
+            Assert.AreEqual(50, _sut.CardDeck.Count);
         }
 
         [Test]
         public void TakeSinglePlayingCard_ReturnOnePlayingCard()
         {
-            PlayingCard playingCard = _sut.TakeSinglePlayingCard();
+            PlayingCard playingCard = _sut.GetPlayingCard();
 
             Assert.IsInstanceOf<PlayingCard>(playingCard);
         }
@@ -83,7 +83,7 @@ namespace BlackJack.IntegrationTests.Table
         {
             _sut.GetStartingHand();
 
-            Assert.AreEqual(50, _sut.CurrentDeckInPlay.Count);
+            Assert.AreEqual(50, _sut.CardDeck.Count);
         }
 
         [TearDown]

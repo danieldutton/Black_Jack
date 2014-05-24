@@ -32,9 +32,12 @@ namespace BlackJack.Presentation
 
             //Card Shoe
             ICardShoe cardShoe = new CardShoe(cardDeckBuilder, guidShuffler);
+            
+            cardShoe.MountNewCardDeck();
+            cardShoe.ShuffleCardDeck();
 
             //scoring strategy used
-            ICardScorer cardScorer = new BlackJackScorer();
+            IBlackJackScorer cardScorer = new BlackJackScorer(stickThreshold:14);
 
             //Game Players
             var player = new Player();

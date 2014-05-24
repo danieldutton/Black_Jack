@@ -127,6 +127,7 @@ namespace BlackJack.UnitTests.CardDeck
         [TearDown]
         public void TearDown()
         {
+            _fakeImageMapper = null;
             _sut = null;
             _expectedCardValueOrder = null;
         }

@@ -5,16 +5,14 @@ namespace BlackJack.Table.Interfaces
 {
     public interface IBlackJackScorer : ICardScorer
     {
+        int BlackJack { get; }
+
         int StickThreshold { get; }
 
-        int WinningScore { get; }
-
         bool IsBlackJack(IEnumerable<PlayingCard> playingCards);
-        
+
         bool IsBust(int score);
 
-        bool BothPlayersAreBust(int playersScore, int dealersScore);
-
-        bool PlayersAreDrawn(int playersScore, int dealersScore);
+        bool BothPlayersBust(int playersScore, int dealersScore);
     }
 }

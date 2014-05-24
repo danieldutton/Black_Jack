@@ -35,7 +35,9 @@ namespace BlackJack.UnitTests.CardDeck
 
             _sut.MapCardImages(deck52Cards);
 
-            _fakeResourceHandler.Verify(x => x.GetResourceManager().GetObject(It.IsAny<string>()), Times.Exactly(52));
+            _fakeResourceHandler.Verify(x => x.GetResourceManager()
+                .GetObject(It.IsAny<string>()), 
+                Times.Exactly(52));
         }
 
         [Test]
@@ -49,7 +51,8 @@ namespace BlackJack.UnitTests.CardDeck
 
             _sut.MapCardImages(deck52Cards);
 
-            _fakeResourceHandler.Verify(x => x.GetResourceManager().GetObject(It.Is<string>(y => y.Equals("Club_Ace"))));
+            _fakeResourceHandler.Verify(x => x.GetResourceManager()
+                .GetObject(It.Is<string>(y => y.Equals("Club_Ace"))));
         }
 
         [Test]

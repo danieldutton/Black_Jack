@@ -12,21 +12,25 @@ namespace BlackJack.Table
         
         private readonly IShuffler<PlayingCard> _cardShuffler;
         
-        public Queue<PlayingCard> CurrentDeckInPlay { get;  set; }
+        public Queue<PlayingCard> CardDeck { get; set; }
 
 
         public CardShoe(ICardDeckBuilder cardDeckBuilder, IShuffler<PlayingCard> cardShuffler)
         {
             _cardDeckBuilder = cardDeckBuilder;
-            _cardShuffler = cardShuffler;
-            InitialiseNewCardDeck();
+            _cardShuffler = cardShuffler; 
+           
+            MountNewCardDeck();
         }
 
-        private void InitialiseNewCardDeck()
+        public void MountNewCardDeck()
         {
-            Queue<PlayingCard> orderedCardDeck = _cardDeckBuilder.GetCardDeck();
+            CardDeck = _cardDeckBuilder.GetCardDeck();
+        }
 
-            CurrentDeckInPlay = _cardShuffler.Shuffle(orderedCardDeck);
+        public void ShuffleCardDeck()
+        {
+            _cardShuffler.Shuffle(CardDeck);    
         }
 
         public List<PlayingCard> GetStartingHand()
@@ -37,17 +41,20 @@ namespace BlackJack.Table
 
             for (int i = 0; i < cardCount; i++)
             {
-                startCards.Add(TakeSinglePlayingCard());
+                startCards.Add(GetPlayingCard());
             }
             return startCards;
         }
         
-        public PlayingCard TakeSinglePlayingCard()
+        public PlayingCard GetPlayingCard()
         {
-            if (CurrentDeckInPlay.Count == 0)
-                InitialiseNewCardDeck();
-
-            PlayingCard card = CurrentDeckInPlay.Dequeue();
+            if (CardDeck.Count == 0)
+            {
+                MountNewCardDeck();
+                ShuffleCardDeck();    
+            }
+                
+            PlayingCard card = CardDeck.Dequeue();
 
             return card;
         }
