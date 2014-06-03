@@ -42,7 +42,7 @@ namespace BlackJack.UnitTests.Utility
         }
 
         [Test] //Probability wise this test is not deterministic but odds on unlikely to ever fail
-        public void Shuffle_TwoDecksShuffled_NotEqual()
+        public void Shuffle_TwoDecksShuffled_NotEqualOrder()
         {
             Queue<PlayingCard> orderedCardDeck = Mother.GetUnshuffledCardDeck();
             var sut = new GuidShuffler<PlayingCard>();
