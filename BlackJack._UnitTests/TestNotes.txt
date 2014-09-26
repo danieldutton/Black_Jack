@@ -1,0 +1,35 @@
+﻿CardPlayer_Should
+-----------------
+
+Method under test - HasBlackJack()
+
+There are a total of 64 combinations which could result in BlackJack and all have been tested for.
+Combinations are as follows:-
+
+AceOfClubs And--
+
+King_Club			Queen_Club			Jack_Club			Ten_Club
+King_Heart			Queen_Heart			Jack_Heart			Ten_Heart				
+King_Spade			Queen_Spade			Jack_Spade			Ten_Spade
+King_Diamond		Queen_Diamond		Jack_Diamond		Ten_Diamond
+
+AceOfHearts And--
+
+King_Club			Queen_Club			Jack_Club			Ten_Club
+King_Heart			Queen_Heart			Jack_Heart			Ten_Heart				
+King_Spade			Queen_Spade			Jack_Spade			Ten_Spade
+King_Diamond		Queen_Diamond		Jack_Diamond		Ten_Diamond
+
+AceOfSpades And--
+
+King_Club			Queen_Club			Jack_Club			Ten_Club
+King_Heart			Queen_Heart			Jack_Heart			Ten_Heart				
+King_Spade			Queen_Spade			Jack_Spade			Ten_Spade
+King_Diamond		Queen_Diamond		Jack_Diamond		Ten_Diamond
+
+AceOfDiamonds And--
+
+King_Club			Queen_Club			Jack_Club			Ten_Club
+King_Heart			Queen_Heart			Jack_Heart			Ten_Heart				
+King_Spade			Queen_Spade			Jack_Spade			Ten_Spade
+King_Diamond		Queen_Diamond		Jack_Diamond		Ten_Diamond

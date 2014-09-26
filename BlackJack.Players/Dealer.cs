@@ -5,20 +5,18 @@ namespace BlackJack.Players
 {
     public class Dealer : CardPlayer
     {
-        public void Play(ICardShoe cardShoe, IBlackJackScorer cardScorer)
+        public void Play(ICardShoe cardShoe)
         {
-            int stickThreshold = cardScorer.StickThreshold;
-            int winningScore = cardScorer.BlackJack;
-            //dealer is not sticking when he should but only after the player hits one or more cards
+            const int stickThreshold = 14;
+            const int winningScore = 21;
+
+            if (HasTwoCardsInHand() && HasBlackJack()) return;
             if (CurrentScore < stickThreshold)
             {
                 while (!IsBust() && CurrentScore < stickThreshold)
                 {
                     PlayingCard card = cardShoe.GetPlayingCard();
-                    CurrentHand.Add(card);
-
-                    int score = cardScorer.GetCardHandValue(CurrentHand);
-                    CurrentScore = score;
+                    AddCardToHand(card);                  
 
                     if (CurrentScore >= stickThreshold && CurrentScore <= winningScore)
                     {

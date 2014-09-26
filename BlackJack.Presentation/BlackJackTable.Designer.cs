@@ -117,7 +117,7 @@
             this._btnStartGame.TabIndex = 3;
             this._btnStartGame.Text = "Deal";
             this._btnStartGame.UseVisualStyleBackColor = true;
-            this._btnStartGame.Click += new System.EventHandler(this.StartNewGame_Click);
+            this._btnStartGame.Click += new System.EventHandler(this.DealStartingHands_Click);
             // 
             // _btnStick
             // 

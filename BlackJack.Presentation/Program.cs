@@ -36,15 +36,12 @@ namespace BlackJack.Presentation
             cardShoe.MountDeck();
             cardShoe.ShuffleDeck(); //should these be removed from interface and called within card shoe in an init strategy
 
-            //scoring strategy used
-            IBlackJackScorer cardScorer = new BlackJackScorer(stickThreshold:14);
-
             //Game Players
             var player = new CardPlayer();
             var dealer = new Dealer();
              
             //Launch Form
-            Application.Run(new BlackJackTable(dealer, player, cardShoe, cardScorer));
+            Application.Run(new BlackJackTable(dealer, player, cardShoe));
         }
     }
 }

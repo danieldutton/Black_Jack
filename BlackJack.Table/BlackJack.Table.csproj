@@ -36,7 +36,6 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlackJackScorer.cs" />
     <Compile Include="CardShoe.cs" />
     <Compile Include="Interfaces\IBlackJackScorer.cs" />
     <Compile Include="Interfaces\ICardScorer.cs" />

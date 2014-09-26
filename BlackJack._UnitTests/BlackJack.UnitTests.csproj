@@ -47,7 +47,6 @@
     <Compile Include="CardDeck\PlainCardDeckGenerator_Should.cs" />
     <Compile Include="CardDeck\CardDeckBuilder_Should.cs" />
     <Compile Include="Presentation\CardMat_Should.cs" />
-    <Compile Include="Table\BlackJackScorer_Should.cs" />
     <Compile Include="CardDeck\Model\PlayingCard_Should.cs" />
     <Compile Include="Table\CardShoe_Should.cs" />
     <Compile Include="Mother.cs" />
@@ -80,6 +79,9 @@
       <Project>{7C576FB9-A6ED-466C-87B8-540B037E8637}</Project>
       <Name>BlackJack.Utility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestNotes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
