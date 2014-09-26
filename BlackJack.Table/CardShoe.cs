@@ -20,15 +20,15 @@ namespace BlackJack.Table
             _cardDeckBuilder = cardDeckBuilder;
             _cardShuffler = cardShuffler; 
            
-            MountNewCardDeck();
+            MountDeck();
         }
 
-        public void MountNewCardDeck()
+        public void MountDeck()
         {
             CardDeck = _cardDeckBuilder.GetCardDeck();
         }
 
-        public void ShuffleCardDeck()
+        public void ShuffleDeck()
         {
             _cardShuffler.Shuffle(CardDeck);    
         }
@@ -50,8 +50,8 @@ namespace BlackJack.Table
         {
             if (CardDeck.Count == 0)
             {
-                MountNewCardDeck();
-                ShuffleCardDeck();    
+                MountDeck();
+                ShuffleDeck();    
             }
                 
             PlayingCard card = CardDeck.Dequeue();

@@ -42,7 +42,7 @@ namespace BlackJack.UnitTests.Table
             _fakeCardDeckGenerator.Setup(x => x.GetCardDeck())
                 .Returns(()=> stubDeck);
             
-            _sut.MountNewCardDeck();
+            _sut.MountDeck();
 
             Queue<PlayingCard> actual = _sut.CardDeck;
 
@@ -52,7 +52,7 @@ namespace BlackJack.UnitTests.Table
         [Test]
         public void ShuffleCardDeck_CallShuffle_ExactlyOnce()
         {
-            _sut.ShuffleCardDeck();
+            _sut.ShuffleDeck();
 
             _fakeShuffler.Verify(x => x.Shuffle(It.IsAny<IEnumerable<PlayingCard>>()), 
                 Times.Once());

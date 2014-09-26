@@ -10,9 +10,5 @@ namespace BlackJack.Table.Interfaces
         int StickThreshold { get; }
 
         bool IsBlackJack(IEnumerable<PlayingCard> playingCards);
-
-        bool IsBust(int score);
-
-        bool BothPlayersBust(int playersScore, int dealersScore);
     }
 }

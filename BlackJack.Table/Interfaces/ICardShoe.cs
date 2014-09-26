@@ -7,9 +7,9 @@ namespace BlackJack.Table.Interfaces
     {
         Queue<PlayingCard> CardDeck { get; set; }
 
-        void MountNewCardDeck();
+        void MountDeck();
 
-        void ShuffleCardDeck();
+        void ShuffleDeck();
 
         List<PlayingCard> GetStartingHand();
 

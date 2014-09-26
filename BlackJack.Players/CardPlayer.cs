@@ -1,25 +1,30 @@
 ﻿using BlackJack.CardDeck.Model;
-using BlackJack.Players.Interfaces;
 using System.Collections.Generic;
 
 namespace BlackJack.Players
 {
-    public class Player : ICardPlayer
+    public class CardPlayer
     {
         public int CurrentScore { get; set; }
 
         public List<PlayingCard> CurrentHand { get; set; }
 
-        
-        public Player()
+
+        public CardPlayer()
         {
-            CurrentHand = new List<PlayingCard>();   
+            CurrentHand = new List<PlayingCard>();
         }
 
-        public void DisposeOfCurrentHand()
+        public bool IsBust()
+        {
+            return CurrentScore > 21;
+        }
+
+        public void DisposeOfHand()
         {
             CurrentScore = 0;
             CurrentHand.Clear();
         }
+
     }
 }

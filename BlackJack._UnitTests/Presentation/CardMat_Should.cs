@@ -8,101 +8,180 @@ namespace BlackJack.UnitTests.Presentation
     [TestFixture]
     public class CardMat_Should
     {
+        private CardMat _sut;
+
+        [SetUp]
+        public void Init()
+        {
+            _sut = new CardMat();
+        }
+
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void AddPlayingCard_ThrowAnArgumentNullException_IfPlayingCardParamIsNull()
+        public void PlaceCard_ThrowAnArgumentNullException_IfPlayingCardParamIsNull()
         {
-            var sut = new CardMat();
-            sut.AddPlayingCard(null);
+            _sut.PlaceCard(null);
         }
 
         [Test]
-        public void AddPlayingCard_SetProperty_CardXPositionTo40_If1CardAdded()
+        public void PlaceCard_SetCorrectLocationPropertyValues_ForFirstCardAdded()
         {
-            var sut = new CardMat();
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Ace));
 
-            sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Ace));
+            Assert.AreEqual(0, _sut.Controls[0].Location.X);
+            Assert.AreEqual(0, _sut.Controls[0].Location.Y);
+        }
+
+        [Test]
+        public void PlaceCard_SetCorrectLocationPropertyValues_ForSecondCardAdded()
+        {
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Ace));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Two));
+
+            Assert.AreEqual(40, _sut.Controls[0].Location.X);
+            Assert.AreEqual(0, _sut.Controls[0].Location.Y);
+        }
+
+        [Test]
+        public void PlaceCard_SetCorrectLocationPropertyValues_ForThirdCardAdded()
+        {
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Ace));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Two));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Three));
+
+            Assert.AreEqual(80, _sut.Controls[0].Location.X);
+            Assert.AreEqual(0, _sut.Controls[0].Location.Y);
+        }
+
+        [Test]
+        public void PlaceCard_SetCorrectLocationPropertyValues_ForFourthCardAdded()
+        {
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Ace));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Two));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Three));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Four));
+
+            Assert.AreEqual(120, _sut.Controls[0].Location.X);
+            Assert.AreEqual(0, _sut.Controls[0].Location.Y);
+        }
+
+        [Test]
+        public void PlaceCard_AddOnePlayingCardToCardMatControlsProperty()
+        {
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Ace));
+
+            Assert.AreEqual(1, _sut.Controls.Count);    
+        }
+
+        [Test]
+        public void PlaceCard_AddTwoPlayingCardsToCardMatControlsProperty()
+        {
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Ace));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Two));
+
+            Assert.AreEqual(2, _sut.Controls.Count);
+        }
+
+        [Test]
+        public void PlaceCard_AddThreePlayingCardsToCardMatControlsProperty()
+        {
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Ace));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Two));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Three));
+
+            Assert.AreEqual(3, _sut.Controls.Count);
+        }
+
+        [Test]
+        public void PlaceCard_AddFourPLayingCardsToCardMatControlsProperty()
+        {
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Ace));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Two));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Three));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Four));
+
+            Assert.AreEqual(4, _sut.Controls.Count);
+        }
+
+        [Test]
+        public void PlaceCard_SetChildIndexToZero_ForEveryCardAdded()
+        {
+            var card = new PlayingCard(Suit.Club, CardNumber.Ace);
+
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Ace));
+
+            Assert.AreEqual(0, _sut.Controls.GetChildIndex(card));
+        }
+
+        [Test]
+        public void PlaceCard_SetPropertyLastCardXPosition_To40_If1CardAdded()
+        {
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Ace));
             
-            Assert.AreEqual(40, sut.LastCardPositionX);
+            Assert.AreEqual(40, _sut.LastCardXPosition);
         }
 
         [Test]
-        public void AddPlayingCard_SetProperty_CardXPositionTo80_If2CardsAdded()
+        public void PlaceCard_SetProperty_LastCardXPositionTo80_If2CardsAdded()
         {
-            var sut = new CardMat();
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Ace));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Two));
 
-            sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Ace));
-            sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Two));
-
-            Assert.AreEqual(80, sut.LastCardPositionX);
+            Assert.AreEqual(80, _sut.LastCardXPosition);
         }
 
         [Test]
-        public void AddPlayingCard_SetProperty_CardXPosition120_If3CardsAdded()
+        public void PlaceCard_SetProperty_LastCardXPositionTo120_If3CardsAdded()
         {
-            var sut = new CardMat();
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Ace));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Two));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Three));
 
-            sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Ace));
-            sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Two));
-            sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Three));
-
-            Assert.AreEqual(120, sut.LastCardPositionX);
+            Assert.AreEqual(120, _sut.LastCardXPosition);
         }
 
         [Test]
-        public void AddPlayingCard_SetProperty_CardXPosition160_If4CardsAdded()
+        public void PlaceCard_SetProperty_LastCardXPositionTo160_If4CardsAdded()
         {
-            var sut = new CardMat();
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Ace));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Two));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Three));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Four));
 
-            sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Ace));
-            sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Two));
-            sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Three));
-            sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Four));
-
-            Assert.AreEqual(160, sut.LastCardPositionX);
-        }
-
-        [Test]
-        public void AddPlayingCard_SetProperty_CardXPosition200_If5CardsAdded()
-        {
-            var sut = new CardMat();
-
-            sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Ace));
-            sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Two));
-            sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Three));
-            sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Four));
-            sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Five));
-
-            Assert.AreEqual(200, sut.LastCardPositionX);
+            Assert.AreEqual(160, _sut.LastCardXPosition);
         }
 
         [Test]
         public void Reset_ClearAllCardMatControls()
         {
-            var sut = new CardMat { LastCardPositionX = 40 };
-            sut.AddPlayingCard(new PlayingCard(Suit.Club, CardNumber.Ace));
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Ace)); 
+            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Two));
 
-            sut.Clear();
+            _sut.Clear();
 
-            Assert.AreEqual(0, sut.Controls.Count);
+            Assert.AreEqual(0, _sut.Controls.Count);
         }
 
         [Test]
-        public void Reset_DefaultProperty_CardXPosition_ToZero()
+        public void ResetSetPropertyLastCardXPosition_ToZero()
         {
-            var sut = new CardMat {LastCardPositionX = 40};
+            _sut.Clear();
 
-            sut.Clear();
-
-            Assert.AreEqual(0, sut.LastCardPositionX);
+            Assert.AreEqual(0, _sut.LastCardXPosition);
         }
 
         [Test]
         public void ToString_ReturnTheCorrectValue()
         {
-            var sut = new CardMat();
+            const string expected = "[CardMat] Width:493 Height:110";
 
-            Assert.AreEqual("[CardMat] Width:200 Height:100", sut.ToString());
+            Assert.AreEqual(expected, _sut.ToString());
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            _sut = null;
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackJack.UnitTests", "BlackJack._UnitTests\BlackJack.UnitTests.csproj", "{9F4E27CD-B03A-43F0-95FD-B8F871AFAE79}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackJack.Presentation", "BlackJack.Presentation\BlackJack.Presentation.csproj", "{6BB956AF-8088-4CE0-BEEA-022F96B62C46}"

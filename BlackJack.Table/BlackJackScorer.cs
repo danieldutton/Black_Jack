@@ -87,15 +87,6 @@ namespace BlackJack.Table
             return playingCards.Count() == 2;
         }
 
-        public bool IsBust(int score)
-        {
-            return score > BlackJackScore;
-        }
-
-        public bool BothPlayersBust(int playersScore, int dealersScore)
-        {
-            return IsBust(playersScore) && IsBust(dealersScore);
-        }
 
         public bool PlayersDrawn(int playersScore, int dealersScore)
         {
