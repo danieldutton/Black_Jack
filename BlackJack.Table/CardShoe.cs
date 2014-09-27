@@ -19,8 +19,9 @@ namespace BlackJack.Table
         {
             _cardDeckBuilder = cardDeckBuilder;
             _cardShuffler = cardShuffler; 
-           
+
             MountDeck();
+            ShuffleDeck();
         }
 
         public void MountDeck()
@@ -30,7 +31,7 @@ namespace BlackJack.Table
 
         public void ShuffleDeck()
         {
-            _cardShuffler.Shuffle(CardDeck);    
+            CardDeck = _cardShuffler.Shuffle(CardDeck);    
         }
 
         public List<PlayingCard> GetStartingHand()

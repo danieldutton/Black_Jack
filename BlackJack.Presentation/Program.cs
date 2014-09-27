@@ -33,9 +33,6 @@ namespace BlackJack.Presentation
             //Card Shoe
             ICardShoe cardShoe = new CardShoe(cardDeckBuilder, guidShuffler);
             
-            cardShoe.MountDeck();
-            cardShoe.ShuffleDeck(); //should these be removed from interface and called within card shoe in an init strategy
-
             //Game Players
             var player = new CardPlayer();
             var dealer = new Dealer();

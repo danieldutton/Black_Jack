@@ -946,10 +946,10 @@ namespace BlackJack.UnitTests.Players
 
         #endregion
 
-        //HandValue
+        //AddCardToHand tests here
 
         [Test]
-        public void HasTwoCardsInHand_ReturnTrue_IfTwoCardsInHand()
+        public void HasTwoCard_ReturnTrue_IfTwoCardsInHand()
         {
             var testHand = new List<PlayingCard>
             {
@@ -963,7 +963,7 @@ namespace BlackJack.UnitTests.Players
         }
 
         [Test]
-        public void HasTwoCardsInHand_ReturnFalse_IfLessThanTwoCardsInHand()
+        public void HasTwoCards_ReturnFalse_IfLessThanTwoCardsInHand()
         {
             var testHand = new List<PlayingCard>
             {
@@ -976,7 +976,7 @@ namespace BlackJack.UnitTests.Players
         }
 
         [Test]
-        public void HasTwoCardsInHand_ReturnFalseIfMoreThanTwoCardsInHand()
+        public void HasTwoCards_ReturnFalseIfMoreThanTwoCardsInHand()
         {
             var testHand = new List<PlayingCard>
             {
@@ -993,7 +993,7 @@ namespace BlackJack.UnitTests.Players
         
 
         [Test]
-        public void ScoresAreDrawn_ReturnTrue_IfScoresAreEqual()
+        public void ScoresTied_ReturnTrue_IfScoresAreEqual()
         {
             var sut = new CardPlayer {CurrentScore = 20 };
 
@@ -1001,7 +1001,7 @@ namespace BlackJack.UnitTests.Players
         }
 
         [Test]
-        public void ScoresAreDrawn_ReturnFalseIfScores_NotEqual()
+        public void ScoresTied_ReturnFalseIfScores_NotEqual()
         {
             var sut = new CardPlayer { CurrentScore = 14 };
 
@@ -1009,7 +1009,7 @@ namespace BlackJack.UnitTests.Players
         }
 
         [Test]
-        public void DisposeOfHand_ResetCurrentScoreToZero()
+        public void DisposeHand_ResetCurrentScoreToZero()
         {
             var sut = new CardPlayer { CurrentScore = 10};
 
@@ -1019,7 +1019,7 @@ namespace BlackJack.UnitTests.Players
         }
 
         [Test]
-        public void DisposeOfHand_EmptyCurrentHandToZeroItems()
+        public void DisposeHand_EmptyCurrentHandToZeroItems()
         {
             var testCards = new List<PlayingCard>
             {
