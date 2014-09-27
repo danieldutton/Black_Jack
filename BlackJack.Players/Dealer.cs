@@ -5,25 +5,34 @@ namespace BlackJack.Players
 {
     public class Dealer : CardPlayer
     {
+        private const int stickThreshold = 14;
+        
+        private const int BlackJackScore = 21;
+
+        
         public void Play(ICardShoe cardShoe)
         {
-            const int stickThreshold = 14;
-            const int winningScore = 21;
-
-            if (HasTwoCardsInHand() && HasBlackJack()) return;
-            if (CurrentScore < stickThreshold)
+            if (!StickThresholdReached())
             {
-                while (!IsBust() && CurrentScore < stickThreshold)
+                while (CanStillHit())
                 {
                     PlayingCard card = cardShoe.GetPlayingCard();
                     AddCardToHand(card);                  
 
-                    if (CurrentScore >= stickThreshold && CurrentScore <= winningScore)
-                    {
+                    if (StickThresholdReached())
                         break;
-                    }
                 }
             }
+        }
+
+        private bool CanStillHit()
+        {
+            return !IsBust() && CurrentScore < stickThreshold;
+        }
+
+        private bool StickThresholdReached()
+        {
+            return CurrentScore >= stickThreshold && CurrentScore <= BlackJackScore;
         }
     }
 }

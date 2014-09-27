@@ -30,15 +30,19 @@ namespace BlackJack.Presentation
             _cardShoe = cardShoe;
 
             InitializeComponent();
-            InitialiseAndDisplayCardMats();
+            InitialiseCardMats();
+            DisplayCardMats();
             DisableHitAndStickButtons();
         }
 
-        private void InitialiseAndDisplayCardMats()
+        private void InitialiseCardMats()
         {
-            _dealersMat = new CardMat(matLocation:new Point(5, 80));
-            _playersMat = new CardMat(matLocation:new Point(5, 190));
+            _dealersMat = new CardMat(matLocation: new Point(5, 80));
+            _playersMat = new CardMat(matLocation: new Point(5, 190));    
+        }
 
+        private void DisplayCardMats()
+        {
             Controls.Add(_dealersMat);
             Controls.Add(_playersMat);
         }
@@ -51,24 +55,24 @@ namespace BlackJack.Presentation
         
         private void DealStartingHands_Click(object sender, EventArgs e)
         {
-            RemoveCardsInPlay();
-            ResetGameScoreLabels();
+            RemovePreviousGameCards();
+            RemovePreviousGameScores();
             EnableHitAndStickButtons();
             DisplayStartingHands();
 
             _dealer.Play(_cardShoe);            
         }
 
-        private void RemoveCardsInPlay()
+        private void RemovePreviousGameCards()
         {
-            _dealer.DisposeOfHand();
-            _player.DisposeOfHand();
+            _dealer.DisposeHand();
+            _player.DisposeHand();
 
             _dealersMat.Clear();
             _playersMat.Clear();
         }
 
-        private void ResetGameScoreLabels()
+        private void RemovePreviousGameScores()
         {
             const string defaultText = "--";
 
@@ -134,7 +138,7 @@ namespace BlackJack.Presentation
             int dealersScore = _dealer.CurrentScore;
             int playersScore = _player.CurrentScore;
 
-            AddCardsToMat(_dealer.CurrentHand, _dealersMat);
+            RevealDealersHand();
             
             if (_player.IsBust() && _dealer.IsBust())
                 DisplayGameResults(dealersScore, playersScore, "Both Bust");
@@ -145,14 +149,26 @@ namespace BlackJack.Presentation
             else if (_player.IsBust())
                 DisplayGameResults(dealersScore, playersScore, "Dealer Wins");
 
-            else if (_player.ScoresAreDrawn(dealersScore))
+            else if(_player.HasBlackJack() && _dealer.CurrentScore == 21)
+                DisplayGameResults(dealersScore, playersScore, "BlackJack - Player Wins");
+
+            else if (_dealer.HasBlackJack() && _player.CurrentScore == 21)
+                DisplayGameResults(dealersScore, playersScore, "BlackJack - Dealer Wins");
+
+            else if (_player.ScoresTied(dealersScore))
                 DisplayGameResults(dealersScore, playersScore, "Push");
             else
             {
                 string text = playersScore > dealersScore ? "Player Wins: " : "DealerWins: ";
                 DisplayGameResults(dealersScore, playersScore, text);
             } 
+
             DisableHitAndStickButtons();
+        }
+
+        private void RevealDealersHand()
+        {
+            AddCardsToMat(_dealer.CurrentHand, _dealersMat);    
         }
 
         private void DisplayGameResults(int dealerScore, int playerScore, string statusMessage)

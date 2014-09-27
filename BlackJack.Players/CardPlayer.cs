@@ -25,7 +25,7 @@ namespace BlackJack.Players
         {
             int score = 0;
 
-            if (HasTwoCardsInHand())
+            if (HasTwoCards())
             {
                 foreach (var playingCard in CurrentHand)
                 {
@@ -35,10 +35,10 @@ namespace BlackJack.Players
                         case CardNumber.Queen:
                         case CardNumber.King:
                         case CardNumber.Ten:
-                            score = 10;
+                            score += 10;
                             break;
                         case CardNumber.Ace:
-                            score = 11;
+                            score += 11;
                             break;
                     }
                 }
@@ -49,7 +49,7 @@ namespace BlackJack.Players
             return false;
         }
 
-        public int AddCardToHand(PlayingCard card)
+        public void AddCardToHand(PlayingCard card)
         {
             CurrentHand.Add(card);
             int score = 0;
@@ -79,25 +79,20 @@ namespace BlackJack.Players
                 }
             }
             CurrentScore += score;
-            return score;
-        }
-
-        private void UpdateHandValue()
-        {
             
         }
 
-        public bool HasTwoCardsInHand()
+        public bool HasTwoCards()
         {
             return CurrentHand.Count() == 2;
         }
 
-        public bool ScoresAreDrawn(int scoreToCompare)
+        public bool ScoresTied(int scoreToCompare)
         {
             return CurrentScore == scoreToCompare;
         }
 
-        public void DisposeOfHand()
+        public void DisposeHand()
         {
             CurrentScore = 0;
             CurrentHand.Clear();

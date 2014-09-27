@@ -32,8 +32,919 @@ namespace BlackJack.UnitTests.Players
             Assert.IsFalse(sut.IsBust());
         }
 
-        //HasBlackJack
+        #region Ace Of Clubs Combination
 
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfClubs_KingOfClubs()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.King),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfClubs_QueenOfClubs()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.Queen),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfClubs_JackOfClubs()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.Jack),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfClubs_TenOfClubs()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.Ten),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfClubs_KingOfHearts()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Heart, CardNumber.King),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfClubs_QueenOfHearts()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Heart, CardNumber.Queen),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfClubs_JackOfHearts()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Heart, CardNumber.Jack),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfClubs_TenOfHearts()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Heart, CardNumber.Ten),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfClubs_KingOfSpades()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Spade, CardNumber.King),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfClubs_QueenOfSpades()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Spade, CardNumber.Queen),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfClubs_JackOfSpades()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Spade, CardNumber.Jack),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfClubs_TenOfSpades()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Spade, CardNumber.Ten),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfClubs_KingOfDiamonds()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Diamond, CardNumber.King),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfClubs_QueenOfDiamonds()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Diamond, CardNumber.Queen),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfClubs_JackOfDiamonds()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Diamond, CardNumber.Jack),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfClubs_TenOfDiamonds()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Diamond, CardNumber.Ten),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        #endregion
+
+        #region Ace Of Hearts Combination
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfHearts_KingOfClubs()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.King),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfHearts_QueenOfClubs()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.Queen),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfHearts_JackOfClubs()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.Jack),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfHearts_TenOfClubs()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.Ten),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfHearts_KingOfHearts()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Ace),
+                new PlayingCard(Suit.Heart, CardNumber.King),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfHearts_QueenOfHearts()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Ace),
+                new PlayingCard(Suit.Heart, CardNumber.Queen),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfHearts_JackOfHearts()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Ace),
+                new PlayingCard(Suit.Heart, CardNumber.Jack),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfHearts_TenOfHearts()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Ace),
+                new PlayingCard(Suit.Heart, CardNumber.Ten),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfHearts_KingOfSpades()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Ace),
+                new PlayingCard(Suit.Spade, CardNumber.King),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfHearts_QueenOfSpades()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Ace),
+                new PlayingCard(Suit.Spade, CardNumber.Queen),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfHearts_JackOfSpades()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Ace),
+                new PlayingCard(Suit.Spade, CardNumber.Jack),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfHearts_TenOfSpades()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Ace),
+                new PlayingCard(Suit.Spade, CardNumber.Ten),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfHearts_KingOfDiamonds()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Ace),
+                new PlayingCard(Suit.Diamond, CardNumber.King),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfHearts_QueenOfDiamonds()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Ace),
+                new PlayingCard(Suit.Diamond, CardNumber.Queen),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfHearts_JackOfDiamonds()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Ace),
+                new PlayingCard(Suit.Diamond, CardNumber.Jack),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfHearts_TenOfDiamonds()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Ace),
+                new PlayingCard(Suit.Diamond, CardNumber.Ten),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        #endregion
+
+        #region Ace Of Spades Combination
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfSpades_KingOfClubs()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Spade, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.King),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfSpades_QueenOfClubs()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Spade, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.Queen),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfSpades_JackOfClubs()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Spade, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.Jack),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfSpades_TenOfClubs()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Spade, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.Ten),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfSpades_KingOfHearts()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Spade, CardNumber.Ace),
+                new PlayingCard(Suit.Heart, CardNumber.King),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfSpades_QueenOfHearts()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Spade, CardNumber.Ace),
+                new PlayingCard(Suit.Heart, CardNumber.Queen),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfSpades_JackOfHearts()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Spade, CardNumber.Ace),
+                new PlayingCard(Suit.Heart, CardNumber.Jack),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfSpades_TenOfHearts()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Spade, CardNumber.Ace),
+                new PlayingCard(Suit.Heart, CardNumber.Ten),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfSpades_KingOfSpades()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Spade, CardNumber.Ace),
+                new PlayingCard(Suit.Spade, CardNumber.King),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfSpades_QueenOfSpades()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Spade, CardNumber.Ace),
+                new PlayingCard(Suit.Spade, CardNumber.Queen),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfSpades_JackOfSpades()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Spade, CardNumber.Ace),
+                new PlayingCard(Suit.Spade, CardNumber.Jack),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfSpades_TenOfSpades()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Spade, CardNumber.Ace),
+                new PlayingCard(Suit.Spade, CardNumber.Ten),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfSpades_KingOfDiamonds()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Spade, CardNumber.Ace),
+                new PlayingCard(Suit.Diamond, CardNumber.King),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfSpades_QueenOfDiamonds()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Spade, CardNumber.Ace),
+                new PlayingCard(Suit.Diamond, CardNumber.Queen),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfSpades_JackOfDiamonds()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Spade, CardNumber.Ace),
+                new PlayingCard(Suit.Diamond, CardNumber.Jack),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfSpades_TenOfDiamonds()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Spade, CardNumber.Ace),
+                new PlayingCard(Suit.Diamond, CardNumber.Ten),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        #endregion
+
+        #region Ace Of Diamonds Combination
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfDiamonds_KingOfClubs()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Diamond, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.King),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfDiamonds_QueenOfClubs()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Diamond, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.Queen),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfDiamonds_JackOfClubs()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Diamond, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.Jack),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfDiamonds_TenOfClubs()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Diamond, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.Ten),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfDiamonds_KingOfHearts()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Diamond, CardNumber.Ace),
+                new PlayingCard(Suit.Heart, CardNumber.King),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfDiamonds_QueenOfHearts()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Diamond, CardNumber.Ace),
+                new PlayingCard(Suit.Heart, CardNumber.Queen),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfDiamonds_JackOfHearts()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Diamond, CardNumber.Ace),
+                new PlayingCard(Suit.Heart, CardNumber.Jack),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfDiamonds_TenOfHearts()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Diamond, CardNumber.Ace),
+                new PlayingCard(Suit.Heart, CardNumber.Ten),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        //
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfDiamonds_KingOfSpades()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Diamond, CardNumber.Ace),
+                new PlayingCard(Suit.Spade, CardNumber.King),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfDiamonds_QueenOfSpades()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Diamond, CardNumber.Ace),
+                new PlayingCard(Suit.Spade, CardNumber.Queen),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfDiamonds_JackOfSpades()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Diamond, CardNumber.Ace),
+                new PlayingCard(Suit.Spade, CardNumber.Jack),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfDiamonds_TenOfSpades()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Diamond, CardNumber.Ace),
+                new PlayingCard(Suit.Spade, CardNumber.Ten),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        //
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfDiamonds_KingOfDiamonds()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Diamond, CardNumber.Ace),
+                new PlayingCard(Suit.Diamond, CardNumber.King),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfDiamonds_QueenOfDiamonds()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Diamond, CardNumber.Ace),
+                new PlayingCard(Suit.Diamond, CardNumber.Queen),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfDiamonds_JackOfDiamonds()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Diamond, CardNumber.Ace),
+                new PlayingCard(Suit.Diamond, CardNumber.Jack),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsTrueForCards_AceOfDiamonds_TenOfDiamonds()
+        {
+            var blackJack = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Diamond, CardNumber.Ace),
+                new PlayingCard(Suit.Diamond, CardNumber.Ten),
+            };
+
+            var sut = new CardPlayer { CurrentHand = blackJack };
+
+            Assert.IsTrue(sut.HasBlackJack());
+        }
+
+        #endregion
 
         //HandValue
 
@@ -48,7 +959,7 @@ namespace BlackJack.UnitTests.Players
             
             var sut = new CardPlayer {CurrentHand = testHand};
 
-            Assert.IsTrue(sut.HasTwoCardsInHand());
+            Assert.IsTrue(sut.HasTwoCards());
         }
 
         [Test]
@@ -61,7 +972,7 @@ namespace BlackJack.UnitTests.Players
 
             var sut = new CardPlayer { CurrentHand = testHand };
 
-            Assert.IsFalse(sut.HasTwoCardsInHand());    
+            Assert.IsFalse(sut.HasTwoCards());    
         }
 
         [Test]
@@ -76,15 +987,17 @@ namespace BlackJack.UnitTests.Players
 
             var sut = new CardPlayer { CurrentHand = testHand };
 
-            Assert.IsFalse(sut.HasTwoCardsInHand());    
+            Assert.IsFalse(sut.HasTwoCards());    
         }
+
+        
 
         [Test]
         public void ScoresAreDrawn_ReturnTrue_IfScoresAreEqual()
         {
             var sut = new CardPlayer {CurrentScore = 20 };
 
-            Assert.IsTrue(sut.ScoresAreDrawn(20));
+            Assert.IsTrue(sut.ScoresTied(20));
         }
 
         [Test]
@@ -92,7 +1005,7 @@ namespace BlackJack.UnitTests.Players
         {
             var sut = new CardPlayer { CurrentScore = 14 };
 
-            Assert.IsFalse(sut.ScoresAreDrawn(20));    
+            Assert.IsFalse(sut.ScoresTied(20));    
         }
 
         [Test]
@@ -100,7 +1013,7 @@ namespace BlackJack.UnitTests.Players
         {
             var sut = new CardPlayer { CurrentScore = 10};
 
-            sut.DisposeOfHand();
+            sut.DisposeHand();
 
             Assert.AreEqual(0, sut.CurrentScore);
         }
@@ -116,7 +1029,7 @@ namespace BlackJack.UnitTests.Players
 
             var sut = new CardPlayer {CurrentHand = testCards};
 
-            sut.DisposeOfHand();
+            sut.DisposeHand();
 
             Assert.AreEqual(0, sut.CurrentHand.Count);
         }
