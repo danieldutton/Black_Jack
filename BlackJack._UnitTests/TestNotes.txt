@@ -33,3 +33,8 @@ King_Club			Queen_Club			Jack_Club			Ten_Club
 King_Heart			Queen_Heart			Jack_Heart			Ten_Heart				
 King_Spade			Queen_Spade			Jack_Spade			Ten_Spade
 King_Diamond		Queen_Diamond		Jack_Diamond		Ten_Diamond
+
+
+Method under test - AcceptNewCard()
+
+There are two many hand combinations to test for therefore each card was tested once to checka single card alone scored correctly. So 52 tests.

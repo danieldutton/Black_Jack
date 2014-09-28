@@ -6,6 +6,8 @@ namespace BlackJack.Players
 {
     public class CardPlayer
     {
+        private int _aceCount;
+
         public int CurrentScore { get; set; }
 
         public List<PlayingCard> CurrentHand { get; set; }
@@ -16,18 +18,13 @@ namespace BlackJack.Players
             CurrentHand = new List<PlayingCard>();
         }
 
-        public bool IsBust()
-        {
-            return CurrentScore > 21;
-        }
-
         public bool HasBlackJack()
         {
             int score = 0;
 
             if (HasTwoCards())
             {
-                foreach (var playingCard in CurrentHand)
+                foreach (PlayingCard playingCard in CurrentHand)
                 {
                     switch (playingCard.CardNumber)
                     {
@@ -44,42 +41,46 @@ namespace BlackJack.Players
                 }
             }
 
-            if (score == 21) return true;
-
-            return false;
+            return score == 21;
         }
 
-        public void AddCardToHand(PlayingCard card)
+        public void AcceptNewCard(PlayingCard card)
         {
             CurrentHand.Add(card);
-            int score = 0;
-            int aceCount = 0;
+            int tempScore = 0;
 
-                switch (card.CardNumber)
-                {
-                    case CardNumber.Jack:
-                    case CardNumber.Queen:
-                    case CardNumber.King:
-                        score += 10;
-                        break;
-                    case CardNumber.Ace:
-                        score += 11;
-                        aceCount++;
-                        break;
-                    default:
-                        score += (int)card.CardNumber;
-                        break;
-                }
-            
-            for (int i = 0; i < aceCount; i++)
+            switch (card.CardNumber)
             {
-                if (score > 21)
-                {
-                    score -= 10;
-                }
+                case CardNumber.Jack:
+                case CardNumber.Queen:
+                case CardNumber.King:
+                    tempScore += 10;
+                    break;
+                case CardNumber.Ace:
+                    tempScore += 11;
+                    _aceCount++;
+                    break;
+                default:
+                    tempScore += (int) card.CardNumber;
+                    break;
             }
-            CurrentScore += score;
-            
+            CurrentScore += tempScore;
+
+            AdjustScoreForAces();
+        }
+
+        private void AdjustScoreForAces()
+        {
+            if (CurrentScore > 21)
+            {
+                for (int i = 0; i < _aceCount; i++)
+                    CurrentScore -= 10;
+            }
+        }
+
+        public bool IsBust()
+        {
+            return CurrentScore > 21;
         }
 
         public bool HasTwoCards()
@@ -94,9 +95,9 @@ namespace BlackJack.Players
 
         public void DisposeHand()
         {
+            _aceCount = 0;
             CurrentScore = 0;
             CurrentHand.Clear();
         }
-
     }
 }

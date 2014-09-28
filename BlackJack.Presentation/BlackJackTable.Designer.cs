@@ -48,7 +48,7 @@
             this._lblStatus.AutoSize = true;
             this._lblStatus.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._lblStatus.ForeColor = System.Drawing.Color.White;
-            this._lblStatus.Location = new System.Drawing.Point(297, 103);
+            this._lblStatus.Location = new System.Drawing.Point(277, 103);
             this._lblStatus.Name = "_lblStatus";
             this._lblStatus.Size = new System.Drawing.Size(21, 14);
             this._lblStatus.TabIndex = 10;
@@ -59,7 +59,7 @@
             this._lblDealersScore.AutoSize = true;
             this._lblDealersScore.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._lblDealersScore.ForeColor = System.Drawing.Color.White;
-            this._lblDealersScore.Location = new System.Drawing.Point(392, 75);
+            this._lblDealersScore.Location = new System.Drawing.Point(372, 75);
             this._lblDealersScore.Name = "_lblDealersScore";
             this._lblDealersScore.Size = new System.Drawing.Size(14, 14);
             this._lblDealersScore.TabIndex = 10;
@@ -70,7 +70,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(297, 75);
+            this.label2.Location = new System.Drawing.Point(277, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 14);
             this.label2.TabIndex = 10;
@@ -81,7 +81,7 @@
             this._lblPlayersScore.AutoSize = true;
             this._lblPlayersScore.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._lblPlayersScore.ForeColor = System.Drawing.Color.White;
-            this._lblPlayersScore.Location = new System.Drawing.Point(392, 89);
+            this._lblPlayersScore.Location = new System.Drawing.Point(372, 89);
             this._lblPlayersScore.Name = "_lblPlayersScore";
             this._lblPlayersScore.Size = new System.Drawing.Size(14, 14);
             this._lblPlayersScore.TabIndex = 11;
@@ -92,7 +92,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(297, 89);
+            this.label1.Location = new System.Drawing.Point(277, 89);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 14);
             this.label1.TabIndex = 11;

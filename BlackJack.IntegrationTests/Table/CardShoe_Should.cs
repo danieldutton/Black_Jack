@@ -51,7 +51,7 @@ namespace BlackJack.IntegrationTests.Table
             Queue<PlayingCard> shuffledDeck = _sut.CardDeck;
 
             CollectionAssert.AreNotEqual(orderedDeck, shuffledDeck);
-            CollectionAssert.AreEquivalent(orderedDeck, shuffledDeck);    
+            CollectionAssert.AreNotEquivalent(orderedDeck, shuffledDeck);    
         }
 
         [Test]

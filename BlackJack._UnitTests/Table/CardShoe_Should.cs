@@ -50,12 +50,12 @@ namespace BlackJack.UnitTests.Table
         }
 
         [Test]
-        public void ShuffleCardDeck_CallShuffle_ExactlyOnce()
+        public void ShuffleCardDeck_CallShuffle_Twice_ConstructorAndMethodCall()
         {
             _sut.ShuffleDeck();
 
             _fakeShuffler.Verify(x => x.Shuffle(It.IsAny<IEnumerable<PlayingCard>>()), 
-                Times.Once());
+                Times.Exactly(2));
         }
 
         [Test]

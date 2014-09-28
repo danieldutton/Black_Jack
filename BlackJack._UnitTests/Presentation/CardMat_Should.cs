@@ -108,7 +108,7 @@ namespace BlackJack.UnitTests.Presentation
         {
             var card = new PlayingCard(Suit.Club, CardNumber.Ace);
 
-            _sut.PlaceCard(new PlayingCard(Suit.Club, CardNumber.Ace));
+            _sut.PlaceCard(card);
 
             Assert.AreEqual(0, _sut.Controls.GetChildIndex(card));
         }

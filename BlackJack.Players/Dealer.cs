@@ -17,7 +17,7 @@ namespace BlackJack.Players
                 while (CanStillHit())
                 {
                     PlayingCard card = cardShoe.GetPlayingCard();
-                    AddCardToHand(card);                  
+                    AcceptNewCard(card);                  
 
                     if (StickThresholdReached())
                         break;
