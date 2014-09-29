@@ -37,5 +37,5 @@ King_Diamond		Queen_Diamond		Jack_Diamond		Ten_Diamond
 
 Method under test - AcceptNewCard()
 
-There are two many hand combinations to test for therefore each card was tested once to check a single card alone scored correctly. So 52 tests.
-A set of ten random hands.  Five with aces and five without were then tested for scores to check they were adding correctly.
+There are to many hand combinations to test for, therefore each card was tested once to check a single card alone scored correctly. So 52 tests.
+Aces were scored from one to four individually and then ten random hands (including one or more aces) were including to round of the validation.

@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using BlackJack.Players;
+using NUnit.Framework;
 
 namespace BlackJack.UnitTests.Players
 {
@@ -6,9 +7,21 @@ namespace BlackJack.UnitTests.Players
     public class Dealer_Should
     {
         [Test]
-        public void Play_StickWithHand_IfIsBlackJack()
+        public void Play_IfStickThresholdReached_CallGetPlayingCard_ZeroTimes()
         {
+            var sut = new Dealer();
+        }
 
+        [Test]
+        public void Play_IfStickThresholdReached_AddNoMoreCardsToHand()
+        {
+            var sut = new Dealer();
+        }
+
+        [Test]
+        public void Play_()
+        {
+            
         }
     }
 }
