@@ -37,5 +37,16 @@ King_Diamond		Queen_Diamond		Jack_Diamond		Ten_Diamond
 
 Method under test - AcceptNewCard()
 
-There are to many hand combinations to test for, therefore each card was tested once to check a single card alone scored correctly. So 52 tests.
+There are to many hand combinations to test for, therefore each card was tested once to check a single card alone scored correctly. All 52 Cards.
 Aces were scored from one to four individually and then ten random hands (including one or more aces) were including to round of the validation.
+
+
+Dealer_Should
+-------------
+
+Method under test - Play()
+
+The test strategy simply checks if the the play threshold has been reached.  If it hasn't then the player can draw another card.  Each test bar the first 
+two, set's the CurrentScore to less than the threshold and allows for an ace worth one point to be drawn every time.  As the CurrentScore only
+increases by one point at a time, this allows us to test how many times a new card was drawn and how many new cards were added to the current hand of five cards
+simply by decrementing the Dealer's score by one point every time.

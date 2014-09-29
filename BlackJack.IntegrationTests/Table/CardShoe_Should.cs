@@ -71,7 +71,7 @@ namespace BlackJack.IntegrationTests.Table
         }
 
         [Test]
-        public void TakeSinglePlayingCard_ReturnOnePlayingCard()
+        public void GetPlayingCard_ReturnOnePlayingCard()
         {
             PlayingCard playingCard = _sut.GetPlayingCard();
 
@@ -79,7 +79,7 @@ namespace BlackJack.IntegrationTests.Table
         }
 
         [Test]
-        public void TakeSinglePlayingCard_ReduceProperty_CurrentDeckInPlayCount_ByOnePlayingCard()
+        public void GetPlayingCard_ReduceProperty_CurrentDeckInPlayCount_ByOnePlayingCard()
         {
             _sut.GetStartingHand();
 

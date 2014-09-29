@@ -12,7 +12,7 @@ namespace BlackJack.UnitTests.Table
     [TestFixture]
     public class CardShoe_Should
     {
-        private Mock<ICardDeckBuilder> _fakeCardDeckGenerator;
+        private Mock<ICardDeckBuilder> _fakeCardDeckBuilder;
 
         private Mock<IShuffler<PlayingCard>> _fakeShuffler;
 
@@ -22,16 +22,16 @@ namespace BlackJack.UnitTests.Table
         [SetUp]
         public void Init()
         {
-            _fakeCardDeckGenerator = new Mock<ICardDeckBuilder>();
+            _fakeCardDeckBuilder = new Mock<ICardDeckBuilder>();
             _fakeShuffler = new Mock<IShuffler<PlayingCard>>();
             
-            _sut = new CardShoe(_fakeCardDeckGenerator.Object, _fakeShuffler.Object);
+            _sut = new CardShoe(_fakeCardDeckBuilder.Object, _fakeShuffler.Object);
         }
 
         [Test]
         public void MountDeck_CallGetCardDeck_ExactlyOnce()
         {
-            _fakeCardDeckGenerator.Verify(x => x.GetCardDeck(), Times.Once);
+            _fakeCardDeckBuilder.Verify(x => x.GetCardDeck(), Times.Once);
         }
 
         [Test]
@@ -39,7 +39,7 @@ namespace BlackJack.UnitTests.Table
         {
             Queue<PlayingCard> stubDeck = Mother.GetTestDeckFiveMixedPlayingCards();
             
-            _fakeCardDeckGenerator.Setup(x => x.GetCardDeck())
+            _fakeCardDeckBuilder.Setup(x => x.GetCardDeck())
                 .Returns(()=> stubDeck);
             
             _sut.MountDeck();
@@ -89,7 +89,7 @@ namespace BlackJack.UnitTests.Table
         [Test]
         public void GetPlayingCard_MountNewShuffledCardDeck_IfNoCardsLeft()
         {
-            _fakeCardDeckGenerator.Setup(x => x.GetCardDeck()).Returns(Mother.GetTestDeckFiveMixedPlayingCards);
+            _fakeCardDeckBuilder.Setup(x => x.GetCardDeck()).Returns(Mother.GetTestDeckFiveMixedPlayingCards);
             _fakeShuffler.Setup(x => x.Shuffle(It.IsAny<IEnumerable<PlayingCard>>()))
                 .Returns(Mother.GetTestDeckFiveMixedPlayingCards);
 
@@ -120,7 +120,7 @@ namespace BlackJack.UnitTests.Table
         [TearDown]
         public void TearDown()
         {
-            _fakeCardDeckGenerator = null;
+            _fakeCardDeckBuilder = null;
             _fakeShuffler = null;
             _sut = null;
         }
