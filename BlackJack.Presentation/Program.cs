@@ -19,10 +19,9 @@ namespace BlackJack.Presentation
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-            //ResourceHandler
             IResourceHandler resourceHandler = new ResourceHandler();
 
-            //CardDeckBuilder
+            //Construct the card deck builder
             ICardDeckGenerator cardDeckGenerator = new PlainCardDeckGenerator();
             ICardImageMapper<PlayingCard> cardImageMapper = new CardImageMapper(resourceHandler);
             ICardDeckBuilder cardDeckBuilder = new CardDeckBuilder(cardDeckGenerator, cardImageMapper);

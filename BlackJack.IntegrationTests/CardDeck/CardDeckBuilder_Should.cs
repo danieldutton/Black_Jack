@@ -10,7 +10,7 @@ using System.Linq;
 namespace BlackJack.IntegrationTests.CardDeck
 {
     [TestFixture]
-    public class CardDeckGenerator_Should
+    public class CardDeckBuilder_Should
     {
         private ICardDeckGenerator _cardDeckGenerator;
 
@@ -254,7 +254,7 @@ namespace BlackJack.IntegrationTests.CardDeck
         #region Images Diamond
 
         [Test]
-        public void GetCardDeck_AceOfDiamonds_ImageMappedCorrect() //this is not running
+        public void GetCardDeck_AceOfDiamonds_ImageMappedCorrect()
         {
             PlayingCard card = _sut.GetCardDeck().ElementAt(13);
 

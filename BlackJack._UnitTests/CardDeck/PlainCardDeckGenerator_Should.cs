@@ -26,7 +26,7 @@ namespace BlackJack.UnitTests.CardDeck
         }
 
         [Test]
-        public void GetPlainCardDeck_ReturnExactly_52PlayingCards()
+        public void GetPlainCardDeck_ReturnExactly52PlayingCards()
         {
             _fakeImageMapper.Setup(x => x.MapCardImages(It.IsAny<List<PlayingCard>>()))
                 .Returns(() => new List<PlayingCard>());
@@ -37,7 +37,7 @@ namespace BlackJack.UnitTests.CardDeck
         }
 
         [Test]
-        public void GetPlainCardDeck_FirstSetOf13Cards_AreofSuit_Club()
+        public void GetPlainCardDeck_FirstSetOf13Cards_AreofSuitClub()
         {
             IEnumerable<PlayingCard> cardDeck = _sut.GetPlainCardDeck();
 
@@ -58,7 +58,7 @@ namespace BlackJack.UnitTests.CardDeck
         }
 
         [Test]
-        public void GetPlainCardDeck_SecondSetOf13Cards_AreofSuit_Diamond()
+        public void GetPlainCardDeck_SecondSetOf13CardsAreofSuit_Diamond()
         {
             IEnumerable<PlayingCard> cardDeck = _sut.GetPlainCardDeck();
 
@@ -81,7 +81,7 @@ namespace BlackJack.UnitTests.CardDeck
         }
 
         [Test]
-        public void GetPlainCardDeck_ThirdSetOf13Cards_AreofSuit_Heart()
+        public void GetPlainCardDeck_ThirdSetOf13CardsAreofSuit_Heart()
         {
             IEnumerable<PlayingCard> cardDeck = _sut.GetPlainCardDeck();
 
@@ -103,7 +103,7 @@ namespace BlackJack.UnitTests.CardDeck
         }
 
         [Test]
-        public void GetPlainCardDeck_FourthSetOf13Cards_AreofSuit_Spade()
+        public void GetPlainCardDeck_FourthSetOf13CardsAreofSuit_Spade()
         {
             IEnumerable<PlayingCard> cardDeck = _sut.GetPlainCardDeck(); 
 

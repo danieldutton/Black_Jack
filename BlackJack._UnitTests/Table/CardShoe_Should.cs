@@ -29,13 +29,13 @@ namespace BlackJack.UnitTests.Table
         }
 
         [Test]
-        public void MountNewCardDeck_CallGetCardDeck_ExactlyOnce()
+        public void MountDeck_CallGetCardDeck_ExactlyOnce()
         {
             _fakeCardDeckGenerator.Verify(x => x.GetCardDeck(), Times.Once);
         }
 
         [Test]
-        public void MountNewCardDeck_InitialiseCardDeckProperty_WithReturnedCardDeck()
+        public void MountDeck_InitialiseCardDeckProperty_WithReturnedCardDeck()
         {
             Queue<PlayingCard> stubDeck = Mother.GetTestDeckFiveMixedPlayingCards();
             
@@ -50,7 +50,7 @@ namespace BlackJack.UnitTests.Table
         }
 
         [Test]
-        public void ShuffleCardDeck_CallShuffle_Twice_ConstructorAndMethodCall()
+        public void ShuffleDeck_CallShuffle_Twice_ConstructorAndMethodCall()
         {
             _sut.ShuffleDeck();
 
@@ -84,22 +84,6 @@ namespace BlackJack.UnitTests.Table
 
             Assert.AreEqual(Suit.Heart, startHand[1].Suit);
             Assert.AreEqual(CardNumber.Seven, startHand[1].CardNumber);
-        }
-
-        [Test]
-        public void GetPlayingCard_MountNewCardDeck_IfNoCardsLeft()
-        {
-            _fakeCardDeckGenerator.Setup(x => x.GetCardDeck()).Returns(Mother.GetTestDeckFiveMixedPlayingCards);
-
-            var emptyDeck = new Queue<PlayingCard>();
-            _sut.CardDeck = emptyDeck;
-
-             _sut.GetPlayingCard();
-
-            var replacedDeck = _sut.CardDeck;
-
-            Assert.AreEqual(4, replacedDeck.Count);
-
         }
 
         [Test]

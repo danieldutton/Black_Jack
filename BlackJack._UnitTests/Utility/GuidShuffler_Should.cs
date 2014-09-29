@@ -16,7 +16,7 @@ namespace BlackJack.UnitTests.Utility
         [SetUp]
         public void Init()
         {
-            _orderedCardDeck = Mother.GetUnshuffledCardDeck();
+            _orderedCardDeck = Mother.GetOrderedCardDeck();
             _sut = new GuidShuffler<PlayingCard>();
         }
 

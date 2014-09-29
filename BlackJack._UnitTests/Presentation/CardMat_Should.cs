@@ -163,7 +163,7 @@ namespace BlackJack.UnitTests.Presentation
         }
 
         [Test]
-        public void ResetSetPropertyLastCardXPosition_ToZero()
+        public void Reset_SetPropertyLastCardXPosition_ToZero()
         {
             _sut.Clear();
 

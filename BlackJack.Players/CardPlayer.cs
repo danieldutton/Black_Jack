@@ -71,10 +71,10 @@ namespace BlackJack.Players
 
         private void AdjustScoreForAces()
         {
-            if (CurrentScore > 21)
+            while ((CurrentScore > 21) && (_aceCount > 0))
             {
-                for (int i = 0; i < _aceCount; i++)
-                    CurrentScore -= 10;
+                CurrentScore -= 10;
+                _aceCount--;
             }
         }
 

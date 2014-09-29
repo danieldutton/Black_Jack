@@ -5,7 +5,7 @@ namespace BlackJack.Players
 {
     public class Dealer : CardPlayer
     {
-        private const int stickThreshold = 14;
+        private const int StickThreshold = 16;
         
         private const int BlackJackScore = 21;
 
@@ -27,12 +27,12 @@ namespace BlackJack.Players
 
         private bool CanStillHit()
         {
-            return !IsBust() && CurrentScore < stickThreshold;
+            return !IsBust() && CurrentScore < StickThreshold;
         }
 
         private bool StickThresholdReached()
         {
-            return CurrentScore >= stickThreshold && CurrentScore <= BlackJackScore;
+            return CurrentScore >= StickThreshold && CurrentScore <= BlackJackScore;
         }
     }
 }
