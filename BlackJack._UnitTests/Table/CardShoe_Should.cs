@@ -98,9 +98,9 @@ namespace BlackJack.UnitTests.Table
 
             _sut.GetPlayingCard();
 
-            var replacedDeck = _sut.CardDeck;
+            Queue<PlayingCard> replacedDeck = _sut.CardDeck;
 
-            CollectionAssert.AreEqual(replacedDeck, Mother.GetTestDeckFiveMixedPlayingCards());
+            Assert.AreEqual(4, replacedDeck.Count);
         }
 
         [Test]
