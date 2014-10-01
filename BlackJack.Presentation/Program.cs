@@ -22,9 +22,9 @@ namespace BlackJack.Presentation
             IResourceHandler resourceHandler = new ResourceHandler();
 
             //Construct the card deck builder
-            ICardDeckGenerator cardDeckGenerator = new PlainCardDeckGenerator();
+            ICardSuitBuilder cardSuitBuilder = new CardSuitBuilder();
             ICardImageMapper<PlayingCard> cardImageMapper = new CardImageMapper(resourceHandler);
-            ICardDeckBuilder cardDeckBuilder = new CardDeckBuilder(cardDeckGenerator, cardImageMapper);
+            ICardDeckBuilder cardDeckBuilder = new CardDeckBuilder(cardSuitBuilder, cardImageMapper);
 
             //Shuffle Strategy
             IShuffler<PlayingCard> guidShuffler = new GuidShuffler<PlayingCard>();

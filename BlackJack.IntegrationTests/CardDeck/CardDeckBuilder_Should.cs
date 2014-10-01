@@ -12,7 +12,7 @@ namespace BlackJack.IntegrationTests.CardDeck
     [TestFixture]
     public class CardDeckBuilder_Should
     {
-        private ICardDeckGenerator _cardDeckGenerator;
+        private ICardSuitBuilder _cardSuitBuilder;
 
         private IResourceHandler _resourceHandler;
 
@@ -25,11 +25,11 @@ namespace BlackJack.IntegrationTests.CardDeck
         [SetUp]
         public void Init()
         {
-            _cardDeckGenerator = new PlainCardDeckGenerator();
+            _cardSuitBuilder = new CardSuitBuilder();
             _resourceHandler = new ResourceHandler();
             _cardImageMapper = new CardImageMapper(_resourceHandler);
            
-            _sut = new CardDeckBuilder(_cardDeckGenerator, _cardImageMapper);
+            _sut = new CardDeckBuilder(_cardSuitBuilder, _cardImageMapper);
             
             _expectedCardValueOrder = Mother.ExpectedSuitOrder();
         }
@@ -617,7 +617,7 @@ namespace BlackJack.IntegrationTests.CardDeck
         [TearDown]
         public void TearDown()
         {
-            _cardDeckGenerator = null;
+            _cardSuitBuilder = null;
             _resourceHandler = null;
             _cardImageMapper = null;
             _sut = null;

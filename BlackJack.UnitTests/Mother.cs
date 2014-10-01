@@ -56,7 +56,7 @@ namespace BlackJack.UnitTests
 
         public static Queue<PlayingCard> GetOrderedCardDeck()
         {
-            var cardSuitGenerator = new PlainCardDeckGenerator();
+            var cardSuitGenerator = new CardSuitBuilder();
             var cardImageMapper = new CardImageMapper(new ResourceHandler());
             var cardDeckGenerator = new CardDeckBuilder(cardSuitGenerator, cardImageMapper);
 

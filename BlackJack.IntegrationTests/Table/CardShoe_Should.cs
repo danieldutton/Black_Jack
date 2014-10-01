@@ -15,7 +15,7 @@ namespace BlackJack.IntegrationTests.Table
     {
         private ResourceHandler _resourceHandler;
 
-        private ICardDeckGenerator _cardDeckGenerator;
+        private ICardSuitBuilder _cardSuitBuilder;
 
         private ICardImageMapper<PlayingCard> _cardImageMapper;        
 
@@ -29,9 +29,9 @@ namespace BlackJack.IntegrationTests.Table
         public void Init()
         {
             _resourceHandler = new ResourceHandler();
-            _cardDeckGenerator = new PlainCardDeckGenerator();
+            _cardSuitBuilder = new CardSuitBuilder();
             _cardImageMapper = new CardImageMapper(_resourceHandler);
-            _cardDeckBuilder = new CardDeckBuilder(_cardDeckGenerator, _cardImageMapper);
+            _cardDeckBuilder = new CardDeckBuilder(_cardSuitBuilder, _cardImageMapper);
             _shuffler = new GuidShuffler<PlayingCard>();
             _sut = new CardShoe(_cardDeckBuilder, _shuffler);
         }
@@ -109,7 +109,7 @@ namespace BlackJack.IntegrationTests.Table
         public void TearDown()
         {
             _resourceHandler = null;
-            _cardDeckGenerator = null;
+            _cardSuitBuilder = null;
             _cardImageMapper = null;
             _cardDeckBuilder = null;
             _shuffler = null;

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace BlackJack.CardDeck
 {
-    public class PlainCardDeckGenerator : ICardDeckGenerator 
+    public class CardSuitBuilder : ICardSuitBuilder 
     {
         public IEnumerable<PlayingCard> GetPlainCardDeck()
         {

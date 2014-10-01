@@ -10,7 +10,7 @@ namespace BlackJack.UnitTests.CardDeck
     [TestFixture]
     public class CardDeckBuilder_Should
     {
-        private Mock<ICardDeckGenerator> _fakeSuitBuilder;
+        private Mock<ICardSuitBuilder> _fakeSuitBuilder;
 
         private Mock<ICardImageMapper<PlayingCard>>  _fakeImageMapper;
 
@@ -19,7 +19,7 @@ namespace BlackJack.UnitTests.CardDeck
         [SetUp]
         public void Init()
         {
-            _fakeSuitBuilder = new Mock<ICardDeckGenerator>();
+            _fakeSuitBuilder = new Mock<ICardSuitBuilder>();
             _fakeImageMapper = new Mock<ICardImageMapper<PlayingCard>>();
             
             _sut = new CardDeckBuilder(_fakeSuitBuilder.Object, _fakeImageMapper.Object);

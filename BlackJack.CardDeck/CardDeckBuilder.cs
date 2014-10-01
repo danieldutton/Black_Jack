@@ -6,20 +6,20 @@ namespace BlackJack.CardDeck
 {
     public class CardDeckBuilder : ICardDeckBuilder
     {
-        private readonly ICardDeckGenerator _cardDeckGenerator;
+        private readonly ICardSuitBuilder _cardSuitBuilder;
         
         private readonly ICardImageMapper<PlayingCard> _cardImageMapper;
 
 
-        public CardDeckBuilder(ICardDeckGenerator cardDeckGenerator, ICardImageMapper<PlayingCard> cardImageMapper)
+        public CardDeckBuilder(ICardSuitBuilder cardSuitBuilder, ICardImageMapper<PlayingCard> cardImageMapper)
         {
-            _cardDeckGenerator = cardDeckGenerator;
+            _cardSuitBuilder = cardSuitBuilder;
             _cardImageMapper = cardImageMapper;
         }
 
         public Queue<PlayingCard> GetCardDeck()
         {
-            IEnumerable<PlayingCard> plainCardDeck = _cardDeckGenerator.GetPlainCardDeck();
+            IEnumerable<PlayingCard> plainCardDeck = _cardSuitBuilder.GetPlainCardDeck();
             IEnumerable<PlayingCard> cardDeckWithImages = _cardImageMapper.MapCardImages(plainCardDeck);
 
             return new Queue<PlayingCard>(cardDeckWithImages);

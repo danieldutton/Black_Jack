@@ -9,11 +9,11 @@ using System.Linq;
 namespace BlackJack.UnitTests.CardDeck
 {
     [TestFixture]
-    public class PlainCardDeckGenerator_Should
+    public class CardSuitBuilder_Should
     {
         private Mock<ICardImageMapper<PlayingCard>>  _fakeImageMapper; 
 
-        private ICardDeckGenerator _sut;
+        private ICardSuitBuilder _sut;
 
         private IEnumerable<CardNumber> _expectedCardValueOrder;
 
@@ -21,7 +21,7 @@ namespace BlackJack.UnitTests.CardDeck
         public void Init()
         {
             _fakeImageMapper = new Mock<ICardImageMapper<PlayingCard>>();
-            _sut = new PlainCardDeckGenerator();
+            _sut = new CardSuitBuilder();
             _expectedCardValueOrder = Mother.ExpectedSuitOrder();
         }
 
