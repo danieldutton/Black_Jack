@@ -37,7 +37,7 @@ namespace BlackJack.UnitTests.Table
         [Test]
         public void MountDeck_InitialiseCardDeckProperty_WithReturnedCardDeck()
         {
-            Queue<PlayingCard> stubDeck = Mother.GetTestDeckFiveMixedPlayingCards();
+            Queue<PlayingCard> stubDeck = Mother.GetTestDeck_FiveMixedPlayingCards();
             
             _fakeCardDeckBuilder.Setup(x => x.GetCardDeck())
                 .Returns(()=> stubDeck);
@@ -61,7 +61,7 @@ namespace BlackJack.UnitTests.Table
         [Test]
         public void GetStartingHand_ReturnTwoPlayingCards()
         {
-            Queue<PlayingCard> stubDeck = Mother.GetTestDeckFiveMixedPlayingCards();
+            Queue<PlayingCard> stubDeck = Mother.GetTestDeck_FiveMixedPlayingCards();
 
             _sut.CardDeck = stubDeck;
             
@@ -73,7 +73,7 @@ namespace BlackJack.UnitTests.Table
         [Test]
         public void GetStartingHand_ReturnTheCorrectTwoPlayingCards()
         {
-            Queue<PlayingCard> stubDeck = Mother.GetTestDeckFiveMixedPlayingCards();
+            Queue<PlayingCard> stubDeck = Mother.GetTestDeck_FiveMixedPlayingCards();
 
             _sut.CardDeck = stubDeck;
 
@@ -89,9 +89,9 @@ namespace BlackJack.UnitTests.Table
         [Test]
         public void GetPlayingCard_MountNewShuffledCardDeck_IfNoCardsLeft()
         {
-            _fakeCardDeckBuilder.Setup(x => x.GetCardDeck()).Returns(Mother.GetTestDeckFiveMixedPlayingCards);
+            _fakeCardDeckBuilder.Setup(x => x.GetCardDeck()).Returns(Mother.GetTestDeck_FiveMixedPlayingCards);
             _fakeShuffler.Setup(x => x.Shuffle(It.IsAny<IEnumerable<PlayingCard>>()))
-                .Returns(Mother.GetTestDeckFiveMixedPlayingCards);
+                .Returns(Mother.GetTestDeck_FiveMixedPlayingCards);
 
             var emptyDeck = new Queue<PlayingCard>();
             _sut.CardDeck = emptyDeck;
@@ -106,7 +106,7 @@ namespace BlackJack.UnitTests.Table
         [Test]
         public void GetPlayingCard_ReturnOneSinglePlayingCard()
         {
-            Queue<PlayingCard> stubDeck = Mother.GetTestDeckFiveMixedPlayingCards();
+            Queue<PlayingCard> stubDeck = Mother.GetTestDeck_FiveMixedPlayingCards();
 
             _sut.CardDeck = stubDeck;
 

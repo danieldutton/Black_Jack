@@ -27,7 +27,7 @@ namespace BlackJack.IntegrationTests
             return expected;
         }
 
-        public static Queue<PlayingCard> GetTestDeckFiveMixedPlayingCards()
+        public static Queue<PlayingCard> GetTestDeck_FiveMixedPlayingCards()
         {
             var testDeck = new Queue<PlayingCard>();
 

@@ -29,7 +29,7 @@ namespace BlackJack.UnitTests
             return expected;
         }
 
-        public static Queue<PlayingCard> GetTestDeckFiveMixedPlayingCards()
+        public static Queue<PlayingCard> GetTestDeck_FiveMixedPlayingCards()
         {
             var testDeck = new Queue<PlayingCard>();
 
@@ -60,7 +60,7 @@ namespace BlackJack.UnitTests
             var cardImageMapper = new CardImageMapper(new ResourceHandler());
             var cardDeckGenerator = new CardDeckBuilder(cardSuitGenerator, cardImageMapper);
 
-            var orderedCardDeck = cardDeckGenerator.GetCardDeck();
+            Queue<PlayingCard> orderedCardDeck = cardDeckGenerator.GetCardDeck();
 
             return orderedCardDeck;
         } 

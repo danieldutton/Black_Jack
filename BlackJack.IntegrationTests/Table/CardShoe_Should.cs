@@ -86,6 +86,25 @@ namespace BlackJack.IntegrationTests.Table
             Assert.AreEqual(50, _sut.CardDeck.Count);
         }
 
+        [Test]
+        public void GetPlayingCard_MountNewShuffledCardDeck_IfNoCardsLeft()
+        {
+            DrawCards(52);
+            Assert.AreEqual(0, _sut.CardDeck.Count);
+
+            _sut.GetPlayingCard();
+
+            Assert.AreEqual(51, _sut.CardDeck.Count);
+        }
+
+        public void DrawCards(int cardCount)
+        {
+            for (int i = 0; i < cardCount; i++)
+            {
+                _sut.GetPlayingCard();
+            }
+        }
+
         [TearDown]
         public void TearDown()
         {

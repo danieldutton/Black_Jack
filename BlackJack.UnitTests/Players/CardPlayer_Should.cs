@@ -3,7 +3,6 @@ using BlackJack.Players;
 using NUnit.Framework;
 using System.Collections.Generic;
 
-
 namespace BlackJack.UnitTests.Players
 {
     [TestFixture]
@@ -37,7 +36,109 @@ namespace BlackJack.UnitTests.Players
 
         #endregion
 
-        #region HasBlackJack - Ace Of Clubs Combination
+        #region HasBlackJack() - Misc False 
+
+        [Test]
+        public void HasBlackJack_ReturnsFalse_IfLessThanTwoCardsInHand()
+        {
+            var testCards = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+            };
+
+            var sut = new CardPlayer { CurrentHand = testCards };
+
+            Assert.IsFalse(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsFalse_IfMoreThanTwoCardsInHand()
+        {
+            var testCards = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.King),
+                new PlayingCard(Suit.Club, CardNumber.Two),
+            };
+
+            var sut = new CardPlayer {CurrentHand = testCards};
+
+            Assert.IsFalse(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsFalseIfNotBlackJack_TestOne()
+        {
+            var testCards = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Three),
+                new PlayingCard(Suit.Club, CardNumber.Seven),
+            };
+
+            var sut = new CardPlayer { CurrentHand = testCards };
+
+            Assert.IsFalse(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsFalseIfNotBlackJack_TestTwo()
+        {
+            var testCards = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.Nine),
+                new PlayingCard(Suit.Diamond, CardNumber.Eight),
+            };
+
+            var sut = new CardPlayer { CurrentHand = testCards };
+
+            Assert.IsFalse(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsFalseIfNotBlackJack_TestThree()
+        {
+            var testCards = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Heart, CardNumber.King),
+                new PlayingCard(Suit.Heart, CardNumber.Six),
+            };
+
+            var sut = new CardPlayer { CurrentHand = testCards };
+
+            Assert.IsFalse(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsFalseIfNotBlackJack_TestFour()
+        {
+            var testCards = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Queen),
+                new PlayingCard(Suit.Club, CardNumber.Three),
+            };
+
+            var sut = new CardPlayer { CurrentHand = testCards };
+
+            Assert.IsFalse(sut.HasBlackJack());
+        }
+
+        [Test]
+        public void HasBlackJack_ReturnsFalseIfNotBlackJack_TestFive()
+        {
+            var testCards = new List<PlayingCard>
+            {
+                new PlayingCard(Suit.Club, CardNumber.Ace),
+                new PlayingCard(Suit.Club, CardNumber.Two),
+            };
+
+            var sut = new CardPlayer { CurrentHand = testCards };
+
+            Assert.IsFalse(sut.HasBlackJack());
+        }
+
+        #endregion
+
+        #region HasBlackJack() - Ace of Clubs BlackJack combination
 
         [Test]
         public void HasBlackJack_ReturnsTrueForCards_AceOfClubs_KingOfClubs()
@@ -265,7 +366,7 @@ namespace BlackJack.UnitTests.Players
 
         #endregion
 
-        #region HasBlackJack - Ace Of Diamonds Combination
+        #region HasBlackJack() - Ace Of Diamonds BlackJack combination
 
         [Test]
         public void HasBlackJack_ReturnsTrueForCards_AceOfDiamonds_KingOfClubs()
@@ -493,7 +594,7 @@ namespace BlackJack.UnitTests.Players
 
         #endregion
 
-        #region HasBlackJack - Ace Of Hearts Combination
+        #region HasBlackJack() - Ace Of Hearts BlackJack combination
 
         [Test]
         public void HasBlackJack_ReturnsTrueForCards_AceOfHearts_KingOfClubs()
@@ -721,7 +822,7 @@ namespace BlackJack.UnitTests.Players
 
         #endregion
 
-        #region HasBlackJack - Ace Of Spades Combination
+        #region HasBlackJack() - Ace Of Spades BlackJack combination
 
         [Test]
         public void HasBlackJack_ReturnsTrueForCards_AceOfSpades_KingOfClubs()
@@ -949,7 +1050,7 @@ namespace BlackJack.UnitTests.Players
 
         #endregion
 
-        #region AcceptNewCard - SingleCards, Clubs
+        #region AcceptNewCard() - Single card scoring, Club
 
         [Test]
         public void AcceptNewCard_Score11For_AceOfClubs()
@@ -1083,7 +1184,7 @@ namespace BlackJack.UnitTests.Players
 
         #endregion
 
-        #region AcceptNewCard - SingleCards, Diamond
+        #region AcceptNewCard() - Single card scoring, Diamond
 
         [Test]
         public void AcceptNewCard_Score11For_AceOfDiamonds()
@@ -1217,7 +1318,7 @@ namespace BlackJack.UnitTests.Players
 
         #endregion
 
-        #region AcceptNewCard - SingleCards, Heart
+        #region AcceptNewCard() - Single card scoring, Heart
 
         [Test]
         public void AcceptNewCard_Score11For_AceOfHearts()
@@ -1351,7 +1452,7 @@ namespace BlackJack.UnitTests.Players
 
         #endregion
 
-        #region AcceptNewCard - SingleCards, Spade
+        #region AcceptNewCard() - Single card scoring, Spade
 
         [Test]
         public void AcceptNewCard_Score11For_AceOfSpades()
@@ -1485,7 +1586,7 @@ namespace BlackJack.UnitTests.Players
 
         #endregion
 
-        #region AcceptNewCard - Multiple Cards - Aces Only
+        #region AcceptNewCard() - Multiple card scoring, Aces only
 
         [Test]
         public void AcceptNewCard_OneSingleAceScores_11()
@@ -1535,7 +1636,7 @@ namespace BlackJack.UnitTests.Players
 
         #endregion
 
-        #region AcceptNewCard - Random Hands with ace scoring
+        #region AcceptNewCard() - Multiple card scoring, Random hands
 
         [Test]
         public void AcceptNewCard_HandTotalsCorrectly_Test1()
@@ -1663,8 +1764,7 @@ namespace BlackJack.UnitTests.Players
 
         #endregion
 
-
-        #region HasTwoCards
+        #region HasTwoCards()
 
         [Test]
         public void HasTwoCards_ReturnTrue_IfTwoCardsInHand()
@@ -1710,7 +1810,7 @@ namespace BlackJack.UnitTests.Players
 
         #endregion
 
-        #region ScoresTied
+        #region ScoresTied()
 
         [Test]
         public void ScoresTied_ReturnTrue_IfScoresAreEqual()
@@ -1730,7 +1830,7 @@ namespace BlackJack.UnitTests.Players
 
         #endregion
 
-        #region DisposeHand
+        #region DisposeHand()
 
         [Test]
         public void DisposeHand_ResetCurrentScoreToZero()

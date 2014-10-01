@@ -17,7 +17,7 @@ namespace BlackJack.UnitTests.Players
         [SetUp]
         public void Init()
         {
-            _sut = new Dealer {CurrentHand = Mother.GetTestDeckFiveMixedPlayingCards().ToList()};
+            _sut = new Dealer {CurrentHand = Mother.GetTestDeck_FiveMixedPlayingCards().ToList()};
             _fakeCardShoe = new Mock<ICardShoe>();
             _fakeCardShoe.Setup(x => x.GetPlayingCard()).Returns(new PlayingCard(Suit.Diamond, CardNumber.Ace));
         }
