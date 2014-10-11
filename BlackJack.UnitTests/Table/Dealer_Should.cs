@@ -1,11 +1,11 @@
 ﻿using BlackJack.CardDeck.Model;
-using BlackJack.Players;
+using BlackJack.Table;
 using BlackJack.Table.Interfaces;
 using Moq;
 using NUnit.Framework;
 using System.Linq;
 
-namespace BlackJack.UnitTests.Players
+namespace BlackJack.UnitTests.Table
 {   //See test notes for further details
     [TestFixture]
     public class Dealer_Should

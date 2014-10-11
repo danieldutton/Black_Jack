@@ -1,7 +1,7 @@
 ﻿using BlackJack.CardDeck.Model;
 using BlackJack.Table.Interfaces;
 
-namespace BlackJack.Players
+namespace BlackJack.Table
 {
     public class Dealer : CardPlayer
     {

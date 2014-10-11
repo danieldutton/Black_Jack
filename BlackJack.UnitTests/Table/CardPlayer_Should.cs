@@ -1,9 +1,9 @@
 ﻿using BlackJack.CardDeck.Model;
-using BlackJack.Players;
+using BlackJack.Table;
 using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace BlackJack.UnitTests.Players
+namespace BlackJack.UnitTests.Table
 {
     [TestFixture]
     public class CardPlayer_Should

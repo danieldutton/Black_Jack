@@ -60,10 +60,6 @@
       <Project>{DD641150-7250-4A16-A236-DFBAC5CBA1A0}</Project>
       <Name>BlackJack.CardDeck</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BlackJack.Players\BlackJack.Players.csproj">
-      <Project>{8B455CC0-AA50-4F18-BF28-E0308D2B9338}</Project>
-      <Name>BlackJack.Players</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BlackJack.Table\BlackJack.Table.csproj">
       <Project>{01F0BA3A-8920-4ACF-A15C-22F9C9C08EA3}</Project>
       <Name>BlackJack.Table</Name>

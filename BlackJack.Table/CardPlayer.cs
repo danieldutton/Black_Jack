@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BlackJack.Players
+namespace BlackJack.Table
 {
     public class CardPlayer
     {

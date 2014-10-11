@@ -24,7 +24,7 @@ namespace BlackJack.CardDeck
             {
                 object o = _resourceHandler.GetResourceManager()
                     .GetObject(playingCard.GetResourceImageName());
-
+                
                 if (o != null)
                 {
                     playingCard.Image = o as Image;

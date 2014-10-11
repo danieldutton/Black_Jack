@@ -51,8 +51,8 @@
     <Compile Include="Table\CardShoe_Should.cs" />
     <Compile Include="Mother.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Players\CardPlayer_Should.cs" />
-    <Compile Include="Players\Dealer_Should.cs" />
+    <Compile Include="Table\CardPlayer_Should.cs" />
+    <Compile Include="Table\Dealer_Should.cs" />
     <Compile Include="Utility\GuidShuffler_Should.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,10 +62,6 @@
     <ProjectReference Include="..\BlackJack.CardDeck\BlackJack.CardDeck.csproj">
       <Project>{DD641150-7250-4A16-A236-DFBAC5CBA1A0}</Project>
       <Name>BlackJack.CardDeck</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BlackJack.Players\BlackJack.Players.csproj">
-      <Project>{8B455CC0-AA50-4F18-BF28-E0308D2B9338}</Project>
-      <Name>BlackJack.Players</Name>
     </ProjectReference>
     <ProjectReference Include="..\BlackJack.Presentation\BlackJack.Presentation.csproj">
       <Project>{6BB956AF-8088-4CE0-BEEA-022F96B62C46}</Project>

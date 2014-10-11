@@ -1,6 +1,6 @@
 ﻿using BlackJack.CardDeck.Model;
-using BlackJack.Players;
 using BlackJack.Presentation.Components;
+using BlackJack.Table;
 using BlackJack.Table.Interfaces;
 using System;
 using System.Collections.Generic;
