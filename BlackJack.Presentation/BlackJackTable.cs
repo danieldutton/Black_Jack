@@ -152,10 +152,10 @@ namespace BlackJack.Presentation
             else if (_player.IsBust())
                 DisplayGameResults(dealersScore, playersScore, "Dealer Wins");
 
-            else if(_player.HasBlackJack() && _dealer.CurrentScore == 21)
+            else if(_player.HasBlackJack() && _dealer.CurrentScore == 21 && !_dealer.HasBlackJack())
                 DisplayGameResults(dealersScore, playersScore, "BlackJack - Player Wins");
 
-            else if (_dealer.HasBlackJack() && _player.CurrentScore == 21)
+            else if (_dealer.HasBlackJack() && _player.CurrentScore == 21 && !_player.HasBlackJack())
                 DisplayGameResults(dealersScore, playersScore, "BlackJack - Dealer Wins");
 
             else if (_player.ScoresTied(dealersScore))
