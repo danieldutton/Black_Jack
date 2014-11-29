@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace BlackJack.Presentation
 {
-    internal partial class BlackJackTable : Form
+    public partial class BlackJackTable : Form
     {
         private readonly Dealer _dealer;
 
